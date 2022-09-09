@@ -7,7 +7,7 @@
 > *Este teste está separado em 3 níveis de dificuldade. Você pode desenvolver seu teste APP atendendo apenas a um nível, ou a todos.*
 >
 > **Para todos os níveis você deve executar algumas etapas iniciais:**
->- Clonar este repositório para o seu Github, de forma privada, e adicionar os usuarios @brunosmm, @astraube, @BetoMottu, @moreirawebmaster.
+>- Clonar este repositório para o seu Github, de forma privada, e adicionar os usuarios `@brunosmm`, `@BetoMottu`, `@moreirawebmaster`, `@astraube`.
 >- Criar um projeto Flutter com a seguinte configuração de package: `com.mottu.marvel`.
 >- Criar uma conta de desenvolvedor em `developer.marvel.com`.
 >- Gerar uma **API KEY** no site de desenvolvedor da **Marvel**, e consumir suas respectivas **API's**.
