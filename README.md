@@ -20,13 +20,13 @@
 
 
 
-# NÍVEL 1 - branch name (level_1):
+# NÍVEL 1 - nome da branch (level_1):
 - Executar etapas iniciais;
 - Mostrar a listagem dos personagens (imagem e nome);
 - Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome e descrição);
 
 
-# NÍVEL 2 - branch name (level_2):
+# NÍVEL 2 - nome da branch (level_2):
 - Executar etapas iniciais;
 - Guardar em cache as consultas realizadas na API Marvel;
 - Mostrar a listagem dos personagens (imagem e nome);
@@ -34,7 +34,7 @@
 - Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 
 
-# NÍVEL 3 - branch name (level_3):
+# NÍVEL 3 - nome da branch (level_3):
 - Executar etapas iniciais;
 - Criar uma Splashscreen customizada;
 - Guardar em cache as consultas realizadas na API Marvel;
@@ -45,7 +45,7 @@
 - Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 - Ação de clique nos personagens relacionados e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 
-# Ao final de cada etapa, criar PR para a branch **main** e realizar o merge.
+> Ao final de cada etapa, criar PR para a branch **main** e realizar o merge.
 
 # Pontos extras (opcional):
 - Utilizar Getx.
