@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -8,7 +10,7 @@ import 'core/screen/design_ui.dart';
 import 'core/screen/screen_util.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({super.key});
+  const AppWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +36,6 @@ class AppWidget extends StatelessWidget {
                 );
               },
               theme: ThemesMarvel.light,
-              themeMode: ThemeMode.light,
-              darkTheme: ThemesMarvel.dark,
             );
           },
         );

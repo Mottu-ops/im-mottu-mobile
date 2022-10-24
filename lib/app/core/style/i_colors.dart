@@ -8,7 +8,10 @@ abstract class IColors {
 
   final Color grey;
 
+  final Color lightGrey;
+
   IColors(
+    this.lightGrey,
     this.black,
     this.white,
     this.red,

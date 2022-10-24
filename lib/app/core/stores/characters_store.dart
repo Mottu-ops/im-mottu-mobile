@@ -1,11 +1,10 @@
 import 'package:mobx/mobx.dart';
 
-import '../domain/char_entity.dart';
+import '../domain/entities/char_entity.dart';
 
-part 'characters_store.g.dart';
 
-class CharactersStore = _CharactersStoreBase with _$CharactersStore;
-
-abstract class _CharactersStoreBase with Store {
+class CharactersStore {
   List<Char> characters = [];
+
+  void setCharacters(List<Char> heroes) => characters = heroes;
 }

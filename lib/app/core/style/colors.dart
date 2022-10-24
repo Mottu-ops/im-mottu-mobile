@@ -24,13 +24,16 @@ class ColorsMarvel implements IColors {
       900: Color(_blackPrimaryValue),
     },
   );
-  static const int _blackPrimaryValue = 0xFF272727;
+  static const int _blackPrimaryValue = 0xFF181818;
 
   @override
   final Color white = const Color(0xFFFAFAFA);
 
   @override
-  final Color grey = const Color(0xFFDEDEDE);
+  final Color lightGrey = const Color(0xFFDEDEDE);
+
+  @override
+  final Color grey = const Color(0xFFAFAFAF);
 
   @override
   final Color red = const Color(0xFFED1D24);
