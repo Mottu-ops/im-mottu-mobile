@@ -1,0 +1,17 @@
+<svg version="1.0" viewBox="-225 -225 450 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g stroke="#b22234" stroke-width="45">
+  <circle r="202.5" fill="#fff"/>
+  <circle r="112.5" fill="#3c3b6e"/>
+ </g>
+ <g fill="#fff">
+  <g id="a">
+   <path id="b" transform="translate(0,-90) rotate(18)" d="m0 0v90h45z"/>
+   <use transform="scale(-1,1)" xlink:href="#b"/>
+  </g>
+  <g id="c">
+   <use transform="rotate(72)" xlink:href="#a"/>
+   <use transform="rotate(144)" xlink:href="#a"/>
+  </g>
+  <use transform="rotate(144)" xlink:href="#c"/>
+ </g>
+</svg>
