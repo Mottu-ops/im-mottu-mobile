@@ -19,6 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: Routes.goRouter,
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionColor: Colors.black12,
+          selectionHandleColor: Color(0XFFED1D24),
+        ),
+      ),
       title: 'Mottul Marvel',
     );
   }
