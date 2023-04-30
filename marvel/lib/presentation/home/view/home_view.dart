@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -77,8 +78,11 @@ class _HomeViewState extends State<HomeView> {
                     GestureDetector(
                       onTap: () =>
                           print('Interface detail ${index.toString()}'),
-                      child: Image.network(
-                        'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784/detail.jpg',
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784/detail.jpg',
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
                       ),
                     ),
                     Text('Name ${index.toString()}'),
