@@ -1,5 +1,6 @@
 enum RoutesEmum {
-  home(name: 'home', path: '/home');
+  home(name: 'home', path: '/home'),
+  details(name: 'details', path: '/details');
 
   const RoutesEmum({
     required this.name,
