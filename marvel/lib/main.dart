@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       routerConfig: Routes.goRouter,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        useMaterial3: true,
         textSelectionTheme: const TextSelectionThemeData(
           selectionColor: Colors.black12,
           selectionHandleColor: Color(0XFFED1D24),
