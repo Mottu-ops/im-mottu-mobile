@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/presentation/splash/view/splash_view.dart';
+import 'package:marvel/presentation/splash/view/view.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
