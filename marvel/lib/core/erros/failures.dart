@@ -40,3 +40,13 @@ class CacheFailure extends Failure {
   @override
   List<Object?> get props => [message, exception];
 }
+
+class HttpFailure extends Failure {
+  final String? message;
+  final Exception? exception;
+
+  const HttpFailure({this.message, this.exception});
+
+  @override
+  List<Object?> get props => [message, exception];
+}
