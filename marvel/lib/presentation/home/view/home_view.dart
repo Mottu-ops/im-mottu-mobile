@@ -1,6 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marvel/core/enum/sorting_types.dart';
+import 'package:marvel/core/enum/status_enum.dart';
+import 'package:marvel/core/utils/utils.dart';
+import 'package:marvel/di/di.dart';
+import 'package:marvel/presentation/home/home.dart';
+import 'package:marvel/presentation/home/widgets/sort_line.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -10,6 +17,15 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  late GetListCharactersBloc getListCharactersBloc;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getListCharactersBloc = getIt<GetListCharactersBloc>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +64,108 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                     const SizedBox(width: 16),
-                    const Icon(
-                      Icons.filter_list_rounded,
-                      color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => Container(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 16,
+                            ),
+                            width: double.infinity,
+                            height: 230,
+                            color: Colors.white,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 24,
+                                    ),
+                                    child: const Text(
+                                      "SORT BY",
+                                      style: TextStyle(
+                                        fontFamily: Constants.montserrat,
+                                        color: Color(0XFF666666),
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    )),
+                                const Divider(
+                                  color: Color(0XFF666666),
+                                  indent: 5,
+                                  endIndent: 5,
+                                ),
+                                const Spacer(),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SortLine(
+                                      text: 'Name: Ascending',
+                                      isSelected: false,
+                                      function: () {
+                                        getListCharactersBloc.add(
+                                          const GetListCharacters(
+                                            orderBy: SortingTypes.nameAscending,
+                                          ),
+                                        );
+
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    SortLine(
+                                      text: 'Name: Descending',
+                                      isSelected: false,
+                                      function: () {
+                                        getListCharactersBloc.add(
+                                          const GetListCharacters(
+                                            orderBy:
+                                                SortingTypes.nameDescending,
+                                          ),
+                                        );
+
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    SortLine(
+                                      text: 'Modified: Most recent',
+                                      isSelected: false,
+                                      function: () {
+                                        getListCharactersBloc.add(
+                                          const GetListCharacters(
+                                            orderBy:
+                                                SortingTypes.modifiedAscending,
+                                          ),
+                                        );
+
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    SortLine(
+                                      text: 'Modified: Most old',
+                                      isSelected: false,
+                                      function: () {
+                                        getListCharactersBloc.add(
+                                          const GetListCharacters(
+                                            orderBy:
+                                                SortingTypes.modifiedDescending,
+                                          ),
+                                        );
+
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Icon(
+                        Icons.filter_list_rounded,
+                        color: Colors.white,
+                      ),
                     )
                   ],
                 ),
@@ -64,34 +179,50 @@ class _HomeViewState extends State<HomeView> {
           notification.disallowIndicator();
           return true;
         },
-        child: SingleChildScrollView(
+        child: CustomScrollView(
           scrollDirection: Axis.vertical,
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-              children: List.generate(
-                70,
-                (index) => ExpansionTile(
-                  expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                  title: Text(index.toString()),
-                  children: [
-                    GestureDetector(
-                      onTap: () =>
-                          print('Interface detail ${index.toString()}'),
-                      child: CachedNetworkImage(
-                        imageUrl:
-                            'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784/detail.jpg',
-                        placeholder: (context, url) =>
-                            const CircularProgressIndicator(),
+          slivers: [
+            BlocBuilder<GetListCharactersBloc, CharactersState>(
+              bloc: getListCharactersBloc..add(const GetListCharacters()),
+              builder: (context, state) {
+                switch (state.status) {
+                  case StatusEnum.success:
+                    return SliverToBoxAdapter(
+                      child: Column(
+                        children: List.generate(
+                          state.list!.length,
+                          (index) {
+                            final stateListIndex = state.list![index];
+                            return CustomExpansionTile(
+                              stateListIndex: stateListIndex,
+                              descriptionIsNotEmpty:
+                                  stateListIndex.description.isNotEmpty,
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                    Text('Name ${index.toString()}'),
-                    Text('Description ${index.toString()}'),
-                  ],
-                ),
-              ),
+                    );
+                  default:
+                    return SliverFillRemaining(
+                      child: ListView(
+                        children: List.generate(
+                          11,
+                          (index) => Shimmer.fromColors(
+                            baseColor: const Color(0XFFF6F6F6),
+                            highlightColor: Colors.grey[300]!,
+                            child: Container(
+                              margin: const EdgeInsets.only(bottom: 2),
+                              color: Colors.black,
+                              height: 56,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                }
+              },
             ),
-          ),
+          ],
         ),
       ),
     );
