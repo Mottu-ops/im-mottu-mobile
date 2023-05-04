@@ -33,3 +33,26 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat/Montserrat-Thin.ttf
+        - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
+        - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+        - asset: assets/fonts/montserrat/Montserrat-Medium.ttf
+        - asset: assets/fonts/montserrat/Montserrat-Light.ttf
+        - asset: assets/fonts/montserrat/Montserrat-ExtraLight.ttf
+        - asset: assets/fonts/montserrat/Montserrat-ExtraBold.ttf
+        - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+        - asset: assets/fonts/montserrat/Montserrat-Black.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Thin.ttf
+        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/poppins/Poppins-Light.ttf
+        - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/poppins/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+        - asset: assets/fonts/poppins/Poppins-Black.ttf
