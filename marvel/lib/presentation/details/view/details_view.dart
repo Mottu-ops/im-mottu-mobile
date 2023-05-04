@@ -61,7 +61,7 @@ class DetailsView extends StatelessWidget {
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverToBoxAdapter(
             child: Container(
-              margin: const EdgeInsets.only(left: 24, right: 215),
+              margin: const EdgeInsets.only(left: 24, right: 180),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               decoration: BoxDecoration(
                 color: const Color(0XFFFFF0DA),
