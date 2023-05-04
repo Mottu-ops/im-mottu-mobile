@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:marvel/di/di.dart';
 import 'package:marvel/presentation/router/routes.dart';
 import 'package:marvel/presentation/splash/view/splash_view.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
 
   runApp(const SplashView());
 
