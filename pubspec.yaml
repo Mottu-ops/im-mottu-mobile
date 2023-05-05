@@ -1,0 +1,35 @@
+name: mottu_test
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  shared_preferences: ^2.1.0
+  cached_network_image: ^3.2.3
+  flutter_modular: 5.0.3
+  crypto: ^3.0.2
+  lottie: ^2.3.2
+  get: ^4.6.5
+  http: ^0.13.6
+  dio: ^5.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/animation/
+    - assets/gifs/
