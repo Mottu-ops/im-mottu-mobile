@@ -119,10 +119,6 @@ class Home extends StatelessWidget {
                                   })
                               ),
                             ),
-                            TextButton(
-                              onPressed: () => throw Exception(),
-                              child: const Text("Throw Test Exception"),
-                            ),
                           ]
                       ),
                       homeController.charging.value ? Container(color: Colors.grey.withOpacity(0.7), height: homeController.screenHeight.value, width: homeController.screenWidth.value) : const SizedBox(),
