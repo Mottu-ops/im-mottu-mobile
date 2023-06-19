@@ -13,7 +13,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Home');
 
     return GetX<HomeController>(
       builder: (homeController) {

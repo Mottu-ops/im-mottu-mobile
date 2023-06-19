@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1065284918592",
+    "project_id": "marvel-sarchive",
+    "storage_bucket": "marvel-sarchive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065284918592:android:64d4b9665a21ab788e6ea5",
+        "android_client_info": {
+          "package_name": "com.mottu.marvel.marvelsarchive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065284918592-53u220q9h7q3rumd23piho1hmd4suk1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mottu.marvel.marvelsarchive",
+            "certificate_hash": "2dfdb8344fea917594cc6e4d40b6e153f704d3a4"
+          }
+        },
+        {
+          "client_id": "1065284918592-k63d2f5mb727fleeac3gl4vgvpu5r90r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3W_pGoNWsqspziWTtu7XoWtwlxy-t71Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065284918592-k63d2f5mb727fleeac3gl4vgvpu5r90r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1065284918592-gmenuo5slm5mqcm60a29a94fqsrj0baq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mottu.marvel.marvelsarchive"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

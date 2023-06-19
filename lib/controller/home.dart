@@ -145,7 +145,7 @@ class HomeController extends GetxController {
         List data = jsonDecode(response.body)['data']['results'];
         for (var element in data) {
           hero.Hero tempHero = hero.Hero(id: element['id'], name: element['name'], description: element['description'], modified: DateTime.tryParse(element['modified']), smallThumbnail: '${element['thumbnail']['path']}/standard_amazing.${element['thumbnail']['extension']}', largeThumbnail: '${element['thumbnail']['path']}/portrait_incredible.${element['thumbnail']['extension']}', comics: [], series: [], related: []);
-          if(tempHero.id != heroInfo.id && !related.contains(tempHero)){
+          if(tempHero.id != heroInfo.id){
             List comics = [];
             List series = [];
             List tempComics = element['comics']['items'];
@@ -185,7 +185,7 @@ class HomeController extends GetxController {
         List data = jsonDecode(response.body)['data']['results'];
         for (var element in data) {
           hero.Hero tempHero = hero.Hero(id: element['id'], name: element['name'], description: element['description'], modified: DateTime.tryParse(element['modified']), smallThumbnail: '${element['thumbnail']['path']}/standard_amazing.${element['thumbnail']['extension']}', largeThumbnail: '${element['thumbnail']['path']}/portrait_incredible.${element['thumbnail']['extension']}', comics: [], series: [], related: []);
-          if(tempHero.id != heroInfo.id && !related.contains(tempHero)) {
+          if(tempHero.id != heroInfo.id) {
             List comics = [];
             List series = [];
             List tempComics = element['comics']['items'];
@@ -215,6 +215,13 @@ class HomeController extends GetxController {
                 )
             );
           }
+        }
+      }
+    }
+    for (var indx = 0; indx < related.length; indx++) {
+      for (var indx2 = 1; indx2 < related.length; indx2++) {
+        if(related[indx].id == related[indx2].id) {
+          related.removeAt(indx2);
         }
       }
     }

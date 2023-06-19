@@ -65,7 +65,6 @@ class _AnimatedHeroCardState extends State<AnimatedHeroCard> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    print('Animated Hero Card');
 
     return InkWell(
       onTap: () {
