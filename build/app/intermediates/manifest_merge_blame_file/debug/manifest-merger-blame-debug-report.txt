@@ -1,0 +1,228 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.mottu.marvel.marvelsarchive"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="33" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/henriquemiamoto/StudioProjects/im-mottu-mobile/android/app/src/debug/AndroidManifest.xml:7:5-66
+15-->/Users/henriquemiamoto/StudioProjects/im-mottu-mobile/android/app/src/debug/AndroidManifest.xml:7:22-64
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[:firebase_analytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_analytics/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-79
+16-->[:firebase_analytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_analytics/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-76
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->[:firebase_analytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_analytics/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-68
+17-->[:firebase_analytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_analytics/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-65
+18    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+18-->[com.google.android.gms:play-services-measurement-api:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/ed5c72596ef36ed9db080ea50e125399/transformed/jetified-play-services-measurement-api-21.3.0/AndroidManifest.xml:25:5-79
+18-->[com.google.android.gms:play-services-measurement-api:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/ed5c72596ef36ed9db080ea50e125399/transformed/jetified-play-services-measurement-api-21.3.0/AndroidManifest.xml:25:22-76
+19    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+19-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:26:5-110
+19-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:26:22-107
+20
+21    <application
+22        android:name="android.app.Application"
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.6.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/baf17ab8fbcb5ad1e4322c944ef35f2c/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+24        android:debuggable="true"
+25        android:icon="@mipmap/ic_launcher"
+26        android:label="marvelsarchive" >
+27        <activity
+28            android:name="com.mottu.marvel.marvelsarchive.MainActivity"
+29            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+30            android:exported="true"
+31            android:hardwareAccelerated="true"
+32            android:launchMode="singleTop"
+33            android:theme="@style/LaunchTheme"
+34            android:windowSoftInputMode="adjustResize" >
+35
+36            <!--
+37                 Specifies an Android theme to apply to this Activity as soon as
+38                 the Android process has started. This theme is visible to the user
+39                 while the Flutter UI initializes. After that, this theme continues
+40                 to determine the Window background behind the Flutter UI.
+41            -->
+42            <meta-data
+43                android:name="io.flutter.embedding.android.NormalTheme"
+44                android:resource="@style/NormalTheme" />
+45
+46            <intent-filter>
+47                <action android:name="android.intent.action.MAIN" />
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+50            </intent-filter>
+51        </activity>
+52        <!--
+53             Don't delete the meta-data below.
+54             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+55        -->
+56        <meta-data
+57            android:name="flutterEmbedding"
+58            android:value="2" />
+59
+60        <service
+60-->[:firebase_crashlytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_crashlytics/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+61            android:name="com.google.firebase.components.ComponentDiscoveryService"
+61-->[:firebase_crashlytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_crashlytics/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-89
+62            android:directBootAware="true"
+62-->[com.google.firebase:firebase-common:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/45f431ee4ef3b53a021f06f64bccc9de/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:34:13-43
+63            android:exported="false" >
+63-->[com.google.firebase:firebase-analytics-ktx:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/5c1eca5b963159ef78a50ed106fabb7d/transformed/jetified-firebase-analytics-ktx-21.3.0/AndroidManifest.xml:10:13-37
+64            <meta-data
+64-->[:firebase_crashlytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_crashlytics/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+65                android:name="com.google.firebase.components:io.flutter.plugins.firebase.crashlytics.FlutterFirebaseAppRegistrar"
+65-->[:firebase_crashlytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_crashlytics/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-130
+66                android:value="com.google.firebase.components.ComponentRegistrar" />
+66-->[:firebase_crashlytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_crashlytics/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+67            <meta-data
+67-->[:firebase_analytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_analytics/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:85
+68                android:name="com.google.firebase.components:io.flutter.plugins.firebase.analytics.FlutterFirebaseAppRegistrar"
+68-->[:firebase_analytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_analytics/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-128
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[:firebase_analytics] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_analytics/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-82
+70            <meta-data
+70-->[:firebase_core] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+71                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+71-->[:firebase_core] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[:firebase_core] /Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+73            <meta-data
+73-->[com.google.firebase:firebase-analytics-ktx:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/5c1eca5b963159ef78a50ed106fabb7d/transformed/jetified-firebase-analytics-ktx-21.3.0/AndroidManifest.xml:11:13-13:85
+74                android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar"
+74-->[com.google.firebase:firebase-analytics-ktx:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/5c1eca5b963159ef78a50ed106fabb7d/transformed/jetified-firebase-analytics-ktx-21.3.0/AndroidManifest.xml:12:17-126
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[com.google.firebase:firebase-analytics-ktx:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/5c1eca5b963159ef78a50ed106fabb7d/transformed/jetified-firebase-analytics-ktx-21.3.0/AndroidManifest.xml:13:17-82
+76            <meta-data
+76-->[com.google.firebase:firebase-crashlytics-ktx:18.3.7] /Users/henriquemiamoto/.gradle/caches/transforms-3/e37864760cf1149702081c5a8aaf076d/transformed/jetified-firebase-crashlytics-ktx-18.3.7/AndroidManifest.xml:26:13-28:85
+77                android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar"
+77-->[com.google.firebase:firebase-crashlytics-ktx:18.3.7] /Users/henriquemiamoto/.gradle/caches/transforms-3/e37864760cf1149702081c5a8aaf076d/transformed/jetified-firebase-crashlytics-ktx-18.3.7/AndroidManifest.xml:27:17-130
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[com.google.firebase:firebase-crashlytics-ktx:18.3.7] /Users/henriquemiamoto/.gradle/caches/transforms-3/e37864760cf1149702081c5a8aaf076d/transformed/jetified-firebase-crashlytics-ktx-18.3.7/AndroidManifest.xml:28:17-82
+79            <meta-data
+79-->[com.google.firebase:firebase-common-ktx:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/685ff9622af357c95eeeeb4586d75883/transformed/jetified-firebase-common-ktx-20.3.3/AndroidManifest.xml:14:13-16:85
+80                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+80-->[com.google.firebase:firebase-common-ktx:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/685ff9622af357c95eeeeb4586d75883/transformed/jetified-firebase-common-ktx-20.3.3/AndroidManifest.xml:15:17-113
+81                android:value="com.google.firebase.components.ComponentRegistrar" />
+81-->[com.google.firebase:firebase-common-ktx:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/685ff9622af357c95eeeeb4586d75883/transformed/jetified-firebase-common-ktx-20.3.3/AndroidManifest.xml:16:17-82
+82            <meta-data
+82-->[com.google.firebase:firebase-crashlytics:18.3.7] /Users/henriquemiamoto/.gradle/caches/transforms-3/8f3ec8ca3376a33a1bc0d6792b342a41/transformed/jetified-firebase-crashlytics-18.3.7/AndroidManifest.xml:17:13-19:85
+83                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+83-->[com.google.firebase:firebase-crashlytics:18.3.7] /Users/henriquemiamoto/.gradle/caches/transforms-3/8f3ec8ca3376a33a1bc0d6792b342a41/transformed/jetified-firebase-crashlytics-18.3.7/AndroidManifest.xml:18:17-115
+84                android:value="com.google.firebase.components.ComponentRegistrar" />
+84-->[com.google.firebase:firebase-crashlytics:18.3.7] /Users/henriquemiamoto/.gradle/caches/transforms-3/8f3ec8ca3376a33a1bc0d6792b342a41/transformed/jetified-firebase-crashlytics-18.3.7/AndroidManifest.xml:19:17-82
+85            <meta-data
+85-->[com.google.android.gms:play-services-measurement-api:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/ed5c72596ef36ed9db080ea50e125399/transformed/jetified-play-services-measurement-api-21.3.0/AndroidManifest.xml:31:13-33:85
+86                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+86-->[com.google.android.gms:play-services-measurement-api:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/ed5c72596ef36ed9db080ea50e125399/transformed/jetified-play-services-measurement-api-21.3.0/AndroidManifest.xml:32:17-139
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.android.gms:play-services-measurement-api:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/ed5c72596ef36ed9db080ea50e125399/transformed/jetified-play-services-measurement-api-21.3.0/AndroidManifest.xml:33:17-82
+88            <meta-data
+88-->[com.google.firebase:firebase-installations:17.1.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/5ac4a52fd11818168a908cc85a4e3eca/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:17:13-19:85
+89                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+89-->[com.google.firebase:firebase-installations:17.1.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/5ac4a52fd11818168a908cc85a4e3eca/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:18:17-127
+90                android:value="com.google.firebase.components.ComponentRegistrar" />
+90-->[com.google.firebase:firebase-installations:17.1.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/5ac4a52fd11818168a908cc85a4e3eca/transformed/jetified-firebase-installations-17.1.3/AndroidManifest.xml:19:17-82
+91        </service>
+92
+93        <uses-library
+93-->[androidx.window:window:1.0.0-beta04] /Users/henriquemiamoto/.gradle/caches/transforms-3/77a879f699ea0f8ede815c9369f86398/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+94            android:name="androidx.window.extensions"
+94-->[androidx.window:window:1.0.0-beta04] /Users/henriquemiamoto/.gradle/caches/transforms-3/77a879f699ea0f8ede815c9369f86398/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+95            android:required="false" />
+95-->[androidx.window:window:1.0.0-beta04] /Users/henriquemiamoto/.gradle/caches/transforms-3/77a879f699ea0f8ede815c9369f86398/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+96        <uses-library
+96-->[androidx.window:window:1.0.0-beta04] /Users/henriquemiamoto/.gradle/caches/transforms-3/77a879f699ea0f8ede815c9369f86398/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+97            android:name="androidx.window.sidecar"
+97-->[androidx.window:window:1.0.0-beta04] /Users/henriquemiamoto/.gradle/caches/transforms-3/77a879f699ea0f8ede815c9369f86398/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+98            android:required="false" />
+98-->[androidx.window:window:1.0.0-beta04] /Users/henriquemiamoto/.gradle/caches/transforms-3/77a879f699ea0f8ede815c9369f86398/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+99
+100        <service
+100-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/2fa96290d82a7557418de1926186409c/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
+101            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+101-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/2fa96290d82a7557418de1926186409c/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
+102            android:exported="false" >
+102-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/2fa96290d82a7557418de1926186409c/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
+103            <meta-data
+103-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/2fa96290d82a7557418de1926186409c/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
+104                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+104-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/2fa96290d82a7557418de1926186409c/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
+105                android:value="cct" />
+105-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/2fa96290d82a7557418de1926186409c/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
+106        </service>
+107        <service
+107-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/68f96ab59faa3c15378795b6fd60443b/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
+108            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+108-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/68f96ab59faa3c15378795b6fd60443b/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
+109            android:exported="false"
+109-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/68f96ab59faa3c15378795b6fd60443b/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
+110            android:permission="android.permission.BIND_JOB_SERVICE" >
+110-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/68f96ab59faa3c15378795b6fd60443b/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
+111        </service>
+112
+113        <receiver
+113-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/68f96ab59faa3c15378795b6fd60443b/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
+114            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+114-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/68f96ab59faa3c15378795b6fd60443b/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
+115            android:exported="false" />
+115-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/henriquemiamoto/.gradle/caches/transforms-3/68f96ab59faa3c15378795b6fd60443b/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
+116
+117        <provider
+117-->[com.google.firebase:firebase-common:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/45f431ee4ef3b53a021f06f64bccc9de/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:25:9-30:39
+118            android:name="com.google.firebase.provider.FirebaseInitProvider"
+118-->[com.google.firebase:firebase-common:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/45f431ee4ef3b53a021f06f64bccc9de/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:26:13-77
+119            android:authorities="com.mottu.marvel.marvelsarchive.firebaseinitprovider"
+119-->[com.google.firebase:firebase-common:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/45f431ee4ef3b53a021f06f64bccc9de/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:27:13-72
+120            android:directBootAware="true"
+120-->[com.google.firebase:firebase-common:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/45f431ee4ef3b53a021f06f64bccc9de/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:28:13-43
+121            android:exported="false"
+121-->[com.google.firebase:firebase-common:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/45f431ee4ef3b53a021f06f64bccc9de/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:29:13-37
+122            android:initOrder="100" />
+122-->[com.google.firebase:firebase-common:20.3.3] /Users/henriquemiamoto/.gradle/caches/transforms-3/45f431ee4ef3b53a021f06f64bccc9de/transformed/jetified-firebase-common-20.3.3/AndroidManifest.xml:30:13-36
+123
+124        <receiver
+124-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:29:9-33:20
+125            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+125-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:30:13-85
+126            android:enabled="true"
+126-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:31:13-35
+127            android:exported="false" >
+127-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:32:13-37
+128        </receiver>
+129
+130        <service
+130-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:35:9-38:40
+131            android:name="com.google.android.gms.measurement.AppMeasurementService"
+131-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:36:13-84
+132            android:enabled="true"
+132-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:37:13-35
+133            android:exported="false" />
+133-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:38:13-37
+134        <service
+134-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:39:9-43:72
+135            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+135-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:40:13-87
+136            android:enabled="true"
+136-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:41:13-35
+137            android:exported="false"
+137-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:42:13-37
+138            android:permission="android.permission.BIND_JOB_SERVICE" />
+138-->[com.google.android.gms:play-services-measurement:21.3.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/c24975398a5ab86b372fd3f18e8c3d5f/transformed/jetified-play-services-measurement-21.3.0/AndroidManifest.xml:43:13-69
+139
+140        <meta-data
+140-->[com.google.android.gms:play-services-basement:18.1.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/8a8ce323e0890ebfb79796eadb2704f0/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+141            android:name="com.google.android.gms.version"
+141-->[com.google.android.gms:play-services-basement:18.1.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/8a8ce323e0890ebfb79796eadb2704f0/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+142            android:value="@integer/google_play_services_version" />
+142-->[com.google.android.gms:play-services-basement:18.1.0] /Users/henriquemiamoto/.gradle/caches/transforms-3/8a8ce323e0890ebfb79796eadb2704f0/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+143    </application>
+144
+145</manifest>

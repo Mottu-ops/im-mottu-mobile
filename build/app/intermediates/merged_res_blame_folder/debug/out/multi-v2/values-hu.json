@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/henriquemiamoto/StudioProjects/im-mottu-mobile/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hu/values-hu.xml",
+            "map": [
+                {
+                    "source": "/Users/henriquemiamoto/.gradle/caches/transforms-3/baf17ab8fbcb5ad1e4322c944ef35f2c/transformed/core-1.6.0/res/values-hu/values-hu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "232",
+                        "endColumns": "100",
+                        "endOffsets": "328"
+                    }
+                },
+                {
+                    "source": "/Users/henriquemiamoto/.gradle/caches/transforms-3/8a8ce323e0890ebfb79796eadb2704f0/transformed/jetified-play-services-basement-18.1.0/res/values-hu/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "172",
+                        "endOffsets": "367"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "176",
+                        "endOffsets": "227"
+                    }
+                }
+            ]
+        }
+    ]
+}
