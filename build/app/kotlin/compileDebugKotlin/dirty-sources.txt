@@ -1,0 +1,1 @@
+/Users/henriquemiamoto/StudioProjects/im-mottu-mobile/android/app/src/main/kotlin/com/mottu/marvel/marvelsarchive/MainActivity.kt

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1065284918592-k63d2f5mb727fleeac3gl4vgvpu5r90r.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1065284918592</string>
+    <string name="google_api_key" translatable="false">AIzaSyD3W_pGoNWsqspziWTtu7XoWtwlxy-t71Q</string>
+    <string name="google_app_id" translatable="false">1:1065284918592:android:64d4b9665a21ab788e6ea5</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD3W_pGoNWsqspziWTtu7XoWtwlxy-t71Q</string>
+    <string name="google_storage_bucket" translatable="false">marvel-sarchive.appspot.com</string>
+    <string name="project_id" translatable="false">marvel-sarchive</string>
+</resources>
