@@ -11,6 +11,8 @@
 >- Criar um projeto Flutter com a seguinte configuração de package: `com.mottu.marvel`.
 >- Criar uma conta de desenvolvedor em `developer.marvel.com`.
 >- Gerar uma **API KEY** no site de desenvolvedor da **Marvel**, e consumir suas respectivas **API's**.
+>- Criar um readme marcando os itens feitos.
+>- Buildar para plataforma iOS.
 >
 > **Sugestões:**
 >- Não faça apenas um commit com toda sua implementação.
