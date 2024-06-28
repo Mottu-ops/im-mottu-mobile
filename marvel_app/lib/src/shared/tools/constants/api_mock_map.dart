@@ -1,4 +1,5 @@
-final API_MOCK_MAP = {
+// ignore: constant_identifier_names
+const Map<String, dynamic> API_MOCK_MAP = {
   "code": 200,
   "status": "Ok",
   "copyright": "© 2024 MARVEL",
