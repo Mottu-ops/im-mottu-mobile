@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/src/modules/characters/characters_controller.dart';
 import 'package:marvel_app/src/shared/shared.dart';
+import 'package:marvel_app/src/shared/widget/personal_horizontal_card_widget.dart';
 
 class CharactersPage extends StatefulWidget {
   const CharactersPage({super.key});
@@ -39,15 +40,23 @@ class _CharactersPageState extends State<CharactersPage> {
           List<CharacterData> characters = snapshot.data!;
           return ListView.separated(
             itemBuilder: (context, i) {
-              final character = characters[i];
-              return ListTile(
-                title: Text(character.name),
-                subtitle: Text(character.description),
-                leading: Image.network(
-                  '${character.thumbnail.path}.${character.thumbnail.extension}',
-                  width: 50,
-                  height: 50,
-                ),
+              CharacterData character = characters[i];
+              return PersonalHorinzontalCard(
+                onTap: (){
+                //  Modular.to.pushNamed('/details/${character.id}');
+                },
+                id: character.id.toString(),
+                title: character.name,
+               imageUrl: character.thumbnail.toString(),
+                description: character.description,
+                widget: [
+                  TextButton(
+                    onPressed: () {
+                      Modular.to.pushNamed('/characters/${character.id}');
+                    },
+                    child: const Text('Details'),
+                  ),
+                ],
               );
             },
             separatorBuilder: (context, i) => const SizedBox(
