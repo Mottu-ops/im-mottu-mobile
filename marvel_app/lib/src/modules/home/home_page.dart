@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,30 +12,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Marvel App'),
+      ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Center(
-            child: Text('Marvel App'),
-          ),
           TextButton.icon(
-            onPressed: () {},
             label: const Text('Characters'),
+            onPressed: () {
+              Modular.to.pushNamed('/characters/');
+            },
           ),
           TextButton.icon(
-            onPressed: () {},
             label: const Text('Comics'),
+            onPressed: () {},
           ),
           TextButton.icon(
-            onPressed: () {},
             label: const Text('Creators'),
+            onPressed: () {},
           ),
           TextButton.icon(
-            onPressed: () {},
             label: const Text('Series'),
-          ),
-           TextButton.icon(
             onPressed: () {},
+          ),
+          TextButton.icon(
             label: const Text('Stories'),
+            onPressed: () {},
           ),
         ],
       ),
