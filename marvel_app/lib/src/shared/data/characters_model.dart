@@ -347,6 +347,9 @@ class Thumbnail {
     required this.extension,
   });
 
+  @override
+  String toString() => '$path.$extension';
+
   Thumbnail copyWith({
     String? path,
     String? extension,
