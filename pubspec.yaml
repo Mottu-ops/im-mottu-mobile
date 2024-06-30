@@ -1,0 +1,46 @@
+name: marvel_app
+description: "A new Flutter project."
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  flutter: ">=3.22.2 <4.0.0"
+  sdk: ">=3.4.3 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  shimmer: ^3.0.0
+
+  # Networking
+  dio: ^5.4.3
+  talker_dio_logger: ^4.3.2
+  cached_network_image: ^3.3.1
+
+  # Firebase
+  firebase_crashlytics: ^4.0.2
+  firebase_core: ^3.1.1
+
+  # Code Generation
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.11
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
