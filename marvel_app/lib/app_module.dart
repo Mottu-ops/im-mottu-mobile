@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:marvel_app/src/modules/home/home_page.dart';
+import 'package:marvel_app/src/modules/characters/characters_module.dart';
+import 'package:marvel_app/src/modules/home/home_module.dart';
 
 class AppModule extends Module {
   @override
@@ -7,9 +8,8 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child(
-      '/',
-      child:(_) =>  const  HomePage(),
-    );
+    r.module('/', module: HomeModule());
+   
+    r.module('/characters', module: CharactersModule());
   }
 }
