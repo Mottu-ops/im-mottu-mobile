@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:marvel_app/src/modules/characters/characters_controller.dart';
+import 'package:marvel_app/src/modules/characters/pages/characters/characters_controller.dart';
 import 'package:marvel_app/src/shared/shared.dart';
 import 'package:marvel_app/src/shared/widget/personal_horizontal_card_widget.dart';
 
@@ -43,7 +43,7 @@ class _CharactersPageState extends State<CharactersPage> {
               CharacterData character = characters[i];
               return PersonalHorinzontalCard(
                 onTap: (){
-                //  Modular.to.pushNamed('/details/${character.id}');
+                 Modular.to.pushNamed('/characters/${character.id}');
                 },
                 id: character.id.toString(),
                 title: character.name,
