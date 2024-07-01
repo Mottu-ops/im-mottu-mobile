@@ -7,8 +7,8 @@ class PersonController{
 
   PersonController({required this.charactersController});
 
- CharacterData getCharacterLocal()  {
-    return charactersController.lastSelectedCharacter!;
+ Future <CharacterData> getCharacterLocal(String id)  async {
+    return (await charactersController.getCharacters()).firstWhere((p) => '${p.id}' == id);
 
   }
 
