@@ -10,4 +10,6 @@ class CharactersController{
     return result.data.results;
 
   }
+
+  CharacterData? lastSelectedCharacter;
 }

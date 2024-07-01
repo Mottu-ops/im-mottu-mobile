@@ -28,13 +28,11 @@ class _CharactersPageState extends State<CharactersPage> {
       ),
       body: FutureBuilder<List<CharacterData>>(
         future: _charactersController.getCharacters(),
-        builder: (BuildContext context,
+        builder: (BuildContext context, 
             AsyncSnapshot<List<CharacterData>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.red,
-              ),
+              child: Text('Sem dados...'),
             );
           }
           List<CharacterData> characters = snapshot.data!;
@@ -43,20 +41,13 @@ class _CharactersPageState extends State<CharactersPage> {
               CharacterData character = characters[i];
               return PersonalHorinzontalCard(
                 onTap: (){
-                 Modular.to.pushNamed('/characters/${character.id}');
+                  _charactersController.lastSelectedCharacter = character;
+                 Modular.to.pushNamed('/characters/person/${character.id}');
                 },
                 id: character.id.toString(),
                 title: character.name,
                imageUrl: character.thumbnail.toString(),
                 description: character.description,
-                widget: [
-                  TextButton(
-                    onPressed: () {
-                      Modular.to.pushNamed('/characters/${character.id}');
-                    },
-                    child: const Text('Details'),
-                  ),
-                ],
               );
             },
             separatorBuilder: (context, i) => const SizedBox(

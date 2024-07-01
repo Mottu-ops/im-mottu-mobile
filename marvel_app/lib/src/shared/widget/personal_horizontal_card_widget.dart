@@ -5,9 +5,8 @@ class PersonalHorinzontalCard extends StatelessWidget {
   final String? id;
   final String title;
   final String description;
-  final List<Widget> widget;
+  final List<Widget> children;
   final Function()? onTap;
-
 
   const PersonalHorinzontalCard({
     super.key,
@@ -15,52 +14,79 @@ class PersonalHorinzontalCard extends StatelessWidget {
     this.id,
     required this.title,
     required this.description,
-    this.widget = const [], required this.onTap,
+    this.children = const [],
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: GestureDetector(
-        onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            if (id != null) ...{
-              Text(id!),
-            },
-            Row(
-              children: [
-                if (imageUrl != null) ...{
+            GestureDetector(
+              onTap: onTap,
+              child: Row(
+                children: [
+                  if (imageUrl != null) ...{
+                    Expanded(
+                      child: AspectRatio(
+                        aspectRatio: 3 / 4,
+                        child: Image.network(
+                          imageUrl!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  },
                   Expanded(
-                    child: AspectRatio(
-                      aspectRatio: 3 / 4,
-                      child: Image.network(
-                        imageUrl!,
-                        fit: BoxFit.cover,
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          if (id != null) ...{
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '#$id',
+                                  textAlign: TextAlign.end,
+                                ),
+                              ],
+                            )
+                          },
+                          Text(
+                            title,
+                            textAlign: TextAlign.justify,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 5,
+                          ),
+                          if (description.isNotEmpty) ...{
+                            Text(
+                              description,
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                            ),
+                          } else ...{
+                            const Text(
+                              'Top Secret!',
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            ),
+                          },
+                        ],
                       ),
                     ),
                   ),
-                },
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    children: [
-                      Text(title),
-                      if (description.isNotEmpty) ...{
-                        Text(description),
-                      } else ...{
-                        const Text(
-                          'Top Secret!',
-                          style: TextStyle(
-                            color: Colors.red,
-                          ),
-                        ),
-                      },
-                    ],
-                  ),
-                ),
-              ],
-            )
+                ],
+              ),
+            ),
+           ...children
           ],
         ),
       ),
