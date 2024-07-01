@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:marvel_app/src/shared/widget/list_personal_horizontal_card_widget.dart';
 
 class PersonalHorinzontalCard extends StatelessWidget {
   final String? imageUrl;
   final String? id;
   final String title;
   final String description;
-  final List<Widget> children;
+  final List<ListPersonalHorizontalCar> children;
   final Function()? onTap;
 
   const PersonalHorinzontalCard({
@@ -15,7 +16,7 @@ class PersonalHorinzontalCard extends StatelessWidget {
     required this.title,
     required this.description,
     this.children = const [],
-    required this.onTap,
+     this.onTap,
   });
 
   @override
