@@ -6,7 +6,8 @@ class AppPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp.router(
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Marvel App',
       theme: ThemeData(primarySwatch: Colors.blue),
       routerConfig: Modular.routerConfig,
