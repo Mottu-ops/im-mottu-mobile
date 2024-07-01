@@ -20,6 +20,12 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextButton.icon(
+            label: const Text('A-Bomb (HAS)'),
+            onPressed: () {
+              Modular.to.pushNamed('/characters/person/1017100');
+            },
+          ),
+          TextButton.icon(
             label: const Text('Characters'),
             onPressed: () {
               Modular.to.pushNamed('/characters/');
