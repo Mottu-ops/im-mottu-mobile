@@ -39,15 +39,22 @@ class _CharactersPageState extends State<CharactersPage> {
           return ListView.separated(
             itemBuilder: (context, i) {
               CharacterData character = characters[i];
-              return PersonalHorinzontalCard(
-                onTap: (){
-                  _charactersController.lastSelectedCharacter = character;
-                 Modular.to.pushNamed('/characters/person/${character.id}');
-                },
-                id: character.id.toString(),
-                title: character.name,
-               imageUrl: character.thumbnail.toString(),
-                description: character.description,
+              return HeroControllerScope(
+                controller: HeroController(),
+                child: Hero(
+                  transitionOnUserGestures: true,
+                  tag: character.id.toString(),
+                  child: PersonalHorinzontalCard(
+                    onTap: (){
+                      _charactersController.lastSelectedCharacter = character;
+                     Modular.to.pushNamed('/characters/person/${character.id}');
+                    },
+                    id: character.id.toString(),
+                    title: character.name,
+                   imageUrl: character.thumbnail.toString(),
+                    description: character.description,
+                  ),
+                ),
               );
             },
             separatorBuilder: (context, i) => const SizedBox(
