@@ -115,9 +115,9 @@ class CharacterData {
   final Thumbnail thumbnail;
   final String resourceUri;
   final Comics comics;
-  final Comics series;
+  final Series series;
   final Stories stories;
-  final Comics events;
+  final Events events;
   final List<Url> urls;
 
   CharacterData({
@@ -142,9 +142,9 @@ class CharacterData {
     Thumbnail? thumbnail,
     String? resourceUri,
     Comics? comics,
-    Comics? series,
+    Series? series,
     Stories? stories,
-    Comics? events,
+    Events? events,
     List<Url>? urls,
   }) =>
       CharacterData(
@@ -169,9 +169,9 @@ class CharacterData {
         thumbnail: Thumbnail.fromJson(json["thumbnail"]),
         resourceUri: json["resourceURI"],
         comics: Comics.fromJson(json["comics"]),
-        series: Comics.fromJson(json["series"]),
+        series: Series.fromJson(json["series"]),
         stories: Stories.fromJson(json["stories"]),
-        events: Comics.fromJson(json["events"]),
+        events: Events.fromJson(json["events"]),
         urls: List<Url>.from(json["urls"].map((x) => Url.fromJson(x))),
       );
 
@@ -188,6 +188,39 @@ class CharacterData {
         "events": events.toJson(),
         "urls": List<dynamic>.from(urls.map((x) => x.toJson())),
       };
+}
+
+class Series extends Comics {
+  Series({
+    required super.available,
+    required super.collectionUri,
+    required super.items,
+    required super.returned,
+  });
+
+  factory Series.fromJson(Map<String, dynamic> json) => Series(
+        available: json["available"],
+        collectionUri: json["collectionURI"],
+        items: List<ComicsItem>.from(
+            json["items"].map((x) => ComicsItem.fromJson(x))),
+        returned: json["returned"],
+      );
+}
+
+class Events extends Comics {
+  Events({
+    required super.available,
+    required super.collectionUri,
+    required super.items,
+    required super.returned,
+  });
+  factory Events.fromJson(Map<String, dynamic> json) => Events(
+        available: json["available"],
+        collectionUri: json["collectionURI"],
+        items: List<ComicsItem>.from(
+            json["items"].map((x) => ComicsItem.fromJson(x))),
+        returned: json["returned"],
+      );
 }
 
 class Comics {
