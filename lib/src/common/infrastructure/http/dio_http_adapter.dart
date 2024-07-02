@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:marvel_app/src/common/infrastructure/http/token_interceptor.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
 
 import 'http.dart';
@@ -16,21 +17,22 @@ class DioHttpAdapter implements HttpClient {
             headers: const {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
-              'Cache-Control': 'no-cache',
             },
           ),
         ) {
-    _client.interceptors.addAll(interceptors ?? []);
-    _client.interceptors.add(
-      TalkerDioLogger(
-        settings: const TalkerDioLoggerSettings(
-          printRequestHeaders: true,
-          printResponseHeaders: true,
-          printResponseMessage: true,
-          printRequestData: true,
-          printResponseData: true,
+    _client.interceptors.addAll(
+      [
+        TokenInterceptor(),
+        TalkerDioLogger(
+          settings: const TalkerDioLoggerSettings(
+            printRequestHeaders: true,
+            printResponseHeaders: true,
+            printResponseMessage: true,
+            printRequestData: true,
+            printResponseData: true,
+          ),
         ),
-      ),
+      ],
     );
   }
 
