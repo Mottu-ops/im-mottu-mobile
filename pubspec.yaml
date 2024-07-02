@@ -16,7 +16,7 @@ dependencies:
   # UI
   cupertino_icons: ^1.0.8
   get: ^4.6.6
-  shimmer: ^3.0.0
+  flutter_native_splash: ^2.4.0
 
   # Networking
   dio: ^5.4.3
@@ -24,16 +24,20 @@ dependencies:
   cached_network_image: ^3.3.1
 
   # Firebase
-  firebase_crashlytics: ^4.0.2
-  firebase_core: ^3.1.1
+  firebase_crashlytics: ^3.5.7
+  firebase_core: ^2.32.0
 
   # Code Generation
   freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
 
+  # CACHE
+  shared_preferences: ^2.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.4.4
   flutter_lints: ^4.0.0
   build_runner: ^2.4.11
   freezed: ^2.5.2
@@ -43,4 +47,14 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/images/
+
+flutter_native_splash:
+  color: "#FF4141"
+  image: assets/images/iron-man.png
+  ios: true
+  web: false
+  android: true
+  android_12:
+    color: "#FF4141"
+    image: assets/images/iron-man.png
