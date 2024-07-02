@@ -53,6 +53,7 @@ class HomeItemCard extends StatelessWidget {
             padding: margin,
             child: Text(
               label,
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 24,
                 color: Colors.white,
