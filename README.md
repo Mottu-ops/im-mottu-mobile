@@ -1,55 +1,108 @@
 
-# 🛵 I'm Mottu Mobile 🛵
+# Marvel Heroes App
 
-### Teste prático para desenvolvedores Mobile Mottu
+Este projeto foi desenvolvido como parte do processo seletivo da Mottu. O objetivo do aplicativo é demonstrar habilidades em Flutter, utilizando diversas funcionalidades e integrações importantes, como gerenciamento de estado, armazenamento em cache, paginação, e integração com serviços nativos através de Kotlin e Swift, utilizando a API de characters, da Marvel.
 
+## Funcionalidades Implementadas
 
-> *Este teste está separado em 3 níveis de dificuldade. Você pode desenvolver seu teste APP atendendo apenas a um nível, ou a todos.*
->
-> **Para todos os níveis você deve executar algumas etapas iniciais:**
->- Fazer um **fork** deste repositório para o seu Github, de forma **privada**, e adicionar os usuarios `@brunosmm`, `@BetoMottu`, `@moreirawebmaster`,`@jeanchrocha,` `@astraube`.
->- Criar um projeto Flutter com a seguinte configuração de package: `com.mottu.marvel`.
->- Criar uma conta de desenvolvedor em `developer.marvel.com`.
->- Gerar uma **API KEY** no site de desenvolvedor da **Marvel**, e consumir suas respectivas **API's**.
->- Criar um readme marcando os itens feitos.
->- Buildar para plataforma iOS.
->
-> **Sugestões:**
->- Não faça apenas um commit com toda sua implementação.
->- Realize os commits em branchs separadas e utilize PRs.
->- Seja criativo(a) na sua implementação.
->- Não faça **Ctrl+C / Ctrl+V** de outro repositório !!!
+1. **Splashscreen Customizada**:
+   - Uma tela de splash personalizada que é exibida ao iniciar o aplicativo.
 
+2. **Armazenamento em Cache das Consultas à API Marvel**:
+   - As consultas realizadas à API Marvel são armazenadas em cache para melhorar a performance e a experiência do usuário.
 
+3. **Limpeza do Cache no Fechamento do APP**:
+   - O cache de consultas é limpo automaticamente quando o aplicativo é fechado.
 
-# NÍVEL 1 - nome da branch (level_1):
-- Executar etapas iniciais;
-- Mostrar a listagem dos personagens (imagem e nome);
-- Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome e descrição);
+4. **Ação de Clique nos Personagens e Exibição dos Detalhes**:
+   - Os usuários podem clicar nos personagens listados para visualizar detalhes como imagem, nome e descrição(se houver).
 
+5. **Listagem dos Personagens (Imagem e Nome)**:
+   - Uma lista de personagens é exibida com suas respectivas imagens e nomes.
 
-# NÍVEL 2 - nome da branch (level_2):
-- Executar etapas iniciais;
-- Guardar em cache as consultas realizadas na API Marvel;
-- Mostrar a listagem dos personagens (imagem e nome);
-- Criar um filtro para a listagem;
-- Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
+6. **Filtro para a Listagem**:
+   - Um filtro foi implementado para que os usuários possam buscar personagens específicos.
 
+7. **Paginação da Listagem**:
+   - A listagem dos personagens possui paginação para carregar mais personagens conforme o usuário rola a tela.
 
-# NÍVEL 3 - nome da branch (level_3):
-- Executar etapas iniciais;
-- Criar uma Splashscreen customizada;
-- Guardar em cache as consultas realizadas na API Marvel;
-- Limpar cache de consultas no fechamento do APP;
-- Mostrar a listagem dos personagens (imagem e nome);
-- Criar um filtro para a listagem;
-- Ciar uma paginação da listagem;
-- Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
-- Ação de clique nos personagens relacionados e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
+8. **Utilização do GetX**:
+   - GetX é utilizado para gerenciamento de estado, injeção de dependência e navegação, proporcionando uma estrutura limpa e reativa.
 
-> Ao final de cada etapa, criar PR para a branch **main** e realizar o merge.
+9. **Configuração do Firebase Crashlytics**:
+   - O Firebase Crashlytics foi configurado para monitorar e relatar falhas do aplicativo.
 
-# Pontos extras (opcional):
-- Utilizar Getx.
-- Configurar Firebase crashlytics.
-- Criar channel em kotlin, capturar a mudança de conexão, e mostrar uma mensagem de offline no flutter.
+10. **Canal de Comunicação em Kotlin e Swift para Monitorar Conexão**:
+    - Um canal de comunicação foi criado tanto em Kotlin quanto em Swift para capturar mudanças na conexão de rede e exibir uma mensagem de offline no Flutter.
+
+## Estrutura do Projeto
+
+```plaintext
+lib/
+├── main.dart
+├── src/
+│   ├── common/
+│   │   ├── configs.dart
+│   │   ├── infrastructure/
+│   │   │   ├── http/
+│   │   │   │   ├── dio_http_adapter.dart
+│   │   │   │   ├── http.dart
+│   │   │   │   ├── token_interceptor.dart
+│   │   │   │
+│   │   │   ├── splash_view.dart
+│   ├── home/
+│   │   ├── controllers/
+│   │   │   ├── character_controller.dart
+│   │   ├── models/
+│   │   │   ├── hero_dto.dart
+│   │   │   ├── params_dto.dart
+│   │   ├── repositories/
+│   │   │   ├── characters_repository.dart
+│   │   │   ├── i_characters_repository.dart
+│   │   ├── views/
+│   │   │   ├── splash_view.dart
+│   │   │   ├── characters_view.dart
+│   │   │   ├── hero_detail_view.dart
+```
+
+## Requisitos
+
+- Flutter SDK (>=v3.22.2)
+
+## Como Executar
+
+1. **Clone o Repositório**:
+   ```bash
+   git clone https://github.com/seu-usuario/marvel-heroes-app.git
+   cd marvel-heroes-app
+   ```
+
+2. **Instale as Dependências**:
+   ```bash
+   flutter pub get
+   ```
+
+3. **Execute o Aplicativo**:
+   ```bash
+   flutter run
+   ```
+
+## Testes
+
+Os testes unitários foram configurados utilizando o `flutter_test` e `mockito`. Para executar os testes, utilize o comando:
+
+```bash
+flutter test
+```
+
+## Contribuição
+
+Sinta-se à vontade para contribuir com melhorias, abrindo issues ou enviando pull requests.
+
+## Licença
+
+Este projeto está licenciado sob a ShareAlike 4.0 International License (CC BY-NC-SA 4.0) - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+---
+
+Desenvolvido por [ISMAEL PEDRO](https://www.linkedin.com/in/ismaelpedro/) como parte do processo seletivo da Mottu.
