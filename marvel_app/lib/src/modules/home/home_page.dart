@@ -27,6 +27,18 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             HomeItemCard(
+              label: 'Apocalypse (Ultimate)',
+              onPressed: () {
+                Modular.to.pushNamed('/characters/person/1011253');
+              },
+            ),
+            HomeItemCard(
+              label: 'Ant-Man (Eric O\'Grady)',
+              onPressed: () {
+                Modular.to.pushNamed('/characters/person/1011253');
+              },
+            ),
+            HomeItemCard(
               label: 'Characters',
               onPressed: () {
                 Modular.to.pushNamed('/characters/');
