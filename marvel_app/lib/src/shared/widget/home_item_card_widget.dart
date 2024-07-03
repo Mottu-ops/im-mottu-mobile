@@ -39,8 +39,9 @@ class HomeItemCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image:
-                  AssetImage(_backgroundImageUrl(backgroundImageUrl).localUri),
+              image: AssetImage(
+                _backgroundImageUrl(backgroundImageUrl).localUri,
+              ),
               fit: BoxFit.cover,
             ),
             border: Border.all(
