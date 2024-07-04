@@ -20,9 +20,9 @@ class _PersonPageState extends State<PersonPage> {
   @override
   void initState() {
     _personController = Modular.get<PersonController>();
-      _personController.getCharacterLocal(widget.id).whenComplete(() async{
-      await  _personController.getCharacterInfoPlus(widget.id);
-      });
+    _personController.getCharacterLocal(widget.id).whenComplete(() {
+      _personController.getCharacterInfoPlus(widget.id);
+    });
     super.initState();
   }
 
@@ -38,7 +38,7 @@ class _PersonPageState extends State<PersonPage> {
             FutureBuilder(
                 future: _personController.getCharacterLocal(widget.id),
                 builder: (context, snapshot) {
-                  if (_personController.cache == null) {
+                  if (!snapshot.hasData) {
                     return const Center(
                       child: Text('Sem dados...'),
                     );
@@ -53,21 +53,21 @@ class _PersonPageState extends State<PersonPage> {
                       imageUrl: character.thumbnail.toString(),
                       description: character.description,
                       children: [
-                      ListPersonHorizontalCard<ComicsItem>(
-                        title: 'Comics',
-                        children: character.comics.items,
-                        listenable: _personController,
-                        itemBuilder: (context, item) {
-                          return ItemPersonalHorizontalCard(
-                            title: item.name,
-                            imageUrl: item.thumbnail?.toString(),
-                          );
-                        },
-                      ),
-                         ListPersonHorizontalCard<ComicsItem>(
-                          title: 'Serie',
-                          children: character.series.items,
+                        ListPersonHorizontalCard<ComicsItem>(
+                          title: 'Comics',
+                          children: character.comics.items,
                           listenable: _personController,
+                          itemBuilder: (context, item) {
+                            return ItemPersonalHorizontalCard(
+                              title: item.name,
+                              imageUrl: item.thumbnail?.toString(),
+                            );
+                          },
+                        ),
+                        ListPersonHorizontalCard<ComicsItem>(
+                          title: 'Serie',
+                          listenable: _personController,
+                          children: character.series.items,
                           itemBuilder: (context, item) {
                             return ItemPersonalHorizontalCard(
                               title: item.name,
@@ -76,8 +76,8 @@ class _PersonPageState extends State<PersonPage> {
                         ),
                         ListPersonHorizontalCard<ComicsItem>(
                           title: 'Events',
-                          children: character.events.items,
                           listenable: _personController,
+                          children: character.events.items,
                           itemBuilder: (context, item) {
                             return ItemPersonalHorizontalCard(
                               title: item.name,
@@ -86,8 +86,8 @@ class _PersonPageState extends State<PersonPage> {
                         ),
                         ListPersonHorizontalCard<StoriesItem>(
                           title: 'Stories',
-                          children: character.stories.items,
                           listenable: _personController,
+                          children: character.stories.items,
                           itemBuilder: (context, item) {
                             return ItemPersonalHorizontalCard(
                               title: item.name,

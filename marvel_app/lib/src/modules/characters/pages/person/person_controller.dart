@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:marvel_app/src/modules/characters/pages/characters/characters_controller.dart';
 import 'package:marvel_app/src/shared/http/marvel_http_client.dart';
 import 'package:marvel_app/src/shared/http/marvel_request.dart';
@@ -38,7 +38,6 @@ class PersonController extends ChangeNotifier {
                 .toList() ??
             [];
         cache = cache?.copyWith(comics: cache?.comics.copyWith(items: comics));
-        notifyListeners();
       }
     } catch (e, s) {
       print(s);
@@ -56,4 +55,3 @@ class ComicsIDRequest extends IMarvelRequest {
   @override
   String get path => '/v1/public/characters/$id/comics';
 }
-  
