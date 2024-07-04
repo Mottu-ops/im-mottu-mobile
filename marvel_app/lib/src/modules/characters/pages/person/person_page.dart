@@ -20,8 +20,8 @@ class _PersonPageState extends State<PersonPage> {
   @override
   void initState() {
     _personController = Modular.get<PersonController>();
-      _personController.getCharacterLocal(widget.id).whenComplete((){
-        _personController.getCharacterInfoPlus(widget.id);
+      _personController.getCharacterLocal(widget.id).whenComplete(() async{
+      await  _personController.getCharacterInfoPlus(widget.id);
       });
     super.initState();
   }
