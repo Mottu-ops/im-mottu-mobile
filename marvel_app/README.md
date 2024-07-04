@@ -13,7 +13,7 @@ Uma aplicação para explorar o universo da Marvel, permitindo aos usuários des
 
 - FLUTTER
 - Marvel Comics API
-- SetState para gerenciamento de estado
+
 
 
 
