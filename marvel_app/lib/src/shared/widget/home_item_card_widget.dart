@@ -31,7 +31,7 @@ class HomeItemCard extends StatelessWidget {
       margin: margin,
       label: label,
       onPressed: onPressed,
-      backgroundImageUrl: (backgroundImageUrl != null)
+      backgroundImage: (backgroundImageUrl != null)
           ? backgroundImageUrl!.imageProvider
           : randomBackgroundImage().imageProvider,
     );

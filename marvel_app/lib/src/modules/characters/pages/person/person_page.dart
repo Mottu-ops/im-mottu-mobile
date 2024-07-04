@@ -4,7 +4,7 @@ import 'package:marvel_app/src/modules/characters/pages/person/person_controller
 import 'package:marvel_app/src/shared/shared.dart';
 import 'package:marvel_app/src/shared/widget/item_personal_horizontal_card_widget.dart';
 import 'package:marvel_app/src/shared/widget/list_personal_horizontal_card_widget.dart';
-import 'package:marvel_app/src/shared/widget/personal_horizontal_card_widget.dart';
+import 'package:marvel_app/src/shared/widget/person_horizontal_card_widget.dart';
 
 class PersonPage extends StatefulWidget {
   final String id;
@@ -20,7 +20,9 @@ class _PersonPageState extends State<PersonPage> {
   @override
   void initState() {
     _personController = Modular.get<PersonController>();
-    _personController.getCharacterInfoPlus(widget.id);
+      _personController.getCharacterLocal(widget.id).whenComplete((){
+        _personController.getCharacterInfoPlus(widget.id);
+      });
     super.initState();
   }
 
@@ -36,7 +38,7 @@ class _PersonPageState extends State<PersonPage> {
             FutureBuilder(
                 future: _personController.getCharacterLocal(widget.id),
                 builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
+                  if (_personController.cache == null) {
                     return const Center(
                       child: Text('Sem dados...'),
                     );
@@ -45,7 +47,7 @@ class _PersonPageState extends State<PersonPage> {
                   return Hero(
                     transitionOnUserGestures: true,
                     tag: character.id.toString(),
-                    child: PersonalHorinzontalCard(
+                    child: PersonHorizontalCard(
                       id: character.id.toString(),
                       title: character.name,
                       imageUrl: character.thumbnail.toString(),

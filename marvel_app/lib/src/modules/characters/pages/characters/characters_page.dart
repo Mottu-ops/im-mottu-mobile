@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/src/modules/characters/pages/characters/characters_controller.dart';
 import 'package:marvel_app/src/shared/shared.dart';
-import 'package:marvel_app/src/shared/widget/personal_horizontal_card_widget.dart';
+import 'package:marvel_app/src/shared/widget/person_horizontal_card_widget.dart';
 
 class CharactersPage extends StatefulWidget {
   const CharactersPage({super.key});
@@ -45,7 +45,7 @@ class _CharactersPageState extends State<CharactersPage> {
                 child: Hero(
                   transitionOnUserGestures: true,
                   tag: character.id.toString(),
-                  child: PersonalHorinzontalCard(
+                  child: PersonHorizontalCard(
                     onTap: (){
                      //_charactersController.lastSelectedCharacter = character;
                      Modular.to.pushNamed('/characters/person/${character.id}');

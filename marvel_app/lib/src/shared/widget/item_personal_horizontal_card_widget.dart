@@ -23,10 +23,10 @@ class ItemPersonalHorizontalCard extends StatelessWidget {
               aspectRatio: 3 / 4,
               child: (imageUrl != null)
                   ? SingleItemCard(
-                      backgroundImageUrl: NetworkImage(imageUrl!),
+                      backgroundImage: NetworkImage(imageUrl!),
                     )
                   : SingleItemCard(
-                      backgroundImageUrl: randomBackgroundImage().imageProvider,
+                      backgroundImage: randomBackgroundImage().imageProvider,
                     ),
             ),
           ),
