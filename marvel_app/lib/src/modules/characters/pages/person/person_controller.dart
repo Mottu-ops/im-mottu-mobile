@@ -1,27 +1,59 @@
+import 'package:flutter/cupertino.dart';
 import 'package:marvel_app/src/modules/characters/pages/characters/characters_controller.dart';
+import 'package:marvel_app/src/shared/http/marvel_http_client.dart';
+import 'package:marvel_app/src/shared/http/marvel_request.dart';
+import 'package:marvel_app/src/shared/http/marvel_response.dart';
 import 'package:marvel_app/src/shared/shared.dart';
 
-class PersonController {
+class PersonController extends ChangeNotifier {
   final CharactersController charactersController;
+  final MarvelHttpClient httpClient;
 
-  PersonController({required this.charactersController});
+  PersonController({
+    required this.charactersController,
+    required this.httpClient,
+  });
 
   Future<CharacterData> getCharacterLocal(String id) async {
-    CharacterData? result;
     try {
-      result = charactersController.cache.firstWhere((p) => '${p.id}' == id);
+      cache = charactersController.cache.firstWhere((p) => '${p.id}' == id);
     } catch (e) {
-      result =
+      cache =
           (await charactersController.getCharacters(id: id, cacheable: false))
               .firstWhere((p) => '${p.id}' == id);
     }
 
-    return result;
+    return cache!;
   }
 
-  Future<CharacterData> getCharacterInfoPlus() async {
-    return charactersController.lastSelectedCharacter!;
+  
+  Future<CharacterData> getCharacterInfoPlus(String id) async {
+    try {
+      MarvelResponse response =
+          await httpClient.request(ComicsIDRequest(id: id));
+      Map<String, dynamic> data = response.data;
+      if (data["data"]["results"] != null) {
+        List<ComicsItem> comics = (data["data"]["results"] as List?)
+                ?.map((x) => ComicsItem.fromJson(x))
+                .toList() ??
+            [];
+        cache = cache?.copyWith(comics: cache?.comics.copyWith(items: comics));
+        notifyListeners();
+      }
+    } catch (e, s) {
+      print(s);
+    }
+    return cache!;
   }
 
-  CharacterData? lastSelectedCharacter;
+  CharacterData? cache;
 }
+
+class ComicsIDRequest extends IMarvelRequest {
+  final String id;
+
+  ComicsIDRequest({required this.id});
+  @override
+  String get path => '/v1/public/characters/$id/comics';
+}
+  

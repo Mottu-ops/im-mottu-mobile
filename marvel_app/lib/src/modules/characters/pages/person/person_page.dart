@@ -20,6 +20,7 @@ class _PersonPageState extends State<PersonPage> {
   @override
   void initState() {
     _personController = Modular.get<PersonController>();
+    _personController.getCharacterInfoPlus(widget.id);
     super.initState();
   }
 
@@ -40,7 +41,7 @@ class _PersonPageState extends State<PersonPage> {
                       child: Text('Sem dados...'),
                     );
                   }
-                  CharacterData character = snapshot.data!;
+                  CharacterData character = _personController.cache!;
                   return Hero(
                     transitionOnUserGestures: true,
                     tag: character.id.toString(),
@@ -50,36 +51,41 @@ class _PersonPageState extends State<PersonPage> {
                       imageUrl: character.thumbnail.toString(),
                       description: character.description,
                       children: [
-                        ListPersonalHorizontalCar<ComicsItem>(
-                          title: 'Comics',
-                          children: character.comics.items,
-                          itemBuilder: (context, item) {
-                            return ItemPersonalHorizontalCard(
-                              title: item.name,
-                            );
-                          },
-                        ),
-                         ListPersonalHorizontalCar<ComicsItem>(
+                      ListPersonHorizontalCard<ComicsItem>(
+                        title: 'Comics',
+                        children: character.comics.items,
+                        listenable: _personController,
+                        itemBuilder: (context, item) {
+                          return ItemPersonalHorizontalCard(
+                            title: item.name,
+                            imageUrl: item.thumbnail?.toString(),
+                          );
+                        },
+                      ),
+                         ListPersonHorizontalCard<ComicsItem>(
                           title: 'Serie',
                           children: character.series.items,
+                          listenable: _personController,
                           itemBuilder: (context, item) {
                             return ItemPersonalHorizontalCard(
                               title: item.name,
                             );
                           },
                         ),
-                        ListPersonalHorizontalCar<ComicsItem>(
+                        ListPersonHorizontalCard<ComicsItem>(
                           title: 'Events',
                           children: character.events.items,
+                          listenable: _personController,
                           itemBuilder: (context, item) {
                             return ItemPersonalHorizontalCard(
                               title: item.name,
                             );
                           },
                         ),
-                        ListPersonalHorizontalCar<StoriesItem>(
+                        ListPersonHorizontalCard<StoriesItem>(
                           title: 'Stories',
                           children: character.stories.items,
+                          listenable: _personController,
                           itemBuilder: (context, item) {
                             return ItemPersonalHorizontalCard(
                               title: item.name,

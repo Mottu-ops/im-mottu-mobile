@@ -54,11 +54,7 @@ class MarvelHttpClient {
         );
       }
     } on MarvelHttpException catch (e) {
-      throw MarvelHttpException(
-        e.statusCode,
-        e.statusMessage,
-        e.data,
-      );
+      throw MarvelHttpException(e.statusCode, e.statusMessage, e.data);
     } on DioException catch (e) {
       if (!await checkPinning(e)) {
         throw MarvelHttpException(999, 'Sem conexão', {

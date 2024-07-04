@@ -1,3 +1,4 @@
+part of 'model.dart';
 class CharactersResult {
   final int code;
   final String status;
@@ -199,11 +200,11 @@ class Series extends Comics {
   });
 
   factory Series.fromJson(Map<String, dynamic> json) => Series(
-        available: json["available"],
-        collectionUri: json["collectionURI"],
+        available: json["available"] ?? 0,
+        collectionUri: json["collectionURI"] ?? '',
         items: List<ComicsItem>.from(
-            json["items"].map((x) => ComicsItem.fromJson(x))),
-        returned: json["returned"],
+            json["items"]?.map((x) => ComicsItem.fromJson(x)) ?? []),
+        returned: json["returned"] ?? 0,
       );
 }
 
@@ -223,76 +224,177 @@ class Events extends Comics {
       );
 }
 
-class Comics {
-  final int available;
-  final String collectionUri;
-  final List<ComicsItem> items;
-  final int returned;
 
-  Comics({
-    required this.available,
-    required this.collectionUri,
-    required this.items,
-    required this.returned,
-  });
+class Creators {
+    final int available;
+    final String collectionUri;
+    final List<CreatorsItem> items;
+    final int returned;
 
-  Comics copyWith({
-    int? available,
-    String? collectionUri,
-    List<ComicsItem>? items,
-    int? returned,
-  }) =>
-      Comics(
-        available: available ?? this.available,
-        collectionUri: collectionUri ?? this.collectionUri,
-        items: items ?? this.items,
-        returned: returned ?? this.returned,
-      );
+    Creators({
+        required this.available,
+        required this.collectionUri,
+        required this.items,
+        required this.returned,
+    });
 
-  factory Comics.fromJson(Map<String, dynamic> json) => Comics(
+    Creators copyWith({
+        int? available,
+        String? collectionUri,
+        List<CreatorsItem>? items,
+        int? returned,
+    }) => 
+        Creators(
+            available: available ?? this.available,
+            collectionUri: collectionUri ?? this.collectionUri,
+            items: items ?? this.items,
+            returned: returned ?? this.returned,
+        );
+
+    factory Creators.fromJson(Map<String, dynamic> json) => Creators(
         available: json["available"],
         collectionUri: json["collectionURI"],
-        items: List<ComicsItem>.from(
-            json["items"].map((x) => ComicsItem.fromJson(x))),
+        items: List<CreatorsItem>.from(json["items"].map((x) => CreatorsItem.fromJson(x))),
         returned: json["returned"],
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "available": available,
         "collectionURI": collectionUri,
         "items": List<dynamic>.from(items.map((x) => x.toJson())),
         "returned": returned,
-      };
+    };
 }
 
-class ComicsItem {
-  final String resourceUri;
-  final String name;
+class CreatorsItem {
+    final String resourceUri;
+    final String name;
+    final String role;
 
-  ComicsItem({
-    required this.resourceUri,
-    required this.name,
-  });
+    CreatorsItem({
+        required this.resourceUri,
+        required this.name,
+        required this.role,
+    });
 
-  ComicsItem copyWith({
-    String? resourceUri,
-    String? name,
-  }) =>
-      ComicsItem(
-        resourceUri: resourceUri ?? this.resourceUri,
-        name: name ?? this.name,
-      );
+    CreatorsItem copyWith({
+        String? resourceUri,
+        String? name,
+        String? role,
+    }) => 
+        CreatorsItem(
+            resourceUri: resourceUri ?? this.resourceUri,
+            name: name ?? this.name,
+            role: role ?? this.role,
+        );
 
-  factory ComicsItem.fromJson(Map<String, dynamic> json) => ComicsItem(
+    factory CreatorsItem.fromJson(Map<String, dynamic> json) => CreatorsItem(
         resourceUri: json["resourceURI"],
         name: json["name"],
-      );
+        role: json["role"],
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "resourceURI": resourceUri,
         "name": name,
-      };
+        "role": role,
+    };
 }
+class Price {
+    final String type;
+    final double price;
+
+    Price({
+        required this.type,
+        required this.price,
+    });
+
+    Price copyWith({
+        String? type,
+        double? price,
+    }) => 
+        Price(
+            type: type ?? this.type,
+            price: price ?? this.price,
+        );
+
+    factory Price.fromJson(Map<String, dynamic> json) => Price(
+        type: json["type"],
+        price: json["price"]?.toDouble(),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "type": type,
+        "price": price,
+    };
+}
+
+
+class Date {
+    final String type;
+    final String date;
+
+    Date({
+        required this.type,
+        required this.date,
+    });
+
+    Date copyWith({
+        String? type,
+        String? date,
+    }) => 
+        Date(
+            type: type ?? this.type,
+            date: date ?? this.date,
+        );
+
+    factory Date.fromJson(Map<String, dynamic> json) => Date(
+        type: json["type"],
+        date: json["date"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "type": type,
+        "date": date,
+    };
+}
+
+class TextObject {
+    final String type;
+    final String language;
+    final String text;
+
+    TextObject({
+        required this.type,
+        required this.language,
+        required this.text,
+    });
+
+    TextObject copyWith({
+        String? type,
+        String? language,
+        String? text,
+    }) => 
+        TextObject(
+            type: type ?? this.type,
+            language: language ?? this.language,
+            text: text ?? this.text,
+        );
+
+    factory TextObject.fromJson(Map<String, dynamic> json) => TextObject(
+        type: json["type"],
+        language: json["language"],
+        text: json["text"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "type": type,
+        "language": language,
+        "text": text,
+    };
+}
+
+
 
 class Stories {
   final int available;
@@ -381,7 +483,9 @@ class Thumbnail {
   });
 
   @override
-  String toString() => '$path.$extension';
+  String toString() {
+    return '$path.$extension';
+  }
 
   Thumbnail copyWith({
     String? path,

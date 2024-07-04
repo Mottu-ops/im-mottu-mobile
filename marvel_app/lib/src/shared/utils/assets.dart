@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum MarvelAssets {
   bg01('assets/bg_01.jpg'),
   bg02('assets/bg_02.jpg'),
@@ -7,7 +9,7 @@ enum MarvelAssets {
   bg06('assets/bg_02.jpg');
 
   final String localUri;
-  const MarvelAssets(
-    this.localUri,
-  );
+  const MarvelAssets(this.localUri);
+
+  ImageProvider get imageProvider => AssetImage(localUri);
 }

@@ -1,7 +1,9 @@
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
 import 'package:marvel_app/src/shared/utils/assets.dart';
+import 'package:marvel_app/src/shared/utils/functions.dart';
+import 'package:marvel_app/src/shared/widget/single_item_card_widget.dart';
 
 class HomeItemCard extends StatelessWidget {
   final String label;
@@ -21,49 +23,17 @@ class HomeItemCard extends StatelessWidget {
     ),
   });
 
-  MarvelAssets _backgroundImageUrl(MarvelAssets? image) {
-    if (image != null) return image;
-    final int randomImagem = Random().nextInt(MarvelAssets.values.length);
-    return MarvelAssets.values.firstWhere(
-      (nAssets) => nAssets.index == randomImagem,
-      orElse: () => MarvelAssets.bg01,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return SingleItemCard(
       padding: padding,
-      child: GestureDetector(
-        onTap: onPressed,
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                _backgroundImageUrl(backgroundImageUrl).localUri,
-              ),
-              fit: BoxFit.cover,
-            ),
-            border: Border.all(
-              color: Colors.red,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Padding(
-            padding: margin,
-            child: Text(
-              label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 24,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-      ),
+      margin: margin,
+      label: label,
+      onPressed: onPressed,
+      backgroundImageUrl: (backgroundImageUrl != null)
+          ? backgroundImageUrl!.imageProvider
+          : randomBackgroundImage().imageProvider,
     );
   }
 }

@@ -17,6 +17,7 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   void initState() {
     _charactersController = Modular.get<CharactersController>();
+      _charactersController.getCharacters();
     super.initState();
   }
 
@@ -46,7 +47,7 @@ class _CharactersPageState extends State<CharactersPage> {
                   tag: character.id.toString(),
                   child: PersonalHorinzontalCard(
                     onTap: (){
-                      _charactersController.lastSelectedCharacter = character;
+                     //_charactersController.lastSelectedCharacter = character;
                      Modular.to.pushNamed('/characters/person/${character.id}');
                     },
                     id: character.id.toString(),

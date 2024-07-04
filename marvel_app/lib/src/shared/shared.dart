@@ -1,4 +1,4 @@
 library shared;
 
 export './tools/constants.dart';
-export './data/characters_model.dart';
+export './data/model.dart';

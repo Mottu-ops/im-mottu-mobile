@@ -1,14 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class ListPersonalHorizontalCar<T> extends StatelessWidget {
+class ListPersonHorizontalCard<T> extends StatelessWidget {
   final String title;
   final List<T> children;
+  final Listenable listenable;
   final Widget? Function(BuildContext, T) itemBuilder;
-  const ListPersonalHorizontalCar({
+
+  const ListPersonHorizontalCard({
     super.key,
     required this.title,
     required this.children,
     required this.itemBuilder,
+    required this.listenable,
   });
 
   @override
@@ -17,16 +20,20 @@ class ListPersonalHorizontalCar<T> extends StatelessWidget {
       visible: children.isNotEmpty,
       child: Column(
         children: [
-          Text(title),
+          Text(
+            title,
+          ),
           SizedBox(
             height: 150,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: children.length,
-              itemBuilder: (context, i) {
-               return itemBuilder(context, children[i]);
-                
-              },
+            child: AnimatedBuilder(
+              animation: listenable,
+              builder: (context, child) => ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: children.length,
+                itemBuilder: (context, i) {
+                  return itemBuilder(context, children[i]);
+                },
+              ),
             ),
           ),
         ],

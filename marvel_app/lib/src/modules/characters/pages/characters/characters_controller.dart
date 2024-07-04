@@ -11,16 +11,20 @@ class CharactersController {
   Future<List<CharacterData>> getCharacters(
       {String? id, bool cacheable = true}) async {
     MarvelResponse response = await client.request(
-      id == null ? CharactersRequest() : CharacterIDRequest(id: id),
-    );
+        (id == null ? CharactersRequest() : CharacterIDRequest(id: id)));
 
-    CharactersResult result = CharactersResult.fromJson(response.data);
-    if (cacheable) {
-      _cache = result.data.results;
+    try {
+      CharactersResult result = CharactersResult.fromJson(response.data);
+      if (cacheable) {
+        _cache = result.data.results;
 
-      return _cache;
-    } else {
-      return result.data.results;
+        return _cache;
+      } else {
+        return result.data.results;
+      }
+    } catch (e, s) {
+      print(s);
+      rethrow;
     }
   }
 

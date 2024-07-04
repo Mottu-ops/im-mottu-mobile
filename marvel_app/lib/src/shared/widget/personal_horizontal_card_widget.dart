@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:marvel_app/src/shared/utils/functions.dart';
 import 'package:marvel_app/src/shared/widget/list_personal_horizontal_card_widget.dart';
+import 'package:marvel_app/src/shared/widget/single_item_card_widget.dart';
 
 class PersonalHorinzontalCard extends StatelessWidget {
   final String? imageUrl;
   final String? id;
   final String title;
   final String description;
-  final List<ListPersonalHorizontalCar> children;
+  final List<ListPersonHorizontalCard> children;
   final Function()? onTap;
 
   const PersonalHorinzontalCard({
@@ -16,7 +18,7 @@ class PersonalHorinzontalCard extends StatelessWidget {
     required this.title,
     required this.description,
     this.children = const [],
-     this.onTap,
+    this.onTap,
   });
 
   @override
@@ -35,9 +37,18 @@ class PersonalHorinzontalCard extends StatelessWidget {
                     Expanded(
                       child: AspectRatio(
                         aspectRatio: 3 / 4,
-                        child: Image.network(
-                          imageUrl!,
-                          fit: BoxFit.cover,
+                        child: SingleItemCard(
+                          backgroundImageUrl: NetworkImage(imageUrl!),
+                        ),
+                      ),
+                    ),
+                  } else ...{
+                    Expanded(
+                      child: AspectRatio(
+                        aspectRatio: 3 / 4,
+                        child: SingleItemCard(
+                          backgroundImageUrl:
+                              randomBackgroundImage().imageProvider,
                         ),
                       ),
                     ),
@@ -52,7 +63,7 @@ class PersonalHorinzontalCard extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
+                                SelectableText(
                                   '#$id',
                                   textAlign: TextAlign.end,
                                 ),
@@ -87,7 +98,7 @@ class PersonalHorinzontalCard extends StatelessWidget {
                 ],
               ),
             ),
-           ...children
+            ...children
           ],
         ),
       ),

@@ -3,12 +3,14 @@ import 'package:marvel_app/src/modules/characters/pages/person/person_controller
 import 'package:marvel_app/src/modules/characters/pages/person/person_page.dart';
 
 class PersonModule extends Module {
-
-
   @override
   void binds(i) {
-    // i.addInstance<CharactersResult>(CharactersResult.fromJson(API_MOCK_MAP));
-    i.addInstance<PersonController>(PersonController(charactersController: Modular.get()));
+    i.addInstance<PersonController>(
+      PersonController(
+        charactersController: Modular.get(),
+        httpClient: Modular.get(),
+      ),
+    );
   }
 
   @override
@@ -16,7 +18,7 @@ class PersonModule extends Module {
     r.child(
       '/:id',
       child: (_) => PersonPage(
-        id:r.args.params['id'],
+        id: r.args.params['id'],
       ),
     );
   }

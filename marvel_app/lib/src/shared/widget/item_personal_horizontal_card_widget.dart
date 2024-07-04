@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:marvel_app/src/shared/utils/functions.dart';
+import 'package:marvel_app/src/shared/widget/single_item_card_widget.dart';
 
 class ItemPersonalHorizontalCard extends StatelessWidget {
   final String? imageUrl;
@@ -20,11 +22,12 @@ class ItemPersonalHorizontalCard extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 3 / 4,
               child: (imageUrl != null)
-                  ? Image.network(
-                      imageUrl!,
-                      fit: BoxFit.cover,
+                  ? SingleItemCard(
+                      backgroundImageUrl: NetworkImage(imageUrl!),
                     )
-                  : const Placeholder(),
+                  : SingleItemCard(
+                      backgroundImageUrl: randomBackgroundImage().imageProvider,
+                    ),
             ),
           ),
           Expanded(
