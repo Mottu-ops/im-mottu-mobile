@@ -1,16 +1,22 @@
-# marvel_app
+# MARVEL_APP
 
-A new Flutter project.
+Uma aplicação para explorar o universo da Marvel, permitindo aos usuários descobrir mais sobre seus super-heróis e vilões favoritos.
 
-## Getting Started
+## Funcionalidades
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+- [x] Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome e descrição).
+- [x] Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome e descrição).
+- [x]   Guardar em cache as consultas realizadas na API Marvel;
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Tecnologias Utilizadas
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- FLUTTER
+- Marvel Comics API
+- SetState para gerenciamento de estado
+
+
+
+## Contribuição
+
+Contribuições são sempre bem-vindas! Por favor, leia o arquivo CONTRIBUTING.md para saber como contribuir.
