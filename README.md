@@ -53,3 +53,9 @@
 - Utilizar Getx.
 - Configurar Firebase crashlytics.
 - Criar channel em kotlin, capturar a mudança de conexão, e mostrar uma mensagem de offline no flutter.
+
+
+# ITENS CONCLUIDOS
+[x] Executar etapas iniciais;
+[x] Mostrar a listagem dos personagens (imagem e nome);
+[x] Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome e descrição);

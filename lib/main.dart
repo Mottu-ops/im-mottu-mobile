@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mottu_marvel/app/app.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:mottu_marvel/app/core/di/injection_container.dart' as di;
+import 'package:mottu_marvel/app/presentation/app.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  await di.init();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const App(),
-    );
-  }
+  runApp(const App());
 }

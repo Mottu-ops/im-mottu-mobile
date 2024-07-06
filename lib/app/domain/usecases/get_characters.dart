@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:mottu_marvel/app/core/usecases/usecase.dart';
 import 'package:mottu_marvel/app/data/models/get_characters_response.dart';
 import 'package:mottu_marvel/app/domain/repositories/character_repository.dart';
-import 'package:mottu_marvel/app/error/failures.dart';
+import 'package:mottu_marvel/app/core/error/failures.dart';
 
 class GetCharacters
     extends UseCase<GetCharactersResponse, GetCharactersParams> {

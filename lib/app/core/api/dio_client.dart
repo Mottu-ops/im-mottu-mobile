@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:mottu_marvel/app/core/api/interceptors/auth_interceptor.dart';
-import 'package:mottu_marvel/app/error/failures.dart';
+import 'package:mottu_marvel/app/core/error/failures.dart';
 
 typedef ResponseConverter<T> = T Function(dynamic response);
 

@@ -3,7 +3,7 @@ import 'package:mottu_marvel/app/core/api/dio_client.dart';
 import 'package:mottu_marvel/app/data/datasources/character_datasource.dart';
 import 'package:mottu_marvel/app/data/models/get_characters_response.dart';
 import 'package:mottu_marvel/app/domain/usecases/get_characters.dart';
-import 'package:mottu_marvel/app/error/failures.dart';
+import 'package:mottu_marvel/app/core/error/failures.dart';
 
 class CharacterRemoteDatasourceImpl implements CharacterDatasource {
   final DioClient _client;

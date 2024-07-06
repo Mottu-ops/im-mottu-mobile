@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mottu_marvel/app/theme/app_colors.dart';
+import 'package:mottu_marvel/app/core/theme/app_colors.dart';
 
 class TextStyles {
   static const TextStyle h1Style = TextStyle(
