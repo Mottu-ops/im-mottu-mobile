@@ -1,2 +1,2 @@
-const kBaseUrl = 'https://developer.marvel.com';
-const kCharactersEndpoint = '/v1/public/characters';
+const kBaseUrl = 'https://gateway.marvel.com:443/v1/public';
+const kCharactersEndpoint = '/characters';
