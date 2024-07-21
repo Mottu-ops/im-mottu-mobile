@@ -28,10 +28,13 @@ class CharacterCardWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(200),
-              child: CachedNetworkImageWidget(
-                imageUrl: '${item.thumbnail.path}/standard_medium.jpg',
+            Hero(
+              tag: 'character_hero_tag_${item.id}',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(200),
+                child: CachedNetworkImageWidget(
+                  imageUrl: '${item.thumbnail.path}/standard_medium.jpg',
+                ),
               ),
             ),
             Flexible(

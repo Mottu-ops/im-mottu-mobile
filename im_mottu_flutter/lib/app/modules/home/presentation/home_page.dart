@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:im_mottu_flutter/app/modules/home/interactor/states/home_state.dart';
+import 'package:im_mottu_flutter/app/shared/widgets/bottom_sheet/bottom_sheet_service.dart';
 import 'package:im_mottu_flutter/app/shared/widgets/img/marvel_logo.dart';
 
 import '../interactor/stores/home_store.dart';
 import 'widgets/character_card_widget.dart';
+import 'widgets/character_detail_sheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.homeStore});
@@ -68,6 +70,9 @@ class _HomePageState extends State<HomePage> {
                           final item = controller.state.charactersList[index];
                           return CharacterCardWidget(
                             item: item,
+                            onTap: () {
+                              BottomSheetService.showCustomBottomSheet(context, CharacterDetailSheet(item: item));
+                            },
                           );
                         },
                       ),
