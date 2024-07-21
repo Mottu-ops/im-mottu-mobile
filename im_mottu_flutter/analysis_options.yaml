@@ -9,9 +9,10 @@
 # packages, and plugins designed to encourage good coding practices.
 analyzer:
   errors:
-    c ignoreonstant_identifier_names: ignore
-include: pac    constant_identifier_names: ignore
-kage:flutter_lints/flutter.yaml
+    ignoreonstant_identifier_names: ignore
+    constant_identifier_names: ignore
+    non_constant_identifier_names: ignore
+include: package:flutter_lints/flutter.yaml
 
 linter:
   # The lint rules applied to this project can be customized in the

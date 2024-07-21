@@ -13,7 +13,7 @@ class HomeStore extends GetxController {
     state = state.copyWith(status: HomeStateStatus.loading);
     update();
 
-    final result = await homeRepository.getCompanyList();
+    final result = await homeRepository.getCharacterListData();
     if (result.$1?.data.results != null) {
       state = state.copyWith(status: HomeStateStatus.success, charactersList: result.$1?.data.results);
     } else {

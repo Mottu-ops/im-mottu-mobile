@@ -13,12 +13,14 @@ class HomeRepository implements IHomeRepository {
 
   HomeRepository(this.httpClient);
   @override
-  Future<(CharacterDataWrapper?, String errorMessage)> getCompanyList() async {
+  Future<(CharacterDataWrapper?, String errorMessage)> getCharacterListData() async {
     try {
-      final response = await httpClient.get('$kCharactersEndpoint?apikey=${Env.apiKey}',
-          headers: {"Content-Type": "application/json; charset=utf-8"});
-      final listCompanies = CharacterDataWrapper.fromMap(response.data);
-      return (listCompanies, '');
+      final dateTime = DateTime.now().add(const Duration(minutes: 5)).millisecondsSinceEpoch.toString();
+      final response = await httpClient.get(
+        '$kCharactersEndpoint?ts=$dateTime&apikey=${Env.apiKey}&hash=${Env.apiHashKey(timeStamp: dateTime)}',
+      );
+      final characterData = CharacterDataWrapper.fromMap(response.data);
+      return (characterData, '');
     } on IFailure catch (e) {
       log(e.toString());
       return (null, e.message);
