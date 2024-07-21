@@ -8,19 +8,13 @@ class MarvelLogo extends StatelessWidget {
   final double? height;
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
-    const String assetLogo = 'assets/svg/Marvel_Logo.svg';
+    const String assetLogo = 'assets/svg/Marvel_Studios_2016_logo.svg';
     return SvgPicture.asset(
       assetLogo,
       width: width,
       height: height,
       semanticsLabel: 'Marvel Logo',
-      colorFilter: ColorFilter.mode(
-        colorFilter ?? colorScheme.onPrimary,
-        BlendMode.srcIn,
-      ),
+      colorFilter: null,
     );
   }
 }
