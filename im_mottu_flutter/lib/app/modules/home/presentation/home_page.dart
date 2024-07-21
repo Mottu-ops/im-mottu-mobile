@@ -4,6 +4,7 @@ import 'package:im_mottu_flutter/app/modules/home/interactor/states/home_state.d
 import 'package:im_mottu_flutter/app/shared/widgets/img/marvel_logo.dart';
 
 import '../interactor/stores/home_store.dart';
+import 'widgets/character_card_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.homeStore});
@@ -24,7 +25,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -57,32 +57,17 @@ class _HomePageState extends State<HomePage> {
                     )
                   else
                     Expanded(
-                      child: ListView.separated(
+                      child: GridView.builder(
+                        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 200,
+                            childAspectRatio: 6 / 7,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20),
                         itemCount: controller.state.charactersList.length,
-                        separatorBuilder: (context, index) => const SizedBox(
-                          height: 16,
-                        ),
                         itemBuilder: (context, index) {
                           final item = controller.state.charactersList[index];
-                          return InkWell(
-                            onTap: () {},
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: colorScheme.primary,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 32),
-                              child: Row(
-                                children: [
-                                  const SizedBox(width: 16),
-                                  Text(
-                                    item.name,
-                                    style: textTheme.headlineMedium
-                                        ?.copyWith(color: colorScheme.onPrimary, fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          return CharacterCardWidget(
+                            item: item,
                           );
                         },
                       ),
