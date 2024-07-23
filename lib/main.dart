@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mottu_marvel/src/application/firebase/firebase_class.dart';
 import 'package:mottu_marvel/src/application/pages/characters/characters_module.dart';
 import 'package:mottu_marvel/src/application/ui/app_ui_config.dart';
+import 'package:mottu_marvel/src/life_cycle_controller.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await GetStorage.init();
+
   final firebaseClass = FirebaseClass();
   await Future.wait([
     firebaseClass.initializeFirebase(),
   ]);
+  Get.put(LifeCycleController());
+
   runApp(const MyApp());
 }
 

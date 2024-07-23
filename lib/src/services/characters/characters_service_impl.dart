@@ -12,4 +12,19 @@ class CharactersServiceImpl implements CharactersService {
   Future<List<AllCharactersResultModel>> getAllCharacters(
           int offset, int limit) =>
       _charactersRepository.getAllCharacters(offset, limit);
+
+  @override
+  Future<List<AllCharactersResultModel>> searchCharacter(String name) =>
+      _charactersRepository.searchCharacter(name);
+
+  @override
+  Future<List<AllCharactersResultModel>> getCharactersByFilter(
+      String comic, String series, String stories, String events) {
+    return _charactersRepository.getCharactersByFilter(
+      comic,
+      series,
+      stories,
+      events,
+    );
+  }
 }

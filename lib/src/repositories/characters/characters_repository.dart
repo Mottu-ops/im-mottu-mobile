@@ -3,4 +3,7 @@ import 'package:mottu_marvel/src/models/characters/characters_result/all_charact
 abstract class CharactersRepository {
   Future<List<AllCharactersResultModel>> getAllCharacters(
       int offset, int limit);
+  Future<List<AllCharactersResultModel>> searchCharacter(String name);
+  Future<List<AllCharactersResultModel>> getCharactersByFilter(
+      String comics, String series, String stories, String events);
 }
