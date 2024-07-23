@@ -19,6 +19,7 @@
 >- Realize os commits em branchs separadas e utilize PRs.
 >- Seja criativo(a) na sua implementação.
 >- Não faça **Ctrl+C / Ctrl+V** de outro repositório !!!
+>- Não utilize IA para criar seu código, nós vamos perceber!!!
 
 
 
@@ -46,10 +47,11 @@
 - Ciar uma paginação da listagem;
 - Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 - Ação de clique nos personagens relacionados e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
+- Criar testes de unidade das regras de negócio;
 
-> Ao final de cada etapa, criar PR para a branch **main** e realizar o merge.
 
 # Pontos extras (opcional):
 - Utilizar Getx.
 - Configurar Firebase crashlytics.
 - Criar channel em kotlin, capturar a mudança de conexão, e mostrar uma mensagem de offline no flutter.
+- Criar em alguma arquitetura(MVC, MVVM, MVP, MVU)
