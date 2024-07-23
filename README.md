@@ -23,9 +23,9 @@
 
 
 # NÍVEL 1 - nome da branch (level_1):
-- Executar etapas iniciais;
-- Mostrar a listagem dos personagens (imagem e nome);
-- Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome e descrição);
+Ok Executar etapas iniciais;
+Ok Mostrar a listagem dos personagens (imagem e nome);
+Ok Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome e descrição);
 
 
 # NÍVEL 2 - nome da branch (level_2):
