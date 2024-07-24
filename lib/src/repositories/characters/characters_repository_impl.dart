@@ -1,21 +1,21 @@
 import 'dart:developer';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:mottu_marvel/src/application/firebase/firebase_class.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_result_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_result_model.dart';
+import 'package:mottu_marvel/src/firebase/firebase_class.dart';
 import 'package:mottu_marvel/src/rest_client/custom_dio.dart';
+import 'package:mottu_marvel/src/storage/storage_service.dart';
 
 import './characters_repository.dart';
 
 class CharactersRepositoryImpl extends CharactersRepository {
   final CustomDio _dio;
   final FirebaseClass _firebaseClass;
-  final GetStorage _storageService;
+  final StorageService _storageService;
 
   CharactersRepositoryImpl({
     required CustomDio dio,
     required FirebaseClass firebaseClass,
-    required GetStorage storageService,
+    required StorageService storageService,
   })  : _dio = dio,
         _firebaseClass = firebaseClass,
         _storageService = storageService;
@@ -27,7 +27,6 @@ class CharactersRepositoryImpl extends CharactersRepository {
     final cachedData = await _storageService.read(cacheKey);
     if (cachedData != null) {
       log('Data fetched from cache for offset: $offset');
-
       final cachedCharacters = (cachedData as List)
           .map((c) => AllCharactersResultModel.fromMap(c))
           .toList();
@@ -35,7 +34,6 @@ class CharactersRepositoryImpl extends CharactersRepository {
     }
     try {
       log('Fetching data from API for offset: $offset');
-
       final result = await _dio.get('/v1/public/characters', queryParameters: {
         'ts': 1,
         'apikey': _firebaseClass.apiKey,
@@ -53,26 +51,45 @@ class CharactersRepositoryImpl extends CharactersRepository {
 
       return characters;
     } catch (e, s) {
-      FirebaseClass().recordError(e, s);
+      _firebaseClass.recordError(e, s);
       log('Erro ao buscar personagens', error: e, stackTrace: s);
+      throw Exception('Failed to fetch characters');
     }
-
-    throw Exception('Failed to fetch characters');
   }
 
   @override
   Future<List<AllCharactersResultModel>> searchCharacter(String name) async {
-    final result = await _dio.get('/v1/public/characters', queryParameters: {
-      'ts': 1,
-      'apikey': _firebaseClass.apiKey,
-      'hash': _firebaseClass.hash,
-      'name': name
-    });
-    final character = result.data['data']['results']
-        .map<AllCharactersResultModel>(
-            (c) => AllCharactersResultModel.fromMap(c))
-        .toList();
-    return character;
+    final cacheKey = 'search_character_$name';
+    final cachedData = await _storageService.read(cacheKey);
+    if (cachedData != null) {
+      log('Data fetched from cache for character name: $name');
+      final cachedCharacters = (cachedData as List)
+          .map((c) => AllCharactersResultModel.fromMap(c))
+          .toList();
+      return cachedCharacters;
+    }
+    try {
+      log('Searching character from API with name: $name');
+      final result = await _dio.get('/v1/public/characters', queryParameters: {
+        'ts': 1,
+        'apikey': _firebaseClass.apiKey,
+        'hash': _firebaseClass.hash,
+        'name': name
+      });
+
+      final character = result.data['data']['results']
+          .map<AllCharactersResultModel>(
+              (c) => AllCharactersResultModel.fromMap(c))
+          .toList();
+      await _storageService.write(
+          cacheKey, character.map((c) => c.toMap()).toList());
+
+      return character;
+    } catch (e, s) {
+      _firebaseClass.recordError(e, s);
+      log('Erro ao buscar personagem por nome', error: e, stackTrace: s);
+      throw Exception('Failed to fetch character by name');
+    }
   }
 
   @override
@@ -82,31 +99,42 @@ class CharactersRepositoryImpl extends CharactersRepository {
     String? stories,
     String? events,
   ) async {
+    final filterParams = {
+      'comics': comics,
+      'series': series,
+      'stories': stories,
+      'events': events,
+    }..removeWhere((key, value) => value == null || value.isEmpty);
+    final cacheKey =
+        'characters_filter_${filterParams.entries.map((e) => '${e.key}_${e.value}').join('_')}';
+
+    final cachedData = await _storageService.read(cacheKey);
+    if (cachedData != null) {
+      log('Data fetched from cache for filters: $filterParams');
+      final cachedCharacters = (cachedData as List)
+          .map((c) => AllCharactersResultModel.fromMap(c))
+          .toList();
+      return cachedCharacters;
+    }
     try {
-      final filters = <String>[];
-      if (comics != null && comics.isNotEmpty) filters.add('comics=$comics');
-      if (series != null && series.isNotEmpty) filters.add('series=$series');
-      if (stories != null && stories.isNotEmpty) {
-        filters.add('stories=$stories');
-      }
-      if (events != null && events.isNotEmpty) filters.add('events=$events');
-
-      final filterString = filters.isNotEmpty ? '?${filters.join('&')}' : '';
-      final url = '/v1/public/characters$filterString';
-
-      final result = await _dio.get(url, queryParameters: {
+      log('Fetching characters from API with filters: $filterParams');
+      final result = await _dio.get('/v1/public/characters', queryParameters: {
         'ts': 1,
         'apikey': _firebaseClass.apiKey,
         'hash': _firebaseClass.hash,
+        ...filterParams,
       });
 
       final characters = result.data['data']['results']
           .map<AllCharactersResultModel>(
               (c) => AllCharactersResultModel.fromMap(c))
           .toList();
+      await _storageService.write(
+          cacheKey, characters.map((c) => c.toMap()).toList());
 
       return characters;
     } catch (e, s) {
+      _firebaseClass.recordError(e, s);
       log('Erro ao buscar personagens com filtros', error: e, stackTrace: s);
       throw Exception('Failed to fetch characters with filters');
     }

@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_result_model.dart';
 import 'package:mottu_marvel/src/application/ui/loader/loader_mixin.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_result_model.dart';
 import 'package:mottu_marvel/src/services/characters/characters_service.dart';
 
 class CharactersController extends GetxController
@@ -10,7 +10,7 @@ class CharactersController extends GetxController
   late final Worker workerPage;
 
   final _offset = 0.obs;
-  final _limit = 1;
+  final _limit = 10;
   final RxString search = ''.obs;
   final loading = false.obs;
 
@@ -28,7 +28,6 @@ class CharactersController extends GetxController
 
     loaderListener(loading);
     workerPage = ever<int>(_offset, (_) {
-      print('Offset alterado para: $_offset');
       getAllCharacters();
     });
   }

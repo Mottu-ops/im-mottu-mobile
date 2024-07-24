@@ -14,7 +14,15 @@ class FirebaseClass {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    await FirebaseRemoteConfig.instance.fetchAndActivate();
+
+    await Future.wait([
+      FirebaseRemoteConfig.instance.fetchAndActivate(),
+      _initializeCrashlytics(),
+    ]);
+  }
+
+  Future<void> _initializeCrashlytics() async {
+    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
   }
 
   void log(String message) {

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mottu_marvel/src/application/firebase/firebase_class.dart';
-import 'package:mottu_marvel/src/application/pages/characters/characters_controller.dart';
+import 'package:mottu_marvel/src/application/controllers/characters/characters_controller.dart';
+import 'package:mottu_marvel/src/firebase/firebase_class.dart';
 import 'package:mottu_marvel/src/repositories/characters/characters_repository.dart';
 import 'package:mottu_marvel/src/repositories/characters/characters_repository_impl.dart';
 import 'package:mottu_marvel/src/rest_client/custom_dio.dart';
@@ -32,6 +32,7 @@ class CharactersBindings implements Bindings {
         firebaseClass: Get.find(),
         storageService: Get.find(),
       ),
+      fenix: true,
     );
     Get.lazyPut<CharactersService>(
       () => CharactersServiceImpl(
@@ -42,6 +43,7 @@ class CharactersBindings implements Bindings {
       () => CharactersController(
         charactersService: Get.find(),
       ),
+      fenix: true,
     );
   }
 }

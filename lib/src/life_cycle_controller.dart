@@ -18,10 +18,14 @@ class LifeCycleController extends FullLifeCycleController
   void onHidden() {}
 
   @override
-  void onInactive() {}
+  void onInactive() {
+    _storageService.erase();
+  }
 
   @override
-  void onPaused() {}
+  void onPaused() {
+    _storageService.erase();
+  }
 
   @override
   void onResumed() {}
@@ -37,6 +41,8 @@ class LifeCycleController extends FullLifeCycleController
         break;
       case AppLifecycleState.paused:
         log("App Paused");
+        _storageService.erase();
+
         break;
       case AppLifecycleState.detached:
         log("App Detached");

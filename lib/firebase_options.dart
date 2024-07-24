@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'mottu-marvel-56b7a.appspot.com',
     iosBundleId: 'com.example.mottuMarvel',
   );
+
 }

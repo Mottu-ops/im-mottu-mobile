@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mottu_marvel/src/application/pages/characters/characters_details/characters_details_page.dart';
+import 'package:mottu_marvel/src/application/views/characters/characters_details/characters_details_page.dart';
 
-import 'characters_controller.dart';
+import '../../controllers/characters/characters_controller.dart';
 import 'widgets/characters_card.dart';
 
 class CharactersPage extends GetView<CharactersController> {

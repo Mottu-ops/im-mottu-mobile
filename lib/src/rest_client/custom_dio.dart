@@ -20,5 +20,13 @@ class CustomDio extends DioForNative {
         responseHeader: true,
       ),
     );
+
+    interceptors.add(
+      InterceptorsWrapper(
+        onError: (DioException e, ErrorInterceptorHandler handler) {
+          return handler.next(e);
+        },
+      ),
+    );
   }
 }

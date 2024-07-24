@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_comics_model.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_events_model.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_series_model.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_stories_model.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_urls_model.dart';
-import 'package:mottu_marvel/src/models/characters/characters_thumbnail/all_characters_thumbnail_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_comics_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_events_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_series_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_stories_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_urls_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_thumbnail/all_characters_thumbnail_model.dart';
 
 class AllCharactersResultModel {
   final int? id;

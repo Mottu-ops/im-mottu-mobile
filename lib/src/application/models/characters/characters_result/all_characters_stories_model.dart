@@ -1,24 +1,24 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_items_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_items_model.dart';
 
-class AllCharactersComicsModel {
+class AllCharactersStoriesModel {
   final int? available;
   final String? collectionURI;
   final List<Items>? items;
-  AllCharactersComicsModel({
+  AllCharactersStoriesModel({
     this.available,
     this.collectionURI,
     this.items,
   });
 
-  AllCharactersComicsModel copyWith({
+  AllCharactersStoriesModel copyWith({
     ValueGetter<int?>? available,
     ValueGetter<String?>? collectionURI,
     ValueGetter<List<Items>?>? items,
   }) {
-    return AllCharactersComicsModel(
+    return AllCharactersStoriesModel(
       available: available != null ? available() : this.available,
       collectionURI:
           collectionURI != null ? collectionURI() : this.collectionURI,
@@ -34,8 +34,8 @@ class AllCharactersComicsModel {
     };
   }
 
-  factory AllCharactersComicsModel.fromMap(Map<String, dynamic> map) {
-    return AllCharactersComicsModel(
+  factory AllCharactersStoriesModel.fromMap(Map<String, dynamic> map) {
+    return AllCharactersStoriesModel(
       available: map['available']?.toInt(),
       collectionURI: map['collectionURI'],
       items: map['items'] != null
@@ -46,18 +46,18 @@ class AllCharactersComicsModel {
 
   String toJson() => json.encode(toMap());
 
-  factory AllCharactersComicsModel.fromJson(String source) =>
-      AllCharactersComicsModel.fromMap(json.decode(source));
+  factory AllCharactersStoriesModel.fromJson(String source) =>
+      AllCharactersStoriesModel.fromMap(json.decode(source));
 
   @override
   String toString() =>
-      'AllCharactersComicsModel(available: $available, collectionURI: $collectionURI, items: $items)';
+      'AllCharactersStoriesModel(available: $available, collectionURI: $collectionURI, items: $items)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is AllCharactersComicsModel &&
+    return other is AllCharactersStoriesModel &&
         other.available == available &&
         other.collectionURI == collectionURI &&
         listEquals(other.items, items);

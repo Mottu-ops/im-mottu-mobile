@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:mottu_marvel/src/models/characters/characters_data/all_characters_data_model.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_data/all_characters_data_model.dart';
 
 class AllCharactersModel {
   final int? code;

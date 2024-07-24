@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mottu_marvel/src/application/pages/characters/characters_controller.dart';
-import 'package:mottu_marvel/src/application/pages/characters/widgets/characters_card.dart';
-import 'package:mottu_marvel/src/models/characters/characters_result/all_characters_result_model.dart';
+import 'package:mottu_marvel/src/application/controllers/characters/characters_controller.dart';
+import 'package:mottu_marvel/src/application/models/characters/characters_result/all_characters_result_model.dart';
+import 'package:mottu_marvel/src/application/views/characters/widgets/characters_card.dart';
 
-class CharactersDetailsPage extends StatelessWidget {
+class CharactersRelatedDetailsPage extends GetView<CharactersController> {
   final AllCharactersResultModel character;
+  final List<AllCharactersResultModel> relatedCharacters;
 
-  const CharactersDetailsPage({
+  const CharactersRelatedDetailsPage({
     super.key,
     required this.character,
+    required this.relatedCharacters,
   });
 
   @override
   Widget build(BuildContext context) {
-    final CharactersController controller = Get.find();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller.fetchRelatedCharacters(character);
-    });
-
     String description = character.description ?? '';
     if (description == "") {
       description = 'Description not found';
@@ -131,7 +127,6 @@ class CharactersDetailsPage extends StatelessWidget {
                 height: Get.height * 0.020,
               ),
               Obx(() {
-                final relatedCharacters = controller.relatedCharacters;
                 if (relatedCharacters.isEmpty) {
                   return const Center(
                       child: Text('No related characters found.'));
