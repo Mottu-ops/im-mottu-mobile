@@ -55,3 +55,4 @@ Ok Utilizar Getx.
 Ok Configurar Firebase crashlytics.
 -  Criar channel em kotlin, capturar a mudança de conexão, e mostrar uma mensagem de offline no flutter.
 Ok Criar em alguma arquitetura(MVC, MVVM, MVP, MVU)
+Atualizando readme
