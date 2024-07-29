@@ -73,8 +73,6 @@ class ServicesApi {
   dynamic _processResponse(dio.Response response) {
     if (response.statusCode == 200) {
       var body = response.data;
-      print("Entrei aqui");
-      print(body["data"]);
       return body['data'];
     } else {
       AppSnackBar.error(messageText: 'Erro de rede: ${response.statusCode}');

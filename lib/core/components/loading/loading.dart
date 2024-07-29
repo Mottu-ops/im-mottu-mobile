@@ -14,6 +14,7 @@ class AppLoading {
 
   static Widget loading() {
     final random = Random();
+    print(random.nextInt(_loadingGifs.length));
     final randomGif = _loadingGifs[random.nextInt(_loadingGifs.length)];
     return Image.asset(randomGif);
   }

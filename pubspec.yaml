@@ -24,8 +24,7 @@ dependencies:
   cached_network_image: ^3.2.0
   flutter_dotenv: ^5.0.2
   crypto: ^3.0.1
-
-
+  carousel_slider: ^4.2.1
 
 
 dev_dependencies:

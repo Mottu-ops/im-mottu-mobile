@@ -3,16 +3,20 @@
 
 # NÍVEL 3 - nome da branch (level_3):
 [x] Executar etapas iniciais;
-- Criar uma Splashscreen customizada;
-- Guardar em cache as consultas realizadas na API Marvel;
-- Limpar cache de consultas no fechamento do APP;
-- Mostrar a listagem dos personagens (imagem e nome);
+[x] Criar uma Splashscreen customizada;
+[x] Guardar em cache as consultas realizadas na API Marvel;
+[x] Limpar cache de consultas no fechamento do APP;
+[x] Mostrar a listagem dos personagens (imagem e nome);
 - Criar um filtro para a listagem;
 - Ciar uma paginação da listagem;
 - Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 - Ação de clique nos personagens relacionados e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 
 > Ao final de cada etapa, criar PR para a branch **main** e realizar o merge.
+
+# Extra branch
+- Página de "login"
+- Página home com visão dos personagens, quadrinhos e carosseu animado
 
 # Pontos extras (opcional):
 - Utilizar Getx.

@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
               context: context,
               title: "Entrar",
               onTap: () {
-                Get.toNamed(AppRoutes.characterPage);
+                Get.toNamed(AppRoutes.homePage);
               },
             ),
           ),

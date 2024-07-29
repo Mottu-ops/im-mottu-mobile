@@ -53,11 +53,12 @@ class AppButtons {
     required Function() onTap,
     Color? color = AppThemes.primaryRegular,
     Gradient? gradie,
+    double? height = 45
   }) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 45,
+        height: height,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9),
             color:  color,
@@ -70,13 +71,10 @@ class AppButtons {
                       AppThemes.primaryRegular,
                     ])),
         child: Center(
-            child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: AppText.title(
-            text: title,
-            color: AppThemes.white,
-          ),
-        )),
+            child: AppText.title(
+              text: title,
+              color: AppThemes.white,
+            )),
       ),
     );
   }

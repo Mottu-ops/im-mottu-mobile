@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppThemes {
-  static const Color primaryRegular = Color(0xFFbe0205);
+  static const Color primaryRegular = Color(0xffdb0825);
 
   //Secondary Colors
   static const Color secundaryDarker = Color(0xFF655209);
@@ -10,6 +10,7 @@ class AppThemes {
   // static const Color secundaryRegular = Color(0xFFFFCB03);
   static Color secundaryLight = const Color(0xFFFFCB03).withOpacity(0.60);
   static Color secundaryLightest = const Color(0xFFFFCB03).withOpacity(0.30);
+  static Color transparent =  Colors.transparent;
 
   //Neutral Colors
   static const Color greyDarkest2 = Color.fromARGB(255, 39, 39, 39);
@@ -53,11 +54,11 @@ class AppThemes {
   static const Color iconSecunday = greyLightestMore;
 
   //Bgs
-  static Color get bgPrimary => const Color.fromARGB(255, 9, 9, 9);
+  static Color get bgPrimary => const Color.fromARGB(255, 0, 0, 0);
   static Color get bgSecundary => const Color(0xFF1c1c1c);
   static Color get bgTerciary => const Color.fromARGB(255, 62, 62, 63);
   static Color get bgCard => const Color(0xFF1c1c1c);
-  static Color get bgMarvel => const Color(0xffdb0825);
+  static Color get bgMarvel => primaryRegular;
 
   ///btn
   static const Color buttonEnablePrimary = primaryRegular;

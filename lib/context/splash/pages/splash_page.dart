@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:im_mottu_mobile/core/components/logo/logo.dart';
-import 'package:im_mottu_mobile/core/components/text/text.dart';
 import 'package:im_mottu_mobile/core/themes/app_themes.dart';
 import 'package:im_mottu_mobile/routes/app_pages.dart';
 
@@ -10,6 +9,7 @@ class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SplashPageState createState() => _SplashPageState();
 }
 
