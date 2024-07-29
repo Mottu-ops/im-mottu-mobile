@@ -10,20 +10,24 @@ class CharacterApi {
       {required int offset, required String query}) async {
     try {
       String endpoint = 'characters';
-      Map<String, dynamic> params = {
-        'offset': offset,
-        'limit': 10,
-      };
+      Map<String, dynamic> params = query.isNotEmpty
+          ? {
+              'offset': offset,
+              'limit': 20,
+              'nameStartsWith': query,
+            }
+          : {
+              'offset': offset,
+              'limit': 20,
+            };
 
       var body = await _servicesApi.getRequest(endpoint, params: params);
 
       if (body != null) {
-      
-
-        List<CharacterModel> character = (body["results"] as List).map((e) {
+        List<CharacterModel> characters = (body["results"] as List).map((e) {
           return CharacterModel.fromMap(e);
         }).toList();
-        return character;
+        return characters;
       } else {
         return [];
       }

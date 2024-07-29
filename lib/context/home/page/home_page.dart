@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:im_mottu_mobile/context/home/controller/home_controller.dart';
@@ -9,6 +8,7 @@ import 'package:im_mottu_mobile/core/components/buttons/buttons.dart';
 import 'package:im_mottu_mobile/core/components/loading/loading.dart';
 import 'package:im_mottu_mobile/core/components/text/text.dart';
 import 'package:im_mottu_mobile/core/themes/app_themes.dart';
+import 'package:im_mottu_mobile/routes/app_pages.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -122,16 +122,21 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           children: [
                             const SizedBox(
-                              height: 15,
+                              height: 6,
                             ),
                             Row(
                               children: [
                                 AppText.title(text: 'Personagens'),
                                 const Spacer(),
-                                AppText.title(
-                                    text: 'VER MAIS',
-                                    color: AppThemes.primaryRegular,
-                                    letterSpacing: 3),
+                                InkWell(
+                                  onTap: () {
+                                    Get.toNamed(AppRoutes.characterPage);
+                                  },
+                                  child: AppText.title(
+                                      text: 'VER MAIS',
+                                      color: AppThemes.primaryRegular,
+                                      letterSpacing: 3),
+                                ),
                                 const Icon(Icons.arrow_right_alt)
                               ],
                             ),

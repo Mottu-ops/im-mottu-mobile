@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:im_mottu_mobile/context/character/api/character_api.dart';
 import 'package:im_mottu_mobile/context/character/model/charater_model.dart';
@@ -6,22 +7,29 @@ import 'package:im_mottu_mobile/core/services/services_cache.dart';
 
 class CharacterController extends GetxController {
   bool isLoading = false;
-
-  List<CharacterModel> characters = <CharacterModel>[];
+  bool isLoadingMore = false;
+  bool hasMore = true;
 
   String query = '';
 
   int offset = 0;
   int currentIndex = 0;
 
+  List<CharacterModel> characters = <CharacterModel>[];
   final List<String> imagePaths = [
     'assets/images/m1.jpg',
     'assets/images/m2.jpg',
     'assets/images/m3.jpg',
   ];
 
-  void fetchCharacters() async {
-    isLoading = true;
+  TextEditingController searchController = TextEditingController();
+
+  void fetchCharacters({bool loadMore = false}) async {
+    if (loadMore) {
+      isLoadingMore = true;
+    } else {
+      isLoading = true;
+    }
     update();
     try {
       List<CharacterModel> newCharacters = await CharacterApi().getCharacters(
@@ -29,27 +37,52 @@ class CharacterController extends GetxController {
         query: query,
       );
 
-      characters.addAll(newCharacters);
-      offset += 20;
-      setCache();
+      if (newCharacters.isEmpty) {
+        hasMore = false;
+      } else {
+        characters.addAll(newCharacters);
+        offset += newCharacters.length;
+      }
+      if (query.isEmpty) {
+        setCache();
+      }
+
       update();
     } catch (e) {
       Get.snackbar('Error', 'Failed to fetch characters');
     } finally {
-      isLoading = false;
+      if (loadMore) {
+        isLoadingMore = false;
+      } else {
+        isLoading = false;
+      }
       update();
     }
   }
 
   void onScrollEnd() {
-    fetchCharacters();
+    if (!isLoadingMore && hasMore) {
+      fetchCharacters(loadMore: true);
+    }
   }
 
   void onSearch(String value) {
-    query = value;
-    offset = 0;
-    characters.clear();
-    fetchCharacters();
+    if (value.length > 3) {
+      query = value;
+      offset = 0;
+      characters.clear();
+      hasMore = true;
+      fetchCharacters();
+    } else if (value.isEmpty) {
+      readCache().then((cachedCharacters) {
+        if (cachedCharacters.isNotEmpty) {
+          characters = cachedCharacters;
+          update();
+        } else {
+          fetchCharacters();
+        }
+      });
+    }
   }
 
   Future<void> setCache() async {
@@ -63,10 +96,6 @@ class CharacterController extends GetxController {
       return jsonData.map((e) => CharacterModel.fromJson(e)).toList();
     }
     return [];
-  }
-
-  Future<void> clearCache() async {
-    await CacheService().clearCache();
   }
 
   pageChange(int index) {
@@ -85,11 +114,5 @@ class CharacterController extends GetxController {
         fetchCharacters();
       }
     });
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    clearCache();
   }
 }

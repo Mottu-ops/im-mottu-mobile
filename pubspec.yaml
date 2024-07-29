@@ -25,7 +25,8 @@ dependencies:
   flutter_dotenv: ^5.0.2
   crypto: ^3.0.1
   carousel_slider: ^4.2.1
-
+  font_awesome_flutter: ^10.5.0
+  mockito: ^5.0.17
 
 dev_dependencies:
   flutter_test:

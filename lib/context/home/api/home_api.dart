@@ -46,9 +46,7 @@ class HomeApi {
       var body = await _servicesApi.getRequest(endpoint, params: params);
 
       if (body != null) {
-        print(body);
         List<ComicsResumeModel> comics = (body["results"] as List).map((e) {
-          print(e);
           return ComicsResumeModel.fromMap(e);
         }).toList();
         return comics;
