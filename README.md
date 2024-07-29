@@ -39,6 +39,7 @@ Embora não seja um padrão formalmente documentado, sua estrutura é bastante p
 
 Este projeto Flutter utiliza uma estrutura organizada em três pastas principais: context, core e routes. Cada uma dessas pastas tem um papel específico para garantir a modularidade, reutilização de código e a separação de responsabilidades. A seguir, detalharei a função de cada uma dessas pastas e seus respectivos subdiretórios.
 ### Estrutura Geral
+```sh
 - lib
   - context
     - splash
@@ -57,7 +58,7 @@ Este projeto Flutter utiliza uma estrutura organizada em três pastas principais
     - app_routes
     - app_pages
   - main
-
+```
 
 # 1 - Context
 
