@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:im_mottu_mobile/context/character/controller/character_controller.dart';
 import 'package:im_mottu_mobile/context/character/model/charater_model.dart';
@@ -8,6 +7,7 @@ import 'package:im_mottu_mobile/core/components/input_field/search_input_field.d
 import 'package:im_mottu_mobile/core/components/loading/loading.dart';
 import 'package:im_mottu_mobile/core/components/text/text.dart';
 import 'package:im_mottu_mobile/core/themes/app_themes.dart';
+import 'package:im_mottu_mobile/routes/app_pages.dart';
 
 class CharacterPage extends StatelessWidget {
   const CharacterPage({super.key});
@@ -44,8 +44,7 @@ class CharacterPage extends StatelessWidget {
                     onChanged: (e) {
                       controller.onSearch(e);
                     },
-                    onSaved: (_) => null),
-                
+                    onSaved: (_) => {}),
                 const SizedBox(height: 15),
                 Expanded(
                   child: controller.isLoading && controller.characters.isEmpty
@@ -69,31 +68,37 @@ class CharacterPage extends StatelessWidget {
                               );
                             }
                             CharacterModel model = controller.characters[i];
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 9),
-                              child: SizedBox(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: 120,
-                                      width: 120,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(9),
-                                          border: Border.all(
-                                              color: AppThemes.primaryRegular,
-                                              width: 2),
-                                          image: DecorationImage(
-                                              image:
-                                                  NetworkImage(model.thumbnail),
-                                              fit: BoxFit.fill)),
-                                    ),
-                                    AppText.description(
-                                        text: model.name,
-                                        maxLine: 2,
-                                        textAlign: TextAlign.center,
-                                        fontSize: 14),
-                                  ],
+                            return InkWell(
+                              onTap: () {
+                                Get.toNamed(AppRoutes.characterDetailPage,
+                                    arguments: model.id);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 9),
+                                child: SizedBox(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 120,
+                                        width: 120,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(9),
+                                            border: Border.all(
+                                                color: AppThemes.primaryRegular,
+                                                width: 2),
+                                            image: DecorationImage(
+                                                image: NetworkImage(
+                                                    model.thumbnail),
+                                                fit: BoxFit.fill)),
+                                      ),
+                                      AppText.description(
+                                          text: model.name,
+                                          maxLine: 2,
+                                          textAlign: TextAlign.center,
+                                          fontSize: 14),
+                                    ],
+                                  ),
                                 ),
                               ),
                             );

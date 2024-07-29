@@ -1,4 +1,5 @@
 import 'package:im_mottu_mobile/context/character/page/character_page.dart';
+import 'package:im_mottu_mobile/context/characterDetail/pages/character_detail_page.dart';
 import 'package:im_mottu_mobile/context/home/page/home_page.dart';
 import 'package:im_mottu_mobile/context/login/page/login_page.dart';
 import 'package:im_mottu_mobile/context/splash/pages/splash_page.dart';
@@ -23,6 +24,10 @@ class AppPages {
     GetPage(
         name: AppRoutes.homePage,
         page: () => const HomePage(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.characterDetailPage,
+        page: () => const CharacterDetailPage(),
         transition: Transition.rightToLeft),
   ];
 }

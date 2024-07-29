@@ -13,8 +13,8 @@ class ServicesApi {
 
   ServicesApi() {
     _dio.options.baseUrl = baseUrl;
-    _dio.options.connectTimeout = const Duration(minutes: 1);
-    _dio.options.receiveTimeout = const Duration(minutes: 1);
+    _dio.options.connectTimeout = const Duration(minutes: 2);
+    _dio.options.receiveTimeout = const Duration(minutes: 2);
   }
 
   String _generateHash(String timestamp) {

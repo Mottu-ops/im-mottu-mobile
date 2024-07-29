@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:im_mottu_mobile/context/home/model/charater_resume_model.dart';
+import 'package:im_mottu_mobile/context/character/model/charater_model.dart';
 import 'package:im_mottu_mobile/context/home/model/comics_resume_model.dart';
 import 'package:im_mottu_mobile/core/components/snackbar/snackbar.dart';
 import 'package:im_mottu_mobile/core/services/services_api.dart';
@@ -7,7 +7,7 @@ import 'package:im_mottu_mobile/core/services/services_api.dart';
 class HomeApi {
   final ServicesApi _servicesApi = ServicesApi();
 
-  Future<List<CharacterResumeModel>> getCharacters(
+  Future<List<CharacterModel>> getCharacters(
       {required int offset, required String query}) async {
     try {
       String endpoint = 'characters';
@@ -19,9 +19,9 @@ class HomeApi {
       var body = await _servicesApi.getRequest(endpoint, params: params);
 
       if (body != null) {
-        List<CharacterResumeModel> character =
+        List<CharacterModel> character =
             (body["results"] as List).map((e) {
-          return CharacterResumeModel.fromMap(e);
+          return CharacterModel.fromMap(e);
         }).toList();
         return character;
       } else {

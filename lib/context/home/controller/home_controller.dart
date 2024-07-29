@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:im_mottu_mobile/context/character/model/charater_model.dart';
 import 'package:im_mottu_mobile/context/home/api/home_api.dart';
 import 'package:im_mottu_mobile/context/home/model/banner_model.dart';
-import 'package:im_mottu_mobile/context/home/model/charater_resume_model.dart';
 import 'package:im_mottu_mobile/context/home/model/comics_resume_model.dart';
 import 'package:im_mottu_mobile/core/services/services_cache.dart';
 
 class HomeController extends GetxController {
   bool isLoading = false;
 
-  List<CharacterResumeModel> characters = <CharacterResumeModel>[];
+  List<CharacterModel> characters = <CharacterModel>[];
   List<ComicsResumeModel> comics = <ComicsResumeModel>[];
 
   String query = '';
@@ -25,7 +25,7 @@ class HomeController extends GetxController {
         description: 'Uma descrição show aqui',
         keyPhrase: 'capitain america'),
     BannerModel(
-        id: 1,
+        id: 1011054,
         img: 'assets/images/homem.jpg',
         title: 'Homem Aranha',
         description: 'Uma descrição show aqui',
@@ -42,7 +42,7 @@ class HomeController extends GetxController {
     isLoading = true;
     update();
     try {
-      List<CharacterResumeModel> newCharacters = await HomeApi().getCharacters(
+      List<CharacterModel> newCharacters = await HomeApi().getCharacters(
         offset: offset,
         query: query,
       );
@@ -97,11 +97,11 @@ class HomeController extends GetxController {
     await CacheService().writeCache('character', jsonEncode(characters));
   }
 
-  Future<List<CharacterResumeModel>> readCache() async {
+  Future<List<CharacterModel>> readCache() async {
     String? cachedData = await CacheService().readCache('character');
     if (cachedData != null) {
       List<dynamic> jsonData = jsonDecode(cachedData);
-      return jsonData.map((e) => CharacterResumeModel.fromJson(e)).toList();
+      return jsonData.map((e) => CharacterModel.fromJson(e)).toList();
     }
     return [];
   }

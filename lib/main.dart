@@ -7,6 +7,9 @@ import 'package:im_mottu_mobile/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+//TODO: TRY AGAIN NO TIMEOUT
+//LOADING DOS QUADRINHOS SEPARADO
+
 void main() async {
   
   WidgetsFlutterBinding.ensureInitialized();

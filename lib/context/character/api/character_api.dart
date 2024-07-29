@@ -13,7 +13,7 @@ class CharacterApi {
       Map<String, dynamic> params = query.isNotEmpty
           ? {
               'offset': offset,
-              'limit': 20,
+              'limit': 10,
               'nameStartsWith': query,
             }
           : {

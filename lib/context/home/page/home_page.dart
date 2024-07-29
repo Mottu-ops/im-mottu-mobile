@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:im_mottu_mobile/context/character/model/charater_model.dart';
 import 'package:im_mottu_mobile/context/home/controller/home_controller.dart';
-import 'package:im_mottu_mobile/context/home/model/charater_resume_model.dart';
 import 'package:im_mottu_mobile/context/home/model/comics_resume_model.dart';
 import 'package:im_mottu_mobile/core/components/buttons/buttons.dart';
 import 'package:im_mottu_mobile/core/components/loading/loading.dart';
@@ -144,43 +144,59 @@ class HomePage extends StatelessWidget {
                               height: 15,
                             ),
                             SizedBox(
-                              height: 118,
+                              height: 138,
                               child: ListView.builder(
                                   shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
                                   itemCount: controller.characters.length,
                                   itemBuilder: (c, i) {
-                                    CharacterResumeModel model =
+                                    CharacterModel model =
                                         controller.characters[i];
-                                    return Padding(
-                                      padding: const EdgeInsets.only(right: 9),
-                                      child: SizedBox(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: 90,
-                                              width: 90,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(99),
-                                                  border: Border.all(
-                                                      color: AppThemes
-                                                          .primaryRegular,
-                                                      width: 2),
-                                                  image: DecorationImage(
-                                                      image: NetworkImage(
-                                                          model.thumbnail))),
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                            AppText.description(
-                                              text: model.name,
-                                              maxLine: 2,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 13,
-                                            ),
-                                          ],
+                                    return InkWell(
+                                      onTap: () {
+                                        Get.toNamed(
+                                            AppRoutes.characterDetailPage,
+                                            arguments: model.id);
+                                      },
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 9),
+                                        child: SizedBox(
+                                          child: Column(
+                                            children: [
+                                              Hero(
+                                                tag: "${model.name.toLowerCase()}${model.id}",
+                                                child: Container(
+                                                  height: 90,
+                                                  width: 90,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              99),
+                                                      border: Border.all(
+                                                          color: AppThemes
+                                                              .primaryRegular,
+                                                          width: 2),
+                                                      image: DecorationImage(
+                                                          image: NetworkImage(
+                                                              model.thumbnail))),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              Container(
+                                                width: 90,
+                                                child: AppText.description(
+                                                  text: model.name,
+                                                  textAlign: TextAlign.center,
+                                                  maxLine: 2,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 13,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );

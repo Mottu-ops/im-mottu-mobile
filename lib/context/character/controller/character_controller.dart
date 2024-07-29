@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,9 @@ class CharacterController extends GetxController {
   bool isLoading = false;
   bool isLoadingMore = false;
   bool hasMore = true;
+  bool tryAgain = false;
+
+  Timer? _searchDebounce;
 
   String query = '';
 
@@ -66,24 +70,28 @@ class CharacterController extends GetxController {
     }
   }
 
-  void onSearch(String value) {
-    if (value.length > 3) {
-      query = value;
-      offset = 0;
-      characters.clear();
-      hasMore = true;
-      fetchCharacters();
-    } else if (value.isEmpty) {
-      readCache().then((cachedCharacters) {
-        if (cachedCharacters.isNotEmpty) {
-          characters = cachedCharacters;
-          update();
-        } else {
-          fetchCharacters();
-        }
-      });
-    }
+ void onSearch(String value) {
+    if (_searchDebounce?.isActive ?? false) _searchDebounce!.cancel();
+    _searchDebounce = Timer(const Duration(milliseconds: 500), () {
+      if (value.length > 3) {
+        query = value;
+        offset = 0;
+        characters.clear();
+        hasMore = true;
+        fetchCharacters();
+      } else if (value.isEmpty) {
+        readCache().then((cachedCharacters) {
+          if (cachedCharacters.isNotEmpty) {
+            characters = cachedCharacters;
+            update();
+          } else {
+            fetchCharacters();
+          }
+        });
+      }
+    });
   }
+
 
   Future<void> setCache() async {
     await CacheService().writeCache('character', jsonEncode(characters));
