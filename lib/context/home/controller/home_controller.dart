@@ -8,6 +8,7 @@ import 'package:im_mottu_mobile/core/services/services_cache.dart';
 
 class HomeController extends GetxController {
   bool isLoading = false;
+  bool isLoadingComics = false;
 
   List<CharacterModel> characters = <CharacterModel>[];
   List<ComicsResumeModel> comics = <ComicsResumeModel>[];
@@ -60,7 +61,7 @@ class HomeController extends GetxController {
   }
 
   void fetchComics() async {
-    isLoading = true;
+    isLoadingComics = true;
     update();
     try {
       List<ComicsResumeModel> newComics = await HomeApi().getComics(
@@ -74,15 +75,15 @@ class HomeController extends GetxController {
     } catch (e) {
       Get.snackbar('Error', 'Failed to fetch comics');
     } finally {
-      isLoading = false;
+      isLoadingComics = false;
       update();
     }
   }
 
-  void onScrollEnd() {
-    fetchCharacters();
-    fetchComics();
-  }
+  // void onScrollEnd() {
+  //   fetchCharacters();
+  //   fetchComics();
+  // }
 
   void onSearch(String value) {
     query = value;

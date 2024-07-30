@@ -11,39 +11,40 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Hero(tag: "applogo", child: AppLogo.logo()),
-          Padding(
-            padding: const EdgeInsets.all(21),
-            child: AppText.description(
-              textAlign: TextAlign.center,
-              text:
-                  ' Mergulhe no mundo dos seus heróis favoritos e descubra o Universo Marvel\ncomo nunca antes!',
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Hero(tag: "applogo", child: AppLogo.logo()),
+            Padding(
+              padding: const EdgeInsets.all(21),
+              child: AppText.description(
+                textAlign: TextAlign.center,
+                text:
+                    ' Mergulhe no mundo dos seus heróis favoritos e descubra o Universo Marvel\ncomo nunca antes!',
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 21,
-          ),
-          SizedBox(
-            width: 250,
-            child: AppButtons.buttonSize(
-              context: context,
-              title: "Entrar",
-              onTap: () {
-                Get.toNamed(AppRoutes.homePage);
-              },
+            const SizedBox(
+              height: 21,
             ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          AppText.description(
-              text: "* Desolvolvido por Lucas Brito", fontSize: 12)
-        ],
+            SizedBox(
+              width: 250,
+              child: AppButtons.buttonSize(
+                context: context,
+                title: "Entrar",
+                onTap: () {
+                  Get.toNamed(AppRoutes.homePage);
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            AppText.description(
+                text: "* Desolvolvido por Lucas Brito", fontSize: 12)
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

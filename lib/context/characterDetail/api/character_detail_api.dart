@@ -26,12 +26,19 @@ class CharacterDetailApi {
   Future<List<ComicsResumeModel>> getCharacterComics(int id) async {
     try {
       String endpoint = 'characters/$id/comics';
-      var body = await _servicesApi.getRequest(endpoint);
+
+      Map<String, dynamic> params = {
+        'offset': 0,
+        'limit': 5,
+      };
+
+      var body = await _servicesApi.getRequest(endpoint, params: params);
 
       if (body != null) {
         print(body["results"]);
         return (body["results"] as List)
-            .map((item) => ComicsResumeModel.fromMap(item as Map<String, dynamic>))
+            .map((item) =>
+                ComicsResumeModel.fromMap(item as Map<String, dynamic>))
             .toList();
       } else {
         throw Exception('Failed to load character comics');

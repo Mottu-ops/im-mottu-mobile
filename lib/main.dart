@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 //TODO: TRY AGAIN NO TIMEOUT
-//LOADING DOS QUADRINHOS SEPARADO
+
 
 void main() async {
   

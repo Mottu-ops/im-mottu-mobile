@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:im_mottu_mobile/context/character/api/character_api.dart';
@@ -36,6 +37,7 @@ class CharacterController extends GetxController {
     }
     update();
     try {
+      log(offset);
       List<CharacterModel> newCharacters = await CharacterApi().getCharacters(
         offset: offset,
         query: query,
@@ -70,7 +72,7 @@ class CharacterController extends GetxController {
     }
   }
 
- void onSearch(String value) {
+  void onSearch(String value) {
     if (_searchDebounce?.isActive ?? false) _searchDebounce!.cancel();
     _searchDebounce = Timer(const Duration(milliseconds: 500), () {
       if (value.length > 3) {
@@ -91,7 +93,6 @@ class CharacterController extends GetxController {
       }
     });
   }
-
 
   Future<void> setCache() async {
     await CacheService().writeCache('character', jsonEncode(characters));

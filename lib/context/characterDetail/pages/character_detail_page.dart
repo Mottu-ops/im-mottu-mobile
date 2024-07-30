@@ -5,6 +5,7 @@ import 'package:im_mottu_mobile/context/home/model/comics_resume_model.dart';
 import 'package:im_mottu_mobile/core/components/appBar/app_bar.dart';
 import 'package:im_mottu_mobile/core/components/cards/cards.dart';
 import 'package:im_mottu_mobile/core/components/loading/loading.dart';
+import 'package:im_mottu_mobile/core/components/shimmer/item_shimmer.dart';
 import 'package:im_mottu_mobile/core/components/text/text.dart';
 
 class CharacterDetailPage extends StatelessWidget {
@@ -38,10 +39,14 @@ class CharacterDetailPage extends StatelessWidget {
                           tag:
                               "${controller.character.name.toLowerCase()}${controller.character..id}",
                           child: Center(
-                            child: Image.network(
-                              controller.character.thumbnail,
+                            child: Container(
+                              
                               height: 200,
                               width: 200,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(9),
+                                image: DecorationImage(image: NetworkImage(controller.character.thumbnail,))
+                              ),
                             ),
                           ),
                         ),
@@ -54,7 +59,7 @@ class CharacterDetailPage extends StatelessWidget {
                         const SizedBox(height: 16),
                         AppText.description(
                           text: controller.character.description,
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                         const SizedBox(height: 16),
                         AppText.title(
@@ -62,17 +67,29 @@ class CharacterDetailPage extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
+                        const SizedBox(height: 9,),
                         GridView.builder(
-                          itemCount: controller.comics.length,
+                          itemCount: controller.isLoadingComics
+                              ? 6
+                              : controller.comics.length,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3, childAspectRatio: 0.55),
                           itemBuilder: (c, i) {
-                            ComicsResumeModel model = controller.comics[i];
-                            return AppCards.comics(
-                                title: model.title, thumbnail: model.thumbnail);
+                            if (!controller.isLoadingComics) {
+                              ComicsResumeModel model = controller.comics[i];
+                              return AppCards.comics(
+                                  title: model.title,
+                                  thumbnail: model.thumbnail);
+                            } else {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 9, bottom: 9),
+                                child: AppItemShimmer.comic()
+                              );
+                            }
                           },
                         ),
                         const SizedBox(height: 16),

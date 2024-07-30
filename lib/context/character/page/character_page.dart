@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:im_mottu_mobile/context/character/controller/character_controller.dart';
 import 'package:im_mottu_mobile/context/character/model/charater_model.dart';
 import 'package:im_mottu_mobile/core/components/appBar/app_bar.dart';
+import 'package:im_mottu_mobile/core/components/cards/cards.dart';
 import 'package:im_mottu_mobile/core/components/input_field/search_input_field.dart';
 import 'package:im_mottu_mobile/core/components/loading/loading.dart';
+import 'package:im_mottu_mobile/core/components/shimmer/item_shimmer.dart';
 import 'package:im_mottu_mobile/core/components/text/text.dart';
 import 'package:im_mottu_mobile/core/themes/app_themes.dart';
 import 'package:im_mottu_mobile/routes/app_pages.dart';
@@ -56,52 +58,21 @@ class CharacterPage extends StatelessWidget {
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3,
-                                  childAspectRatio: 0.7,
-                                  mainAxisSpacing: 9),
+                                  childAspectRatio: 0.65,
+                                  mainAxisSpacing: 9,
+                                  crossAxisSpacing: 6),
                           itemBuilder: (c, i) {
                             if (i == controller.characters.length) {
                               return Visibility(
                                 visible: controller.isLoadingMore,
                                 child: Center(
-                                  child: AppLoading.loading(),
+                                  child: AppItemShimmer.character(),
                                 ),
                               );
                             }
                             CharacterModel model = controller.characters[i];
-                            return InkWell(
-                              onTap: () {
-                                Get.toNamed(AppRoutes.characterDetailPage,
-                                    arguments: model.id);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 9),
-                                child: SizedBox(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 120,
-                                        width: 120,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(9),
-                                            border: Border.all(
-                                                color: AppThemes.primaryRegular,
-                                                width: 2),
-                                            image: DecorationImage(
-                                                image: NetworkImage(
-                                                    model.thumbnail),
-                                                fit: BoxFit.fill)),
-                                      ),
-                                      AppText.description(
-                                          text: model.name,
-                                          maxLine: 2,
-                                          textAlign: TextAlign.center,
-                                          fontSize: 14),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
+                            return AppCards.character(
+                                model: model, width: 120, height: 120);
                           },
                         ),
                 ),

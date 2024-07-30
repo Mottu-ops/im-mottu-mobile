@@ -27,7 +27,8 @@ dependencies:
   carousel_slider: ^4.2.1
   font_awesome_flutter: ^10.5.0
   mockito: ^5.0.17
-
+  shimmer: ^3.0.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
