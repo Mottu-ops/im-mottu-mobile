@@ -14,11 +14,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		ctntjAvqJkxbKEcXJfJJEtnZ0pA=
+		SOk4PZ8bLbXkJsfD1Int7NQbK20=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		cOYXho8Tl6gQEuxdc+4iT2S0hzk=
+		1pg06OXH8N9FrJ2r4L1GRLpo5rs=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		mftYPQZPXC9yPloIcddUQyctzUo=
+		Bb70TCJr/SAaFDBtrQcQdWl7oSM=
 		</data>
 		<key>flutter_assets/assets/fonts/Bebas-Regular.ttf</key>
 		<data>
@@ -64,6 +64,10 @@
 		<data>
 		XiEWppJSHRwWYvwzR7uBuFcGA2Q=
 		</data>
+		<key>flutter_assets/assets/images/m4.gif</key>
+		<data>
+		WsGRqcYa0FkbdckHU90J94PxlGE=
+		</data>
 		<key>flutter_assets/assets/images/thor.jpg</key>
 		<data>
 		bLB5MnG5R0HqpPIbCyV9K49tVUw=
@@ -78,7 +82,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		NGgPrcCAO5SNQTyDuZmCGSgfCFU=
+		L01sKzTDVPFGUkR1ueIlP+358sI=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -118,14 +122,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4BGdPh/JQurOIcQfoJIUYf3gPlPVMpWL3lArIMMtkcc=
+			ATaobwd3LxzwvyMBqOPyPJYXtc/TgsY/gopTT5s7wRM=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XA/sH/8njChwl0qmSxkkpc2Dza271A4EmD9GXgLm7t8=
+			3RWBKEg79vgimzqt9gYgkiYYvuv/+DPGMfk1iuuz8XU=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -139,7 +143,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pqUZHfGkl3lmYJA06NHX/6CaVHLp8QEjXGX1X+ymD/U=
+			kVmeMnj+bqJVN9KfRGWs6IPLD1vs5XtWTc+h290V4gQ=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/fonts/Bebas-Regular.ttf</key>
@@ -205,6 +209,13 @@
 			8X6ACvwCMza3e0QI5Qf6RmoPkjHT/NIF0UMKIwAHb2Q=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/m4.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			y/D5pLcZ01yPsF5EMyWuy3EUwizX4pazviSajQdsoB8=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/images/thor.jpg</key>
 		<dict>
 			<key>hash2</key>
@@ -230,7 +241,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CrsupDLhifJPVaz9o3kVkkQCgsSY4JmysJMQLbcCxck=
+			hIS7DqgLxqAFQty8wAU9LCeNQmkAxV//Ij5inPIweUo=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

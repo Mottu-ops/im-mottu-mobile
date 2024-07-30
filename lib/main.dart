@@ -1,18 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:im_mottu_mobile/core/themes/theme_controller.dart';
 import 'package:im_mottu_mobile/core/themes/app_themes.dart';
+import 'package:im_mottu_mobile/firebase_options.dart';
 import 'package:im_mottu_mobile/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-//TODO: TRY AGAIN NO TIMEOUT
-
-
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await dotenv.load(fileName: ".env");
 
@@ -24,6 +27,8 @@ void main() async {
         Brightness.light, // Cor dos ícones da barra de status
     statusBarBrightness: Brightness.dark, // Para iOS
   ));
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
   Get.put(ThemeController());
   runApp(

@@ -25,8 +25,8 @@ Sugestões:
 - [x] Mostrar a listagem dos personagens (imagem e nome);
 - [x] Criar um filtro para a listagem;
 - [x] Ciar uma paginação da listagem;
-- Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
-- Ação de clique nos personagens relacionados e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
+- [x] Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
+- [-] Ação de clique nos personagens relacionados e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 
 > Ao final de cada etapa, criar PR para a branch **main** e realizar o merge.
 

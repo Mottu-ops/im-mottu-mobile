@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:im_mottu_mobile/core/components/buttons/buttons.dart';
@@ -33,10 +34,14 @@ class LoginPage extends StatelessWidget {
                 context: context,
                 title: "Entrar",
                 onTap: () {
+                    //  FirebaseCrashlytics.instance.crash();
                   Get.toNamed(AppRoutes.homePage);
                 },
               ),
             ),
+
+         
+
             const SizedBox(
               height: 15,
             ),

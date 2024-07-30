@@ -1,0 +1,30 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "mottu-marvel-b5335",
+                    "appId": "1:251419062345:android:180b51c718a89276b4cf98",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "mottu-marvel-b5335",
+                    "appId": "1:251419062345:ios:05c2c28a8b485d14b4cf98",
+                    "uploadDebugSymbols": false,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "mottu-marvel-b5335",
+                    "configurations": {
+                        "android": "1:251419062345:android:180b51c718a89276b4cf98",
+                        "ios": "1:251419062345:ios:05c2c28a8b485d14b4cf98"
+                    }
+                }
+            }
+        }
+    }
+}
