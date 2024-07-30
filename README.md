@@ -37,7 +37,7 @@ Sugestões:
 # Pontos extras (opcional):
 - [x] Utilizar Getx.
 - [x] Configurar Firebase crashlytics.
-- Criar channel em kotlin, capturar a mudança de conexão, e mostrar uma mensagem de offline no flutter.
+- [-] Criar channel em kotlin, capturar a mudança de conexão, e mostrar uma mensagem de offline no flutter.
 
 
 # Explicações
