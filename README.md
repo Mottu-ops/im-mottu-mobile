@@ -1,6 +1,22 @@
 
 # 🛵 I'm Mottu Mobile 🛵
 
+Para todos os níveis você deve executar algumas etapas iniciais:
+
+- [x] Fazer um fork deste repositório para o seu Github, de forma privada, e adicionar os usuarios @brunosmm, @BetoMottu, @moreirawebmaster,@jeanchrocha.
+- [x] Criar um projeto Flutter com a seguinte configuração de package: com.mottu.marvel.
+- [x] Criar uma conta de desenvolvedor em developer.marvel.com.
+- [x] Gerar uma API KEY no site de desenvolvedor da Marvel, e consumir suas respectivas API's.
+- [x] Criar um readme marcando os itens feitos.
+- [x] Buildar para plataforma iOS.
+Sugestões:
+
+- [x] Não faça apenas um commit com toda sua implementação.
+- [x] Realize os commits em branchs separadas e utilize PRs.
+- [x] Seja criativo(a) na sua implementação.
+- [x] Não faça Ctrl+C / Ctrl+V de outro repositório !!!
+- [x] Não utilize IA para criar seu código, nós vamos perceber!!!
+
 # NÍVEL 3 - nome da branch (level_3):
 - [x] Executar etapas iniciais;
 - [x] Criar uma Splashscreen customizada;

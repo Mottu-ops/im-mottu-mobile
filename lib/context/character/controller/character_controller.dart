@@ -13,11 +13,11 @@ class CharacterController extends GetxController {
   bool hasMore = true;
   bool tryAgain = false;
 
-  Timer? _searchDebounce;
+  Timer? searchDebounce;
 
   String query = '';
 
-  int offset = 0;
+  int offset = 20;
   int currentIndex = 0;
 
   List<CharacterModel> characters = <CharacterModel>[];
@@ -28,6 +28,8 @@ class CharacterController extends GetxController {
   ];
 
   TextEditingController searchController = TextEditingController();
+
+  final ScrollController scrollController = ScrollController();
 
   void fetchCharacters({bool loadMore = false}) async {
     if (loadMore) {
@@ -49,13 +51,11 @@ class CharacterController extends GetxController {
         characters.addAll(newCharacters);
         offset += newCharacters.length;
       }
-      if (query.isEmpty) {
-        setCache();
-      }
 
       update();
     } catch (e) {
-      Get.snackbar('Error', 'Failed to fetch characters');
+      tryAgain = true;
+      update();
     } finally {
       if (loadMore) {
         isLoadingMore = false;
@@ -73,8 +73,8 @@ class CharacterController extends GetxController {
   }
 
   void onSearch(String value) {
-    if (_searchDebounce?.isActive ?? false) _searchDebounce!.cancel();
-    _searchDebounce = Timer(const Duration(milliseconds: 500), () {
+    if (searchDebounce?.isActive ?? false) searchDebounce!.cancel();
+    searchDebounce = Timer(const Duration(milliseconds: 500), () {
       if (value.length > 3) {
         query = value;
         offset = 0;
@@ -94,10 +94,6 @@ class CharacterController extends GetxController {
     });
   }
 
-  Future<void> setCache() async {
-    await CacheService().writeCache('character', jsonEncode(characters));
-  }
-
   Future<List<CharacterModel>> readCache() async {
     String? cachedData = await CacheService().readCache('character');
     if (cachedData != null) {
@@ -107,7 +103,16 @@ class CharacterController extends GetxController {
     return [];
   }
 
-  pageChange(int index) {
+  void addListner() {
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        onScrollEnd();
+      }
+    });
+  }
+
+  void pageChange(int index) {
     currentIndex = index;
     update();
   }
@@ -115,6 +120,7 @@ class CharacterController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    addListner();
     readCache().then((cachedCharacters) {
       if (cachedCharacters.isNotEmpty) {
         characters = cachedCharacters;

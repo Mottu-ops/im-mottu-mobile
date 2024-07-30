@@ -8,6 +8,7 @@ import 'package:im_mottu_mobile/core/components/buttons/buttons.dart';
 import 'package:im_mottu_mobile/core/components/cards/cards.dart';
 import 'package:im_mottu_mobile/core/components/shimmer/item_shimmer.dart';
 import 'package:im_mottu_mobile/core/components/text/text.dart';
+import 'package:im_mottu_mobile/core/components/try_again/try_again.dart';
 import 'package:im_mottu_mobile/core/themes/app_themes.dart';
 import 'package:im_mottu_mobile/routes/app_pages.dart';
 
@@ -74,8 +75,8 @@ class HomePage extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(9),
                                 color: controller.currentIndex == index
-                                    ? const Color.fromRGBO(255, 255, 255, 0.898)
-                                    : const Color.fromRGBO(255, 255, 255, 0.4),
+                                    ? AppThemes.white
+                                    : AppThemes.greyRegular.withOpacity(0.5),
                               ),
                             );
                           }).toList(),
@@ -139,29 +140,37 @@ class HomePage extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      SizedBox(
-                        height: 138,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: controller.isLoading
-                                ? 10
-                                : controller.characters.length,
-                            itemBuilder: (c, i) {
-                              if (!controller.isLoading) {
-                                CharacterModel model = controller.characters[i];
-                                return Padding(
-                                  padding: const EdgeInsets.only(right: 9),
-                                  child: AppCards.character(model: model),
-                                );
-                              } else {
-                                return Padding(
-                                  padding: const EdgeInsets.only(right: 9),
-                                  child: AppItemShimmer.character(
-                                      height: 90, width: 90),
-                                );
-                              }
-                            }),
+                      AppTryAgain.small(
+                        context: context,
+                        onTap: () {
+                          controller.fetchCharacters();
+                        },
+                        tryAgain: controller.tryAgainCharacter,
+                        widget: SizedBox(
+                          height: 138,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: controller.isLoading
+                                  ? 10
+                                  : controller.characters.length,
+                              itemBuilder: (c, i) {
+                                if (!controller.isLoading) {
+                                  CharacterModel model =
+                                      controller.characters[i];
+                                  return Padding(
+                                    padding: const EdgeInsets.only(right: 9),
+                                    child: AppCards.character(model: model),
+                                  );
+                                } else {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(right: 9),
+                                    child: AppItemShimmer.character(
+                                        height: 90, width: 90),
+                                  );
+                                }
+                              }),
+                        ),
                       ),
                       const SizedBox(
                         height: 21,
@@ -180,27 +189,34 @@ class HomePage extends StatelessWidget {
                       const SizedBox(
                         height: 9,
                       ),
-                      SizedBox(
-                        height: 225,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: controller.isLoadingComics
-                                ? 10
-                                : controller.comics.length,
-                            itemBuilder: (c, i) {
-                              if (!controller.isLoadingComics) {
-                                ComicsResumeModel model = controller.comics[i];
-                                return AppCards.comics(
-                                    title: model.title,
-                                    thumbnail: model.thumbnail);
-                              } else {
-                                return Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 9, bottom: 9),
-                                    child: AppItemShimmer.comic());
-                              }
-                            }),
+                        AppTryAgain.small(
+                        context: context,
+                        onTap: () {
+                          controller.fetchComics();
+                        },
+                        tryAgain: controller.tryAgainComics,
+                        widget: SizedBox(
+                          height: 225,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: controller.isLoadingComics
+                                  ? 10
+                                  : controller.comics.length,
+                              itemBuilder: (c, i) {
+                                if (!controller.isLoadingComics) {
+                                  ComicsResumeModel model = controller.comics[i];
+                                  return AppCards.comics(
+                                      title: model.title,
+                                      thumbnail: model.thumbnail);
+                                } else {
+                                  return Padding(
+                                      padding: const EdgeInsets.only(
+                                          right: 9, bottom: 9),
+                                      child: AppItemShimmer.comic());
+                                }
+                              }),
+                        ),
                       ),
                     ],
                   ),

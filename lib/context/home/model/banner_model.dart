@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-
 class BannerModel {
-
   int id;
   String img;
   String title;
@@ -15,8 +13,6 @@ class BannerModel {
     required this.description,
     required this.keyPhrase,
   });
-
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,5 +36,6 @@ class BannerModel {
 
   String toJson() => json.encode(toMap());
 
-  factory BannerModel.fromJson(String source) => BannerModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory BannerModel.fromJson(String source) =>
+      BannerModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
