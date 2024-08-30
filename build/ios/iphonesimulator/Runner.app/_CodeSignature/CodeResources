@@ -18,11 +18,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		axCXjf/FxHxQi4diaG+vK91jqPQ=
+		jH8HznQzPjerOYBS0dxaEEUTj0k=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		28xWMBQ91UzszfdXY91SqhC7ecg=
+		IrIN37mJ2x95cHL/NsZRly3shEQ=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		U3feXnRS9kceJL3YnJfcilq27CE=
+		dMH4D4MFBRhfmvzT5k801YfHXKg=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		TuWwdV9a0mtGKqrVwK/4zW65kew=
+		kA5jyT4qFwfzky86BHtTjQmLpWI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		ME0cAg6cl/bTZmwXEVgMugDccUI=
+		C+kKT4ApFrAyopgsL6/dWzeRZoQ=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		oG5/OGn+vw7vp/nu5DUDoZJ4nFc=
+		wMaiaPQL6pFFceREfadEuPHpy3o=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -70,7 +70,11 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		mTCEYk9/LQnP6lmCzJGzE5oY2lU=
+		cUnsnQkwIMVkKv3ENsGdFA5GLt0=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel.png</key>
+		<data>
+		Ne/gMevwhhFJ5mIXbIE4w4s1kgA=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -82,7 +86,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		oGDAgwL/hx80JiOQQqKvFNDW+as=
+		3oysqZLMu2GC9OkC/Jrr21lDl6s=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -196,6 +200,26 @@
 		<data>
 		uGkEgHlDeMxM0oYGoSR35z3FDdE=
 		</data>
+		<key>Frameworks/flutter_native_splash.framework/Info.plist</key>
+		<data>
+		5KutmYVak48HgUZapxzBZ5SBsak=
+		</data>
+		<key>Frameworks/flutter_native_splash.framework/_CodeSignature/CodeResources</key>
+		<data>
+		ZXBu/tc5tz+o6CAnt7R8mp0JRWk=
+		</data>
+		<key>Frameworks/flutter_native_splash.framework/flutter_native_splash</key>
+		<data>
+		xNaVBB1O6g0sBVZS5+/MPaBDYA8=
+		</data>
+		<key>Frameworks/flutter_native_splash.framework/flutter_native_splash_privacy.bundle/Info.plist</key>
+		<data>
+		F4tn1wiIexcCJxZcJU93XutF8dE=
+		</data>
+		<key>Frameworks/flutter_native_splash.framework/flutter_native_splash_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
+		</data>
 		<key>Frameworks/shared_preferences_foundation.framework/Info.plist</key>
 		<data>
 		XFMhMMc4GXj6laTj0TxEc/99EdA=
@@ -218,7 +242,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		YoS7QI/ptRDRK/uYAY4mjhvtU+8=
+		3HDHlfrQERLXoAyQERJKxeo+uM4=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -252,14 +276,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kOEnlbHLmdkm97qfOGRSYxIQUK0ltZ8of/uW1Zq/bb4=
+			3N7SguhD5Dlzu9lnaFjbfJMWbtXLiyh9j7fsgJRFlG8=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			by6WshwXWgbEYiAy2bvh0UtjSVa3EwySkNFc1FazGdY=
+			fRkVKnH8kerZNnQTWDgGGGFgh+PRB+c5znhWW7VeXaQ=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
@@ -301,7 +325,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3hgcio+I0rSlI2xciO7UP6isK9narNedFN1pOB/Fnyo=
+			ucFX9Fka9E7gpe9g+Al8KSrRYuoDNtIYQy6h6Pe9MY4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -315,21 +339,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SM05Q0P/0wBoSa/aVWvIcfg0iswiXVaRFpXZqW1RTv8=
+			0BbzAwN9dzaRE7xr2JammljSysiSlTqvl2jkhBoKHWU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AK9VrT1vIYmP534P8JLRoc2lLJQbaGDpko1FyK+MCV0=
+			I0BX5uxy9MscvrK6o4/52QYHHQsrPO8tIq0cvh8W7S8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Sps95+7JukayebvM0TLjL1LW1VXXndpKp/O8tOm9ZR8=
+			71uBCSfO/wuFb5GSPmQfwzG3OE4WB4+AiRKuusmLy48=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -343,7 +367,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7PpfZ+4AMYOGjAJD6cmC5d9IJ+HXmTppyvEUuM8ZWjc=
+			a3b6hVD+pJz4dVXUZB0lQmZDctb8+9Xd1vidiyLlNYw=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wc79rHVDrROSIDg7HklgEX5VzIWvMhCoPctok+Up9ok=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -364,7 +395,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fcYAMRRz3AH8VJd5Kk8uF8F847jt0Algj2s+9DEfddc=
+			vi9YVfZydkBGBPnNsCMIJxfq8hU1BUso0pBhxTJPYtk=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -561,6 +592,41 @@
 			<key>hash2</key>
 			<data>
 			J79SSRUjPj86iJTJyMcVikSFiLbGUlV2eebeH59jB7I=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_native_splash.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+1ftPyGmKXeVmM0rFQtB+Yc9b8vPPao5poOC54YY92c=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_native_splash.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kUPMo/QyL+op4H0YGajy1oj3sbOrCDHFn4dOuy0713M=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_native_splash.framework/flutter_native_splash</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			saqjfDuf+VyVo2q7Hrb+vBEH5yPEMsBER0mEB/ta/Rg=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_native_splash.framework/flutter_native_splash_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OYrsLebRbytKidXA4UvqQYScl08Z+GiHdLJjhl6UE0E=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_native_splash.framework/flutter_native_splash_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
 			</data>
 		</dict>
 		<key>Frameworks/shared_preferences_foundation.framework/Info.plist</key>
