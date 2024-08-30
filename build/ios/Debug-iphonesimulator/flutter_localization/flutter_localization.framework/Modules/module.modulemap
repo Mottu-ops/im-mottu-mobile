@@ -1,0 +1,11 @@
+framework module flutter_localization {
+  umbrella header "flutter_localization-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module flutter_localization.Swift {
+  header "flutter_localization-Swift.h"
+  requires objc
+}
