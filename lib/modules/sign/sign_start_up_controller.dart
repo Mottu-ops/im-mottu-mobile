@@ -1,9 +1,11 @@
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:marvel/services/constants/app_keys.dart';
 import 'package:marvel/services/constants/app_routes.dart';
 import 'package:marvel/services/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SignStartUpController extends GetxController with StateMixin<bool> {
+class SignStartUpController extends GetxController {
   final Rx<bool> _shouldAnimate = false.obs;
   final Rx<bool> _autoSignIn = false.obs;
 
@@ -23,20 +25,30 @@ class SignStartUpController extends GetxController with StateMixin<bool> {
 
   @override
   void onInit() {
-    FlutterNativeSplash.remove();
-    change(false, status: RxStatus.success());
+    init();
     super.onInit();
   }
 
-  Future<void> load() async {
+  Future<void> init() async {
     try {
-      Sha
+      FlutterNativeSplash.remove();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      autoSignIn = prefs.getBool(AppKeys.autoSignIn) ?? false;
     } catch (e) {
       Logger.info(e);
     }
   }
 
-  Future<void> join() async {
-    await Get.toNamed(AppRoutes.characterListPage);
+  void join() async {
+    shouldAnimate = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(AppKeys.autoSignIn, autoSignIn);
+    await Future.delayed(
+        const Duration(
+          milliseconds: 2500,
+        ), () async {
+      await Get.toNamed(AppRoutes.characterListPage);
+    });
+    shouldAnimate = false;
   }
 }
