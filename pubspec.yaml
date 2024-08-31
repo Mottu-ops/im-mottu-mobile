@@ -41,6 +41,8 @@ dependencies:
   crypto: ^3.0.5
   equatable: ^2.0.5
   cached_network_image: ^3.4.1
+  animate_do: ^3.3.4
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:
