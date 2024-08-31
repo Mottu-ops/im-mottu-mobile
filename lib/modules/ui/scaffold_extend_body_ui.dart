@@ -12,16 +12,17 @@ class ScaffoldExtendBodyUI extends Scaffold {
   }) : super(
           extendBodyBehindAppBar: true,
           resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Colors.transparent,
-              systemNavigationBarDividerColor: Colors.transparent,
-            ),
-            backgroundColor: Colors.transparent,
-            excludeHeaderSemantics: true,
-            elevation: 0,
-            automaticallyImplyLeading: false,
-          ),
+          appBar: appBar ??
+              AppBar(
+                systemOverlayStyle: const SystemUiOverlayStyle(
+                  statusBarColor: Colors.transparent,
+                  systemNavigationBarColor: Colors.transparent,
+                  systemNavigationBarDividerColor: Colors.transparent,
+                ),
+                backgroundColor: Colors.transparent,
+                excludeHeaderSemantics: true,
+                elevation: 0,
+                automaticallyImplyLeading: false,
+              ),
         );
 }

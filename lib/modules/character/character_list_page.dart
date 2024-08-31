@@ -6,6 +6,7 @@ import 'package:marvel/modules/character/character_controller.dart';
 import 'package:marvel/modules/ui/circular_progress_indicator_ui.dart';
 import 'package:marvel/modules/ui/loading_screen_ui.dart';
 import 'package:marvel/modules/ui/scroll_bar_ui.dart';
+import 'package:marvel/services/constants/app_colors.dart';
 import 'package:marvel/services/dimensions.dart';
 
 class CharacterListPage extends GetView<CharacterController> {
@@ -17,7 +18,7 @@ class CharacterListPage extends GetView<CharacterController> {
   Widget build(BuildContext context) {
     return controller.obx(
       (state) => Scaffold(
-        backgroundColor: Colors.red.shade800,
+        backgroundColor: AppColors.redTheme,
         body: SafeArea(
           child: ScrollBarUI(
             controller: controller.scrollController,
@@ -43,10 +44,18 @@ class CharacterListPage extends GetView<CharacterController> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: CachedNetworkImage(
-                                  width: Dimensions.widthOf(context, 100),
-                                  imageUrl: character.imageUrl,
-                                  fit: BoxFit.cover,
+                                child: InkWell(
+                                  onTap: () async {
+                                    await controller.detail(character);
+                                  },
+                                  child: Hero(
+                                    tag: character.id,
+                                    child: CachedNetworkImage(
+                                      width: Dimensions.widthOf(context, 100),
+                                      imageUrl: character.imageUrl,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               ),
                               Visibility(

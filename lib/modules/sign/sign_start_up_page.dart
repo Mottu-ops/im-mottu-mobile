@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marvel/modules/sign/sign_start_up_controller.dart';
 import 'package:marvel/modules/ui/scaffold_extend_body_ui.dart';
+import 'package:marvel/services/constants/app_colors.dart';
 import 'package:marvel/services/constants/app_images.dart';
 import 'package:marvel/services/dimensions.dart';
 
@@ -11,7 +12,7 @@ class SignStartUpPage extends GetView<SignStartUpController> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldExtendBodyUI(
-      backgroundColor: const Color.fromRGBO(220, 45, 45, 1),
+      backgroundColor: AppColors.redTheme,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),

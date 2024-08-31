@@ -40,4 +40,30 @@ class MarvelCharactersServiceAPI {
       return Future.error(e);
     }
   }
+
+  Future<List<Character>> get(
+    int id, {
+    int offset = 0,
+    int limit = 1,
+  }) async {
+    try {
+      Uri uri = Uri.parse(url);
+      final Response response = await httpBaseClient.get(
+        uri,
+        path: '$path/${id.toString()}',
+        offset: offset,
+        limit: limit,
+      );
+      if (response.statusCode == HttpStatus.ok) {
+        Map<String, dynamic> body =
+            Map<String, dynamic>.from(convert.jsonDecode(response.body));
+        List<Map<String, dynamic>> result =
+            List<Map<String, dynamic>>.from(body["data"]["results"]);
+        return Character.fromJsonList(result);
+      }
+      return [];
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
 }
