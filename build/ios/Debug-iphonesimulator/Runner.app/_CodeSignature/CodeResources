@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		Kurd6qZMQ4WjgO6zncYw/ML8994=
+		aKTD2HUaNVP0hwgcWqgVsAVTaWA=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		MFuwpczQVHbasJPX/NhRCNGcaNk=
+		Dc00f4X38mo/TkvcAJdKe0VFmOI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		C+kKT4ApFrAyopgsL6/dWzeRZoQ=
+		OM+dILSPT47wzmnbO9zCAM7HWuk=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		wMaiaPQL6pFFceREfadEuPHpy3o=
+		MK4B/tYOWKc2YvtQv3c5OqgXPvU=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -70,11 +70,23 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		cUnsnQkwIMVkKv3ENsGdFA5GLt0=
+		IsEJ65VHCsij+3eB/Ly8rGkZAM4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel.png</key>
 		<data>
 		Ne/gMevwhhFJ5mIXbIE4w4s1kgA=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel_loading.gif</key>
+		<data>
+		CYy3ONu1IWtAKyL+tNgpxuNGtUA=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel_logo.gif</key>
+		<data>
+		dBDSuHFaQuL2NAW2Wf3aRt1iJmg=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel_logo.png</key>
+		<data>
+		1i0DTVNdV8agyCmYjCjfpMDM/p0=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -86,7 +98,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		Aj5EXZXOK7buvOyMgu77OhHObs4=
+		1RBRLi8wS57cOoJlrSUbceWVI5A=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -220,6 +232,26 @@
 		<data>
 		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
 		</data>
+		<key>Frameworks/path_provider_foundation.framework/Info.plist</key>
+		<data>
+		quXpxsdGbBYNxs9EXm0/oAUiB0Q=
+		</data>
+		<key>Frameworks/path_provider_foundation.framework/_CodeSignature/CodeResources</key>
+		<data>
+		Sxv3HU4KZ5K8Cl9DeBhnjNpePXE=
+		</data>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation</key>
+		<data>
+		UeiOx/mKfSBsubW2QMSJhbOFcT0=
+		</data>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation_privacy.bundle/Info.plist</key>
+		<data>
+		vEv0vxtB07Rh+goYDN5gO5HdLlQ=
+		</data>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
+		</data>
 		<key>Frameworks/shared_preferences_foundation.framework/Info.plist</key>
 		<data>
 		XFMhMMc4GXj6laTj0TxEc/99EdA=
@@ -239,6 +271,26 @@
 		<key>Frameworks/shared_preferences_foundation.framework/shared_preferences_foundation_privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
 		6uLTlq7fgHHWA8emYDf4ImHC+AY=
+		</data>
+		<key>Frameworks/sqflite.framework/Info.plist</key>
+		<data>
+		SZOShfht3EhvaF8u5dJ3lZXqdiI=
+		</data>
+		<key>Frameworks/sqflite.framework/_CodeSignature/CodeResources</key>
+		<data>
+		qY4MAfLDR0agpY/8kwjiVC4pER4=
+		</data>
+		<key>Frameworks/sqflite.framework/sqflite</key>
+		<data>
+		3u5ZTcGYTztKxH8BhmmTaMUwG9s=
+		</data>
+		<key>Frameworks/sqflite.framework/sqflite_darwin_privacy.bundle/Info.plist</key>
+		<data>
+		moMpHMUwT3CrdEmlg9tI4d7lyUY=
+		</data>
+		<key>Frameworks/sqflite.framework/sqflite_darwin_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		YIiJ5tHvqBeSpBm2mcfVZdaGz3E=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -325,7 +377,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Jzn47tpfvpID6BE2ibqKfDfIX67rKTNhIR+/cOsrpCc=
+			iXNd+1QU/MqzTiErTuUv4uKJLqpMfmQZptg4hI0cKxo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -339,21 +391,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wO0DH67jjcwBL8oJNGJqtJc1LqN/k7tIcgbesj2KhHw=
+			c1+b3YMzZiChf6Rsah14JP5OWZjasviycbt66qwly+A=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I0BX5uxy9MscvrK6o4/52QYHHQsrPO8tIq0cvh8W7S8=
+			Tu7BooBgBk3YIUYGX4bDQ16vovv5iAfUWlqkomVDTz4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			71uBCSfO/wuFb5GSPmQfwzG3OE4WB4+AiRKuusmLy48=
+			Uq+xsNbuhJ2dPdwv5LJmYt7L2zxwqbAk1tQ0L82yubM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -367,7 +419,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			a3b6hVD+pJz4dVXUZB0lQmZDctb8+9Xd1vidiyLlNYw=
+			6Pom1042Tqo4zACvIdpsqT8ZA5Jro5r52k2i/yfef9Q=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel.png</key>
@@ -375,6 +427,27 @@
 			<key>hash2</key>
 			<data>
 			wc79rHVDrROSIDg7HklgEX5VzIWvMhCoPctok+Up9ok=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel_loading.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QH1wuSnfNalzvaKthvltTfkkd4a9Xg87zqcrAsjByTg=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel_logo.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Pu3YSqhulmiAq6aF/vP/4C2vqu1tSt8szFwKtKPtfIA=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/marvel_logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			O9/ZlKREcCfBu4XgHPamjD8ivmgX9sK7Yk3WY2DveFM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -395,7 +468,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z6Psf7y3oYF5cnoRNjH1P0TZs+OABRzOpiNTyniiv4I=
+			4IHcnLZd7YEuz0EgQLW5xVo6LZJnu1iq06v7dYdbkyI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -629,6 +702,41 @@
 			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
 			</data>
 		</dict>
+		<key>Frameworks/path_provider_foundation.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OiQfOE2xROKI3cjRmXMCUJb9WUtHLFs3dhNRFI06hMY=
+			</data>
+		</dict>
+		<key>Frameworks/path_provider_foundation.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/oECJSQK4V3iybCQuVWgbU6zntOQBAzVKMWTqNraTno=
+			</data>
+		</dict>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			K3Ujix2X5zZqnOq0GAazC30kf/fa/yRsBjfEYRrwdi4=
+			</data>
+		</dict>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mwQjDiOZCFPsDHStKo24jfR5NqoZg/XW5nUexLcZFmM=
+			</data>
+		</dict>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
+			</data>
+		</dict>
 		<key>Frameworks/shared_preferences_foundation.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -662,6 +770,41 @@
 			<key>hash2</key>
 			<data>
 			BWQouTi9VwGKYAGdFcPB7i+nJ/I2h1mLu9k0hIsYCxo=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			v2R7QNRUDNP7qFDw7BgCDg2IRcdhp6lTUADyWB7I+5U=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			P1zg6tOOI6KGoqt8SNVgNDO1LX+QgX5tqEDPTTnxysU=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/sqflite</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			at0OK0ELo4Qonosyj2DQF4Tpow7i9HuBvch2vLJ7Kpw=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/sqflite_darwin_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xQlVtIRu5Mh55+92g+J1NIDnVCAZC1bcRRbjk6k69ms=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/sqflite_darwin_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RyJqKWCN8gatChEOav61p3/1dawd+cdr/bLW37P6/tE=
 			</data>
 		</dict>
 	</dict>
