@@ -37,6 +37,10 @@ dependencies:
   get: ^4.6.6
   flutter_localization: ^0.2.2
   flutter_native_splash: ^2.4.1
+  http: ^1.2.2
+  crypto: ^3.0.5
+  equatable: ^2.0.5
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
