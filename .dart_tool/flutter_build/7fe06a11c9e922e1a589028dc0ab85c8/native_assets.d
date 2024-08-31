@@ -1,0 +1,1 @@
+ /Users/vini/Workspaces/im-mottu-mobile/.dart_tool/flutter_build/7fe06a11c9e922e1a589028dc0ab85c8/native_assets.yaml: 
