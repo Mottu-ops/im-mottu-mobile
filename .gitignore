@@ -50,3 +50,4 @@ cache/
 .dart_tool
 .flutter-plugins-dependencies
 .flutter-plugins
+build

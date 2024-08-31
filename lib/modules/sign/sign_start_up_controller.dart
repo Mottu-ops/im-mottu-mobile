@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SignStartUpController extends GetxController {
   final Rx<bool> _shouldAnimate = false.obs;
-  final Rx<bool> _autoSignIn = false.obs;
+  final Rx<bool> _autoSignIn = true.obs;
 
   bool get shouldAnimate => _shouldAnimate.value;
 
@@ -31,9 +31,12 @@ class SignStartUpController extends GetxController {
 
   Future<void> init() async {
     try {
-      FlutterNativeSplash.remove();
       SharedPreferences prefs = await SharedPreferences.getInstance();
       autoSignIn = prefs.getBool(AppKeys.autoSignIn) ?? false;
+      FlutterNativeSplash.remove();
+      if (autoSignIn) {
+        await Get.toNamed(AppRoutes.characterListPage);
+      }
     } catch (e) {
       Logger.info(e);
     }
@@ -45,7 +48,7 @@ class SignStartUpController extends GetxController {
     await prefs.setBool(AppKeys.autoSignIn, autoSignIn);
     await Future.delayed(
         const Duration(
-          milliseconds: 2500,
+          milliseconds: 1800,
         ), () async {
       await Get.toNamed(AppRoutes.characterListPage);
     });
