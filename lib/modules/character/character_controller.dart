@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
-import 'package:marvel/mixins/infinite_scroll_mixin_controller.dart';
 import 'package:marvel/models/character.dart';
 import 'package:marvel/modules/character/character_detail_page.dart';
+import 'package:marvel/modules/search/search_generic_controller.dart';
 import 'package:marvel/services/api/marvel_characters_service_api.dart';
 import 'package:marvel/services/logger.dart';
 
-class CharacterController extends GetxController
-    with InfiniteScrollMixinController, StateMixin<bool> {
+class CharacterController extends SearchGenericController<Character> {
   final MarvelCharactersServiceAPI marvelCharactersServiceAPI =
       MarvelCharactersServiceAPI();
 
@@ -24,12 +23,13 @@ class CharacterController extends GetxController
   Future<void> list(int offset) async {
     try {
       super.list(offset);
-      List<Character> characters = await marvelCharactersServiceAPI.list(
+      List<Character> characters = (await marvelCharactersServiceAPI.list(
         offset: items.length,
         limit: limit,
-      );
+      ))
+          .cast<Character>();
       updateItems(offset, characters);
-      change(true, status: RxStatus.success());
+      change(null, status: RxStatus.success());
     } catch (e) {
       Logger.info(e);
     }

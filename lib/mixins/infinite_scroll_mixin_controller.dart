@@ -11,40 +11,7 @@ mixin InfiniteScrollMixinController<T> on GetxController {
   final Rx<int> _lastPage = 0.obs;
   final RxListObject<T> itemsList = RxListObject<T>([]);
   final Rx<bool> _fetching = false.obs;
-
   DebounceTime? debounceTime;
-
-  int get limit => 100;
-
-  int get lastPage => _lastPage.value;
-
-  bool get enableSearch => true;
-
-  bool get enableInfiniteScroll => true;
-
-  bool get shouldFetchOnInit => true;
-
-  bool shouldAppend(List<T> entries) =>
-      (entries.isNotEmpty && items.length >= limit);
-
-  set lastPage(int value) {
-    _lastPage.value = value;
-    _lastPage.refresh();
-  }
-
-  List<T> get items => itemsList.value;
-
-  set items(List<T> value) {
-    itemsList.value = value;
-    itemsList.refresh();
-  }
-
-  bool get fetching => _fetching.value;
-
-  set fetching(bool value) {
-    _fetching.value = value;
-    _fetching.refresh();
-  }
 
   @override
   void onInit() async {
@@ -80,6 +47,38 @@ mixin InfiniteScrollMixinController<T> on GetxController {
       debounceTime!.cancel();
     }
     super.onClose();
+  }
+
+  int get limit => 100;
+
+  int get lastPage => _lastPage.value;
+
+  bool get enableSearch => true;
+
+  bool get enableInfiniteScroll => true;
+
+  bool get shouldFetchOnInit => true;
+
+  bool shouldAppend(List<T> entries) =>
+      (entries.isNotEmpty && items.length >= limit);
+
+  set lastPage(int value) {
+    _lastPage.value = value;
+    _lastPage.refresh();
+  }
+
+  List<T> get items => itemsList.value;
+
+  set items(List<T> value) {
+    itemsList.value = value;
+    itemsList.refresh();
+  }
+
+  bool get fetching => _fetching.value;
+
+  set fetching(bool value) {
+    _fetching.value = value;
+    _fetching.refresh();
   }
 
   static InfiniteScrollMixinController get instance =>
@@ -149,8 +148,8 @@ mixin InfiniteScrollMixinController<T> on GetxController {
     await list(items.length);
   }
 
-  Future<void> updateItems(T? offset, List<T> items) async {
-    if (shouldAppend(items) && offset != null) {
+  Future<void> updateItems(int offset, List<T> items) async {
+    if (shouldAppend(items) && offset > 0) {
       itemsList.append(items);
     } else {
       if (items.isNotEmpty) {
