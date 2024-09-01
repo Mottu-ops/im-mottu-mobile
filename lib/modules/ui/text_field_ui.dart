@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/services/constants/app_colors.dart';
+import 'package:marvel/constants/app_colors.dart';
 
 class TextFieldUI extends StatelessWidget {
   final void Function(String text)? onChanged;

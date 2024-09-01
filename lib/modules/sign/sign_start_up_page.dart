@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marvel/constants/app_enumators.dart';
 import 'package:marvel/modules/sign/sign_start_up_controller.dart';
 import 'package:marvel/modules/ui/scaffold_extend_body_ui.dart';
-import 'package:marvel/services/constants/app_colors.dart';
-import 'package:marvel/services/constants/app_images.dart';
+import 'package:marvel/constants/app_colors.dart';
+import 'package:marvel/constants/app_images.dart';
 import 'package:marvel/services/dimensions.dart';
 
 class SignStartUpPage extends GetView<SignStartUpController> {
   const SignStartUpPage({super.key});
+
+  Widget marvelAnimationRender(StartUpAnimationStatusType animationStatusType) {
+    switch (animationStatusType) {
+      case StartUpAnimationStatusType.started:
+        return Image.asset(
+          AppImages.marvelLogoGif,
+          fit: BoxFit.cover,
+        );
+      case StartUpAnimationStatusType.completed:
+        return const SizedBox();
+      default:
+        return Image.asset(
+          AppImages.marvelLogo,
+          fit: BoxFit.cover,
+        );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +38,7 @@ class SignStartUpPage extends GetView<SignStartUpController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Obx(
-                () => Visibility(
-                  visible: controller.shouldAnimate,
-                  replacement: Image.asset(
-                    AppImages.marvelLogo,
-                    fit: BoxFit.cover,
-                  ),
-                  child: Image.asset(
-                    AppImages.marvelLogoGif,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                () => marvelAnimationRender(controller.animationStatusType),
               ),
               Column(
                 children: [
@@ -58,7 +66,7 @@ class SignStartUpPage extends GetView<SignStartUpController> {
                         'auto_join'.tr.toUpperCase(),
                         style: const TextStyle(
                           fontSize: 13,
-                          color: Colors.white,
+                          color: AppColors.whiteTheme,
                           fontWeight: FontWeight.w600,
                         ),
                       )
@@ -72,13 +80,14 @@ class SignStartUpPage extends GetView<SignStartUpController> {
                         Colors.amber.withAlpha(100)),
                     customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
-                      side: const BorderSide(color: Colors.white, width: 3),
+                      side: const BorderSide(
+                          color: AppColors.whiteTheme, width: 3),
                     ),
                     onTap: controller.join,
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.white,
+                            color: AppColors.whiteTheme,
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(20)),
@@ -89,7 +98,7 @@ class SignStartUpPage extends GetView<SignStartUpController> {
                           'join'.tr.toUpperCase(),
                           style: const TextStyle(
                             fontSize: 13,
-                            color: Colors.white,
+                            color: AppColors.whiteTheme,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

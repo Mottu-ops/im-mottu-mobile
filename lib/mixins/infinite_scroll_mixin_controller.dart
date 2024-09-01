@@ -157,6 +157,10 @@ mixin InfiniteScrollMixinController<T> on GetxController {
     } else {
       if (items.isNotEmpty) {
         itemsList.renew(items);
+      } else {
+        if (items.isEmpty && searchText.isNotEmpty) {
+          itemsList.renew([]);
+        }
       }
     }
     itemsList.refresh();

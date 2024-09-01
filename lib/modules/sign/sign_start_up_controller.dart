@@ -1,19 +1,22 @@
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
-import 'package:marvel/services/constants/app_keys.dart';
-import 'package:marvel/services/constants/app_routes.dart';
+import 'package:marvel/constants/app_enumators.dart';
+import 'package:marvel/constants/app_keys.dart';
+import 'package:marvel/constants/app_routes.dart';
 import 'package:marvel/services/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignStartUpController extends GetxController {
-  final Rx<bool> _shouldAnimate = false.obs;
+  final Rx<StartUpAnimationStatusType> _animationStatusType =
+      Rx<StartUpAnimationStatusType>(StartUpAnimationStatusType.none);
   final Rx<bool> _autoSignIn = true.obs;
 
-  bool get shouldAnimate => _shouldAnimate.value;
+  StartUpAnimationStatusType get animationStatusType =>
+      _animationStatusType.value;
 
-  set shouldAnimate(bool value) {
-    _shouldAnimate.value = value;
-    _shouldAnimate.refresh();
+  set animationStatusType(StartUpAnimationStatusType value) {
+    _animationStatusType.value = value;
+    _animationStatusType.refresh();
   }
 
   bool get autoSignIn => _autoSignIn.value;
@@ -44,15 +47,16 @@ class SignStartUpController extends GetxController {
   }
 
   void join() async {
-    shouldAnimate = true;
+    animationStatusType = StartUpAnimationStatusType.started;
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(AppKeys.autoSignIn, autoSignIn);
+    prefs.setBool(AppKeys.autoSignIn, autoSignIn);
     await Future.delayed(
         const Duration(
-          milliseconds: 1800,
+          milliseconds: 1100,
         ), () async {
+      animationStatusType = StartUpAnimationStatusType.completed;
       await Get.toNamed(AppRoutes.characterListPage);
+      animationStatusType = StartUpAnimationStatusType.none;
     });
-    shouldAnimate = false;
   }
 }

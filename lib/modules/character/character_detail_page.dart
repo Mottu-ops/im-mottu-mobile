@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:marvel/models/character.dart';
 import 'package:marvel/modules/ui/scaffold_extend_body_ui.dart';
-import 'package:marvel/services/constants/app_colors.dart';
+import 'package:marvel/constants/app_colors.dart';
 import 'package:marvel/services/dimensions.dart';
 
 class CharacterDetailPage extends StatelessWidget {
@@ -53,13 +53,13 @@ class CharacterDetailPage extends StatelessWidget {
           ListTile(
             leading: const Icon(
               Icons.info_outline,
-              color: Colors.white,
+              color: AppColors.whiteTheme,
             ),
             title: Text(
               character.name,
               style: const TextStyle(
                 fontSize: 13,
-                color: Colors.white,
+                color: AppColors.whiteTheme,
                 fontWeight: FontWeight.bold,
               ),
             ),

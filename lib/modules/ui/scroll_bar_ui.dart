@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel/constants/app_colors.dart';
 
 class ScrollBarUI extends StatelessWidget {
   final ScrollController controller;
@@ -34,7 +35,7 @@ class ScrollBarUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawScrollbar(
       controller: controller,
-      thumbColor: Colors.white,
+      thumbColor: AppColors.whiteTheme,
       radius: radius ?? const Radius.circular(20),
       thumbVisibility: thumbVisibility,
       interactive: true,

@@ -3,5 +3,8 @@ final Map<String, String> ptBR = {
   "auto_join": "Entrar automaticamente",
   "join": "Entrar",
   "search": "Pesquisar",
-  "do_search_here": "Pesquise aqui"
+  "do_search_here": "Pesquise aqui",
+  "signout": "Sair",
+  "close": "Fechar",
+  "no_results_found_with": "Nenhum resultado encontrado com (@name)"
 };

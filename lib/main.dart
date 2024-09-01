@@ -5,7 +5,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:marvel/services/locale/app_translations.dart';
-import 'package:marvel/services/constants/app_strings.dart';
+import 'package:marvel/constants/app_strings.dart';
 import 'package:marvel/services/page_manager.dart';
 
 void main() {

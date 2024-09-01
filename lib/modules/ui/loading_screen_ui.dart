@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:marvel/services/constants/app_images.dart';
+import 'package:marvel/constants/app_images.dart';
 import 'package:marvel/services/dimensions.dart';
 
 class LoadingScreenUI extends StatelessWidget {
