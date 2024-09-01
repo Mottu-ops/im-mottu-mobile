@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marvel/modules/ui/circular_progress_indicator_ui.dart';
 import 'package:marvel/modules/ui/text_field_ui.dart';
 import 'package:marvel/services/dimensions.dart';
 
@@ -14,7 +15,7 @@ class SearchTextFieldUI extends StatefulWidget {
   final FocusNode? focusNode;
   final Function()? onTap;
   final bool autoFocus;
-  final bool enabled;
+  final bool loading;
 
   const SearchTextFieldUI({
     super.key,
@@ -28,7 +29,7 @@ class SearchTextFieldUI extends StatefulWidget {
     this.focusNode,
     this.onTap,
     this.autoFocus = false,
-    this.enabled = true,
+    this.loading = true,
   });
 
   @override
@@ -37,6 +38,8 @@ class SearchTextFieldUI extends StatefulWidget {
 
 class _SearchTextFieldUIState extends State<SearchTextFieldUI> {
   bool _showClear = false;
+  bool _loading = false;
+
   late TextEditingController _controller;
 
   @override
@@ -64,6 +67,29 @@ class _SearchTextFieldUIState extends State<SearchTextFieldUI> {
   }
 
   @override
+  void didUpdateWidget(covariant SearchTextFieldUI oldWidget) {
+    if (oldWidget.loading != widget.loading) {
+      setState(() {
+        _loading = widget.loading;
+      });
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  Widget clearRender() => Visibility(
+        visible: widget.showClear && _showClear,
+        child: IconButton(
+          icon: const Icon(Icons.close_rounded),
+          onPressed: () {
+            _controller.text = '';
+            if (widget.onChanged != null) {
+              widget.onChanged!('');
+            }
+          },
+        ),
+      );
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
@@ -73,26 +99,20 @@ class _SearchTextFieldUIState extends State<SearchTextFieldUI> {
         hintText: widget.hintText.tr,
         controller: _controller,
         autoFocus: widget.autoFocus,
-        enabled: widget.enabled,
         prefixIcon: const Icon(
           Icons.search,
         ),
         borderRadius: 12,
         focusNode: widget.focusNode,
         onTap: widget.onTap,
-        suffixIcon: widget.suffixIcon ??
-            Visibility(
-              visible: widget.showClear && _showClear,
-              child: IconButton(
-                icon: const Icon(Icons.close_rounded),
-                onPressed: () {
-                  _controller.text = '';
-                  if (widget.onChanged != null) {
-                    widget.onChanged!('');
-                  }
-                },
-              ),
-            ),
+        suffixIcon: Visibility(
+          visible: _loading,
+          replacement: clearRender(),
+          child: const CircularProgressIndicatorUI(
+            width: 15,
+            height: 15,
+          ),
+        ),
         onChanged: widget.onChanged,
       ),
     );

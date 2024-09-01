@@ -19,10 +19,13 @@ class HttpBaseClient {
   Map<String, dynamic> get credentials => Credentials.refresh().toJson();
 
   Map<String, dynamic> buildQueryParameters({
+    String nameStartsWith = "",
     int offset = 0,
-    int limit = 60,
+    int limit = 20,
   }) {
     Map<String, dynamic> parameters = <String, dynamic>{};
+    parameters.addIf(
+        nameStartsWith.isNotEmpty, "nameStartsWith", nameStartsWith);
     parameters.addIf(offset > 0, "offset", offset.toString());
     return {
       ...parameters,
@@ -33,13 +36,15 @@ class HttpBaseClient {
   Future<http.Response> get(
     Uri url, {
     String path = "",
-    Map<String, String>? headers,
+    String nameStartsWith = "",
     int offset = 0,
     int limit = 20,
+    Map<String, String>? headers,
   }) {
     Map<String, dynamic> queryParameters = {
       ...credentials,
       ...buildQueryParameters(
+        nameStartsWith: nameStartsWith,
         offset: offset,
         limit: limit,
       ),

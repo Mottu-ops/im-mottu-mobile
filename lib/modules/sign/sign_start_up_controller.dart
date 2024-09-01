@@ -33,9 +33,10 @@ class SignStartUpController extends GetxController {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       autoSignIn = prefs.getBool(AppKeys.autoSignIn) ?? false;
-      FlutterNativeSplash.remove();
       if (autoSignIn) {
         await Get.toNamed(AppRoutes.characterListPage);
+      } else {
+        FlutterNativeSplash.remove();
       }
     } catch (e) {
       Logger.info(e);

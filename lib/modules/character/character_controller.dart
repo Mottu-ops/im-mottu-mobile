@@ -1,3 +1,4 @@
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:marvel/models/character.dart';
 import 'package:marvel/modules/character/character_detail_page.dart';
@@ -13,23 +14,26 @@ class CharacterController extends SearchGenericController<Character> {
   int get limit => 20;
 
   @override
-  void onInit() {
-    list(0);
-
+  void onInit() async {
+    change(false, status: RxStatus.loading());
+    FlutterNativeSplash.remove();
+    await list(0);
     super.onInit();
   }
 
   @override
   Future<void> list(int offset) async {
     try {
-      super.list(offset);
+      fetching = true;
       List<Character> characters = (await marvelCharactersServiceAPI.list(
+        nameStartsWith: searchText,
         offset: items.length,
         limit: limit,
       ))
           .cast<Character>();
       updateItems(offset, characters);
-      change(null, status: RxStatus.success());
+      change(true, status: RxStatus.success());
+      fetching = false;
     } catch (e) {
       Logger.info(e);
     }

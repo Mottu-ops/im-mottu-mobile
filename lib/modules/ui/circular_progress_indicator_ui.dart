@@ -11,7 +11,7 @@ class CircularProgressIndicatorUI extends StatelessWidget {
     this.value,
     this.width = 23,
     this.height = 23,
-    this.color,
+    this.color = Colors.amber,
   });
 
   @override

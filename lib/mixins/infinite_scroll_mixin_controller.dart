@@ -26,7 +26,7 @@ mixin InfiniteScrollMixinController<T> on GetxController {
   void onReady() {
     if (enableSearch) {
       debounceTime = DebounceTime<String>(
-        const Duration(milliseconds: 600),
+        const Duration(milliseconds: 500),
         (String value) {
           searchText = value;
         },
@@ -44,6 +44,7 @@ mixin InfiniteScrollMixinController<T> on GetxController {
   void onClose() {
     removeScrollListener();
     if (debounceTime != null) {
+      fetching = false;
       debounceTime!.cancel();
     }
     super.onClose();
@@ -96,8 +97,10 @@ mixin InfiniteScrollMixinController<T> on GetxController {
     if (debounceTime != null) {
       debounceTime!.cancel();
       if (text.isNotEmpty) {
+        fetching = true;
         debounceTime!.value = text.replaceAll(RegExp(r'/\s+/g'), "");
       } else {
+        fetching = false;
         searchText = '';
       }
     }

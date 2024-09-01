@@ -17,6 +17,7 @@ class MarvelCharactersServiceAPI {
   }
 
   Future<List<Character>> list({
+    String nameStartsWith = '',
     int offset = 0,
     int limit = 20,
   }) async {
@@ -25,6 +26,7 @@ class MarvelCharactersServiceAPI {
       final Response response = await httpBaseClient.get(
         uri,
         path: path,
+        nameStartsWith: nameStartsWith,
         offset: offset,
         limit: limit,
       );
