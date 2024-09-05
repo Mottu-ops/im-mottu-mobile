@@ -1,7 +1,7 @@
 
 # 🛵 I'm Mottu Mobile 🛵
 
-### Second Commit - Branch Config Crypto
+### Third Commit - Branch GetX Controller & Method http
 
-> **Criação das configurações de md5, keys, e utilização da Lib Crypto.**
+> **Criação das configurações de gerenciamento de estado e das funções http**
 
