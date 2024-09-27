@@ -1,0 +1,52 @@
+# Flutter/Dart related
+**/build/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/flutter_export_environment.sh
+**/.idea/
+**/.vscode/
+**/pubspec.lock
+**/.metadata
+
+# Ignore Xcode and Android related files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/android/.gradle/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/android/local.properties
+**/android/app/google-services.json
+**/android/app/src/debug/
+**/android/app/src/profile/
+**/android/app/src/release/
+
+# Ignore IntelliJ related files
+**/.idea/
+**/*.iml
+
+# Ignore VS Code related files
+**/.vscode/
+
+# Other files and folders to ignore
+**/packages/**/.dart_tool/
+**/packages/**/.flutter-plugins
+**/packages/**/.flutter-plugins-dependencies
+**/packages/**/.packages
+**/packages/**/build/
+**/packages/**/pubspec.lock
+**/apps/**/.dart_tool/
+**/apps/**/.flutter-plugins
+**/apps/**/.flutter-plugins-dependencies
+**/apps/**/.packages
+**/apps/**/build/
+**/apps/**/pubspec.lock
+
+# Melos specific
+.melos_tool/

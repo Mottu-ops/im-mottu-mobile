@@ -1,0 +1,24 @@
+name: mottu
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  analyze:
+    run: dart analyze .
+    description: Run flutter analysis on all packages
+  generate:
+    exec: dart run build_runner build --delete-conflicting-outputs && dart format . --line-length=120
+    description: Build generated files for specific package in this project.
+    packageFilters:
+      flutter: true
+  install:
+    run: melos bs && flutter pub get
+    description: Install all dependencies for all packages and run flutter pub get
+  fast_test:selective_unit_test:
+    run: melos exec -c 10 --dir-exists="test" --fail-fast -- flutter test --no-pub
+    description: Run Flutter tests for a specific package in this project. With 10 concurrent processes.
+  fast_test:
+    run: melos run fast_test:selective_unit_test --no-select
+    description: Run all Flutter tests in this project.
