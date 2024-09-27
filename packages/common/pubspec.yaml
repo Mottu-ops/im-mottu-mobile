@@ -1,0 +1,16 @@
+name: common
+description: Every library and components that are common to different packages and apps for the Mottur project.
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: any
+  custom_lint: any
