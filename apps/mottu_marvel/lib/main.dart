@@ -3,7 +3,7 @@ import 'package:common/env/environment.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: '.env');
+  await dotenv.load();
   print(Environment.baseApiUrl);
 
   runApp(const MyApp());
