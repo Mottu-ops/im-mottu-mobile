@@ -1,6 +1,12 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load();
+  setFlavor();
+  print('Current flavor $flavor');
+  print(Environment.baseApiUrl);
+
   runApp(const MyApp());
 }
 
