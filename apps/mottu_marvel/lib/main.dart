@@ -1,6 +1,11 @@
+import 'package:common/common.dart';
+import 'package:common/env/environment.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
+  print(Environment.baseApiUrl);
+
   runApp(const MyApp());
 }
 

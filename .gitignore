@@ -1,3 +1,5 @@
+**/.env
+
 # Flutter/Dart related
 **/build/
 **/.dart_tool/
