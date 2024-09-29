@@ -28,8 +28,6 @@ class MottuMarvelApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //ADD INITIALIZATION PROCESS TO .env
-
     return GetMaterialApp(
       title: 'Mottu - Marvel',
       theme: ThemeData(
