@@ -1,0 +1,23 @@
+name: mottu_http
+description: This package provides HTTP services for Mottu apps
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: any
+  custom_lint: any
+  mocktail: ^1.0.3
+  # freezed: any
+  # build_runner: any
+  # riverpod_generator: any
+  # json_serializable: any
+  # test_helpers:
+  #   path: ../test_helpers
