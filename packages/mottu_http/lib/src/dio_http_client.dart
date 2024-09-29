@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:common/common.dart';
 import 'package:dio/dio.dart';
 
 import 'exceptions.dart';
@@ -61,3 +62,9 @@ class DioHttpClient implements MottuHttpClient<ApiResponse> {
     return ApiResponse(statusCode: response.statusCode, data: response.data);
   }
 }
+
+final dio = Dio(BaseOptions(
+  baseUrl: Environment.baseApiUrl,
+  connectTimeout: const Duration(seconds: 5),
+  receiveTimeout: const Duration(seconds: 5),
+));
