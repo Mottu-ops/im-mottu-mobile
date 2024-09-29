@@ -7,6 +7,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  common:
+    path: ../common
+
   dio: ^5.7.0
 
 dev_dependencies:

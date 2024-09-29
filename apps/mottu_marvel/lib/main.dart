@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mottu_marvel/characters/presentation/routes.dart';
 import 'package:mottu_marvel/routes/app_routes.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: 'home',
+      initialRoute: CharactersRouteNames.HOME,
       getPages: marvelPages,
     );
   }
