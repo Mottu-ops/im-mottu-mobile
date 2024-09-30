@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:common/common.dart';
 import 'package:hive/hive.dart';
 import 'package:persistence/src/key_value_persistence.dart';
 
 class HiveKeyValuePersistence<T> implements KeyValuePersistence {
   HiveKeyValuePersistence({required this.boxName}) {
+    Hive.init(directory.path);
     completer.complete(Hive.openBox(boxName));
   }
 

@@ -17,6 +17,7 @@ Future<void> startApplication() async {
   print('Environemnt URL ${Environment.baseApiUrl}');
   await Future.wait([
     lockRotation(),
+    getApplicationDirectory(),
     // initFirebase(),
   ]);
 

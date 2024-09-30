@@ -9,6 +9,8 @@ dependencies:
     sdk: flutter
 
   hive: ^2.2.3
+  common:
+    path: ../common
 
 dev_dependencies:
   flutter_test:
