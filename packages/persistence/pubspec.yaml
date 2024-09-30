@@ -1,5 +1,5 @@
-name: mottu_http
-description: This package provides HTTP services for Mottu apps
+name: persistence
+description: This package provides essential services for storing data - e.g. complex cache data
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
@@ -8,12 +8,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  hive: ^2.2.3
   common:
     path: ../common
-  persistence:
-    path: ../persistence
-
-  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:
@@ -21,3 +18,4 @@ dev_dependencies:
   flutter_lints: any
   custom_lint: any
   mocktail: ^1.0.3
+  hive_test: ^1.0.0

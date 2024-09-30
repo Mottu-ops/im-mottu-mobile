@@ -48,6 +48,8 @@ dev_dependencies:
 
   mottu_http:
     path: ../../packages/mottu_http
+  persistence:
+    path: ../../packages/persistence
 
   build_runner: any
   freezed: any
