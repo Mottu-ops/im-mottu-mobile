@@ -32,8 +32,7 @@ void main() {
     mockResponseHandler = MockResponseInterceptorHandler();
     interceptor = DioCacheInterceptor(persistence: mockPersistence);
 
-    // Setup request options
-    options = RequestOptions(path: '/test', method: 'GET', baseUrl: 'https://api.example.com/test');
+    options = RequestOptions(path: '/characters', method: 'GET', baseUrl: 'https://api.mottu.com.br/marvel');
   });
 
   group('DioCacheInterceptor onRequest', () {
@@ -83,7 +82,7 @@ void main() {
       verify(() => mockResponseHandler.resolve(any(that: isA<Response>()))).called(1);
     });
 
-    test('Given a GET request, when a new path is requested, saves new data to cache', () async {
+    test('Given a GET request, when a new path is requested, saves new data to cache on 200 response', () async {
       when(() => mockPersistence.save<Map<String, dynamic>>(any(), any())).thenAnswer((_) async => true);
       final response = Response(
         requestOptions: options,
