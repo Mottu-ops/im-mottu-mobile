@@ -10,7 +10,8 @@ import 'mottu_http_client.dart';
 
 class DioHttpClient implements MottuHttpClient<ApiResponse> {
   DioHttpClient(this.client) {
-    client.interceptors.add(DioCacheInterceptor(persistence: HiveKeyValuePersistence(boxName: 'cache')));
+    client.interceptors
+        .add(DioCacheInterceptor(persistence: HiveKeyValuePersistence(boxName: 'cache', directory: directory)));
   }
 
   final Dio client;
@@ -75,4 +76,5 @@ final dio = Dio(BaseOptions(
   baseUrl: Environment.baseApiUrl,
   connectTimeout: const Duration(seconds: 5),
   receiveTimeout: const Duration(seconds: 5),
+  validateStatus: (status) => status != null && (status >= 200 && status < 300 || status == 304),
 ));

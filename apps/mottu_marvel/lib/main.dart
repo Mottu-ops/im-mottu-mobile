@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:mottu_marvel/characters/presentation/routes.dart';
 import 'package:mottu_marvel/routes/app_routes.dart';
 
+import 'services/app_lifecycle_service.dart';
+
 void main() async => startApplication();
 
 Future<void> startApplication() async {
@@ -15,9 +17,12 @@ Future<void> startApplication() async {
 
   print('App flavor $appFlavor');
   print('Environemnt URL ${Environment.baseApiUrl}');
+  Get.put(AppLifecycleService());
+
   await Future.wait([
     lockRotation(),
     getApplicationDirectory(),
+
     // initFirebase(),
   ]);
 

@@ -1,17 +1,23 @@
 import 'dart:async';
+import 'dart:io';
 
-import 'package:common/common.dart';
 import 'package:hive/hive.dart';
 import 'package:persistence/src/key_value_persistence.dart';
 
 class HiveKeyValuePersistence<T> implements KeyValuePersistence {
-  HiveKeyValuePersistence({required this.boxName}) {
+  HiveKeyValuePersistence({required this.boxName, required this.directory}) {
     Hive.init(directory.path);
-    completer.complete(Hive.openBox(boxName));
+
+    Hive.openBox<T>(boxName).then((box) {
+      completer.complete(box);
+    }).catchError((error) {
+      completer.completeError(error);
+    });
   }
 
   final String boxName;
-  final completer = Completer<Box<T>>();
+  final Directory directory;
+  Completer completer = Completer<Box<T>>();
   late Box<Map<String, dynamic>> box;
 
   @override
@@ -59,6 +65,17 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
       print(e);
       //TODO add crashlytics
       return false;
+    }
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    try {
+      final box = await completer.future as Box;
+      box.clear();
+      box.close();
+    } catch (e) {
+      print(e);
     }
   }
 

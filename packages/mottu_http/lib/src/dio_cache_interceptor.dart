@@ -17,7 +17,10 @@ class DioCacheInterceptor extends Interceptor {
     final cacheData = await _getCacheData(options.uri, options.uri.queryParameters);
     print('cache data? ${cacheData}');
     if (cacheData != null) {
-      if (DateTime.now().difference(DateTime.parse(cacheData['timestamp'])).inMinutes < 60) {
+      final cacheTTL = DateTime.now().difference(DateTime.parse(cacheData['timestamp'])).inMinutes;
+      print('CACHE TTL $cacheTTL');
+      //TODO Cache TTL to Firebase remote config or ENV
+      if (cacheTTL < 60) {
         final cachedResponse = Response(
             requestOptions: options,
             data: cacheData['data'].cast<String, dynamic>(),
@@ -40,7 +43,7 @@ class DioCacheInterceptor extends Interceptor {
   Future<void> onResponse(Response response, ResponseInterceptorHandler handler) async {
     print('on response ${response.statusCode}');
     if (response.statusCode == 304) {
-      print('returning cacheData after 304');
+      print('returning cacheData after 304: ${response.realUri}');
       final cacheData = await _getCacheData(response.realUri, response.realUri.queryParameters);
       if (cacheData != null) {
         final cachedResponse = Response(
