@@ -36,8 +36,7 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
       final box = await completer.future as Box;
       final data = box.get(key);
       if (data != null && data is Map) {
-        // Explicitly cast the map to Map<String, dynamic>
-        final castedData = _castNestedMap(data as Map<dynamic, dynamic>);
+        final castedData = _castNestedMap(data);
         print('DATA READ FROM HIVE');
         print(castedData);
         return castedData as T?;
