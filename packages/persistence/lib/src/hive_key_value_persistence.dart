@@ -17,11 +17,15 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
   @override
   Future<bool> save<T>(String key, T value) async {
     try {
-      final box = await completer.future as Box<T>;
+      final box = await completer.future as Box;
+      print('DATA TO BE SAVED ON HIVE');
+      print(value);
       box.put(key, value);
       return true;
     } catch (e) {
+      print('ERROR WHILE SAVING');
       //TODO add crashlytics
+      print(e);
       return false;
     }
   }
@@ -29,9 +33,18 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
   @override
   Future<T?> read<T>(String key) async {
     try {
-      final box = await completer.future as Box<T>;
-      return box.get(key);
+      final box = await completer.future as Box;
+      final data = box.get(key);
+      if (data != null && data is Map) {
+        // Explicitly cast the map to Map<String, dynamic>
+        final castedData = _castNestedMap(data as Map<dynamic, dynamic>);
+        print('DATA READ FROM HIVE');
+        print(castedData);
+        return castedData as T?;
+      }
+      return data as T?;
     } catch (e) {
+      print(e);
       //TODO add crashlytics
       return null;
     }
@@ -44,8 +57,27 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
       await box.delete(key);
       return true;
     } catch (e) {
+      print(e);
       //TODO add crashlytics
       return false;
     }
+  }
+
+  Map<String, dynamic> _castNestedMap(Map<dynamic, dynamic> dynamicMap) {
+    return dynamicMap.map((key, value) {
+      if (value is Map) {
+        return MapEntry(key.toString(), _castNestedMap(value));
+      } else if (value is List) {
+        return MapEntry(
+            key.toString(),
+            value.map((element) {
+              if (element is Map) {
+                return _castNestedMap(element);
+              }
+              return element;
+            }).toList());
+      }
+      return MapEntry(key.toString(), value);
+    });
   }
 }

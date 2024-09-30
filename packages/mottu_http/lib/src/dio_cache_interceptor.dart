@@ -8,18 +8,28 @@ class DioCacheInterceptor extends Interceptor {
 
   @override
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    print('on request: ${options.method.toUpperCase()}');
+
+    if (options.method.toUpperCase() != 'GET') {
+      return super.onRequest(options, handler);
+    }
+
     final cacheData = await _getCacheData(options.uri, options.uri.queryParameters);
+    print('cache data? ${cacheData}');
     if (cacheData != null) {
       if (DateTime.now().difference(DateTime.parse(cacheData['timestamp'])).inMinutes < 60) {
         final cachedResponse = Response(
-          requestOptions: options,
-          data: cacheData['data'],
-          statusCode: 200,
-        );
-
+            requestOptions: options,
+            data: cacheData['data'].cast<String, dynamic>(),
+            statusCode: 200,
+            statusMessage: 'OK');
+        print('returning cached cdata');
+        print(cachedResponse);
         return handler.resolve(cachedResponse);
       } else {
-        options.headers['If-None-Match'] = cacheData['etag'];
+        if (cacheData['etag'] != null) {
+          options.headers['If-None-Match'] = cacheData['etag'];
+        }
       }
     }
 
@@ -28,20 +38,25 @@ class DioCacheInterceptor extends Interceptor {
 
   @override
   Future<void> onResponse(Response response, ResponseInterceptorHandler handler) async {
+    print('on response ${response.statusCode}');
     if (response.statusCode == 304) {
+      print('returning cacheData after 304');
       final cacheData = await _getCacheData(response.realUri, response.realUri.queryParameters);
       if (cacheData != null) {
         final cachedResponse = Response(
-          requestOptions: response.requestOptions,
-          data: cacheData['data'],
-          statusCode: 200,
-        );
-
+            requestOptions: response.requestOptions,
+            data: cacheData['data'] as Map<String, dynamic>,
+            statusCode: 200,
+            statusMessage: 'OK');
+        print('returning cached cdata');
+        print(cachedResponse);
         return handler.resolve(cachedResponse);
       }
     }
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && response.data['etag'] != null) {
+      print('SAVING new data');
+      print(response.data);
       final cacheKey = _generateCacheKey(response.realUri, response.realUri.queryParameters);
       final cacheData = {
         'timestamp': DateTime.now().toIso8601String(),
@@ -49,7 +64,7 @@ class DioCacheInterceptor extends Interceptor {
         'data': response.data,
       };
 
-      await persistence.save(cacheKey, cacheData);
+      await persistence.save<Map<String, dynamic>>(cacheKey, cacheData);
     }
 
     return super.onResponse(response, handler);
@@ -57,10 +72,10 @@ class DioCacheInterceptor extends Interceptor {
 
   Future<Map<String, dynamic>?> _getCacheData(Uri uri, Map<String, dynamic> queryParameters) async {
     final key = _generateCacheKey(uri, queryParameters);
-    return await persistence.read(key) as Map<String, dynamic>?;
+    final cached = await persistence.read<Map<String, dynamic>>(key);
+    return cached ?? null;
   }
 
-  String _generateCacheKey(Uri uri, Map<String, dynamic> queryParameters) {
-    return '${uri.path}${queryParameters['offset']}${queryParameters['limit']}';
-  }
+  String _generateCacheKey(Uri uri, Map<String, dynamic> queryParameters) =>
+      '${uri.path}${queryParameters['offset']}${queryParameters['limit']}';
 }
