@@ -46,6 +46,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  mottu_design_system:
+    path: ../../packages/mottu_design_system
   mottu_http:
     path: ../../packages/mottu_http
   persistence:
