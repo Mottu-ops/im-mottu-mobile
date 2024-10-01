@@ -25,6 +25,13 @@ class CharactersPageController extends GetxController {
     fetchCharacters();
   }
 
+  @override
+  void onClose() {
+    scrollController.dispose();
+
+    super.onClose();
+  }
+
   void _addScrollListener() {
     scrollController.addListener(() {
       print(scrollController.offset);
