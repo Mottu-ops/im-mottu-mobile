@@ -79,6 +79,9 @@ class DioCacheInterceptor extends Interceptor {
     return cached ?? null;
   }
 
-  String _generateCacheKey(Uri uri, Map<String, dynamic> queryParameters) =>
-      '${uri.path}${queryParameters['offset']}${queryParameters['limit']}';
+  String _generateCacheKey(Uri uri, Map<String, dynamic> queryParameters) {
+    final key = '${uri.path}${queryParameters['offset']}${queryParameters['limit']}';
+    print('KEY GENERATED $key');
+    return key;
+  }
 }
