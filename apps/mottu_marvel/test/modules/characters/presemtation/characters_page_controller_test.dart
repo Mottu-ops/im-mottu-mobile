@@ -1,9 +1,7 @@
-// Import statements
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:get/get.dart';
 
-// Import the necessary classes and models
 import 'package:mottu_marvel/modules/characters/presentation/pagers/characters_page_controller.dart';
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
 import 'package:mottu_marvel/modules/characters/data/models/marvel_response_model.dart';
