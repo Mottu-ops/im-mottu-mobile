@@ -3,14 +3,22 @@ import 'package:get/get.dart';
 import 'package:mottu_marvel/modules/characters/presentation/pagers/characters_page_controller.dart';
 import 'package:mottu_design_system/mottu_design_system.dart';
 
-class CharactersPage extends StatelessWidget {
+class CharactersPage extends StatefulWidget {
   const CharactersPage({super.key});
+
+  @override
+  State<CharactersPage> createState() => _CharactersPageState();
+}
+
+class _CharactersPageState extends State<CharactersPage> {
+  final controller = Get.find<CharactersPageController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: CustomScrollView(
+        controller: controller.scrollController,
         slivers: [
           SliverPersistentHeader(
             pinned: true,
@@ -20,8 +28,8 @@ class CharactersPage extends StatelessWidget {
               bottomWidget: const _FilterCharactersTextField(),
             ),
           ),
-          GetX<CharactersPageController>(
-            builder: (controller) {
+          Obx(
+            () {
               if (controller.marvelResponse.value == null || controller.filteredCharactersList.value == null) {
                 return const SliverToBoxAdapter(
                   child: Center(
@@ -33,9 +41,9 @@ class CharactersPage extends StatelessWidget {
               }
 
               //TODO handle connection error: controller.filteredCharactersList.value == null
-              print('list ${controller.filteredCharactersList.value!.length}');
+              print('list ${controller.filteredCharactersList.length}');
 
-              final charactersList = controller.filteredCharactersList.value!
+              final charactersList = controller.filteredCharactersList
                   .map((eachCharacter) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
                         child: Text(
@@ -45,11 +53,11 @@ class CharactersPage extends StatelessWidget {
                       ))
                   .toList();
 
-              return SliverList.builder(
-                itemCount: charactersList.length,
-                itemBuilder: (context, index) {
-                  return charactersList[index];
-                },
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) => charactersList[index],
+                  childCount: charactersList.length,
+                ),
               );
             },
           ),

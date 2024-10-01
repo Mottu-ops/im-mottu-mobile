@@ -20,7 +20,8 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
   }
 
   @override
-  Future<MarvelResponse> fetchCharacters({int limit = 30, required int offset}) async {
+  Future<MarvelResponse> fetchCharacters({int limit = 20, required int offset}) async {
+    print('repository: fetch offset $offset, with limit $limit');
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
 
