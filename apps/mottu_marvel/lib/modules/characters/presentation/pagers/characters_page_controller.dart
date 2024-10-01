@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
 import 'package:mottu_marvel/modules/characters/domain/usecases/filter_characters_startswith_usecase.dart';
+import 'package:mottu_marvel/modules/characters/domain/usecases/filter_characters_trie_usecase.dart';
 import 'package:mottu_marvel/modules/characters/domain/usecases/filter_characters_usecase.dart';
 
 import '../../data/models/marvel_response_model.dart';
@@ -10,7 +11,7 @@ class CharactersPageController extends GetxController {
   final marvelResponse = Rxn<MarvelResponse>();
   final charactersList = Rxn<List<MarvelCharacter>>();
   final filteredCharactersList = Rxn<List<MarvelCharacter>>();
-  final usecase = FilterCharactersStartswithUsecase();
+  late FilterCharactersUsecase usecase;
 
   @override
   void onInit() {
@@ -24,6 +25,8 @@ class CharactersPageController extends GetxController {
     marvelResponse.value = fetchedResponse;
     charactersList.value = marvelResponse.value!.data.results;
     filteredCharactersList.value = marvelResponse.value!.data.results;
+    // usecase = FilterCharactersStartswithUsecase(initialList: filteredCharactersList.value!);
+    usecase = FilterCharactersTrieUsecase(initialList: filteredCharactersList.value!);
     //TODO Handle error
   }
 
@@ -33,7 +36,6 @@ class CharactersPageController extends GetxController {
       return;
     }
 
-    filteredCharactersList.value =
-        usecase(param: FilterCharactersUsecaseParam(initialList: charactersList.value!, prefix: prefix));
+    filteredCharactersList.value = usecase(param: prefix);
   }
 }
