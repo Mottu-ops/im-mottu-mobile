@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:mottu_marvel/modules/characters/presentation/pagers/characters_page_controller.dart';
 import 'package:mottu_design_system/mottu_design_system.dart';
 
+import '../../data/models/marvel_response_model.dart';
+
 class CharactersPage extends StatefulWidget {
   const CharactersPage({super.key});
 
@@ -40,9 +42,8 @@ class _CharactersPageState extends State<CharactersPage> {
               final List<Widget> charactersList = controller.filteredCharactersList
                   .map((eachCharacter) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
-                        child: Text(
-                          '${eachCharacter.name}',
-                          style: TextStyle(color: Colors.white),
+                        child: _MarvelCharacterItem(
+                          marvelCharacter: eachCharacter,
                         ),
                       ))
                   .toList();
@@ -100,6 +101,32 @@ class _FilterCharactersTextField extends StatelessWidget {
       child: MottuTextField(
         onChanged: controller.filterCharacters,
       ),
+    );
+  }
+}
+
+class _MarvelCharacterItem extends StatelessWidget {
+  const _MarvelCharacterItem({super.key, required this.marvelCharacter});
+
+  final MarvelCharacter marvelCharacter;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        MottuNetworkImage(
+          url: '${marvelCharacter.thumbnail.path}.${marvelCharacter.thumbnail.extension}',
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        Text(
+          marvelCharacter.name,
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        )
+      ],
     );
   }
 }
