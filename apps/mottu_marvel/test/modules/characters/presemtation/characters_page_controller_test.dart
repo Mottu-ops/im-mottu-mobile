@@ -38,7 +38,7 @@ void main() {
             MarvelCharacter(
               id: 1,
               name: 'Iron Man',
-              description: 'A billionaire industrialist and genius inventor.',
+              description: 'The iron man desc....',
               thumbnail: MarvelThumbnail(
                 path: 'path',
                 extension: 'extension',
@@ -47,7 +47,7 @@ void main() {
             MarvelCharacter(
               id: 2,
               name: 'Captain America',
-              description: 'A World War II veteran and super soldier.',
+              description: 'The captain american description...',
               thumbnail: MarvelThumbnail(
                 path: 'path',
                 extension: 'extension',
@@ -113,7 +113,7 @@ void main() {
             MarvelCharacter(
               id: 1,
               name: 'Iron Man',
-              description: '',
+              description: 'asdfasdf',
               thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'),
             ),
           ],
@@ -131,7 +131,7 @@ void main() {
             MarvelCharacter(
               id: 2,
               name: 'Thor',
-              description: '',
+              description: 'asdfsfgfg',
               thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'),
             ),
           ],
