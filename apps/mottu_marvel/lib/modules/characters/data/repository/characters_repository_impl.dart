@@ -21,14 +21,10 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
   @override
   Future<MarvelResponse> fetchCharacters({int limit = 20, required int offset}) async {
+    //TODO Test without timestamp
     print('repository: fetch offset $offset, with limit $limit');
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
-
-    Map<String, String> headers = {};
-    if (_etag != null) {
-      headers['If-None-Match'] = _etag!; //It should go to the DioInteceptor
-    }
 
     try {
       final response = await httpClient.get(
@@ -40,7 +36,6 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
           'offset': offset,
           'limit': limit,
         },
-        options: {'headers': headers},
       );
 
       print('Response data: ${response.data}');
@@ -48,21 +43,39 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
       return MarvelResponse.fromJson(response.data!);
     } on MottuHttpException catch (e) {
-      if (e.code == 304) {
-        //TODO Cache
-        print('http not modifiend');
-        // return MovieList(movies: [Movie(name: 'Cached movie')]);
-        print('get from caache');
-      }
-
       rethrow; //TODO
     }
   }
 
   @override
-  Future<MarvelResponse> fetchRelatedCharacters({required int id, int limit = 10, required int offset}) {
-    // TODO: implement fetchRelatedCharacters
-    throw UnimplementedError();
+  Future<MarvelResponse> fetchRelatedCharacters(
+      {int? comics, int? series, int? events, int? stories, int limit = 20, required int offset}) async {
+    print('repository: fetch offset $offset, with limit $limit');
+    final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+    final String hash = _generateHash(timestamp);
+
+    try {
+      final response = await httpClient.get(
+        'characters',
+        queryParameters: {
+          'ts': timestamp,
+          'apikey': Environment.marvelPublicKey,
+          'hash': hash,
+          'offset': offset,
+          'limit': limit,
+          'comics': comics,
+          'series': series,
+          'events': events,
+          'stories': stories,
+        },
+      );
+
+      print('Response data: ${response.data}');
+
+      return MarvelResponse.fromJson(response.data!);
+    } on MottuHttpException catch (e) {
+      rethrow; //TODO
+    }
   }
 
   @override
