@@ -421,7 +421,6 @@ mixin _$MarvelCharacter {
   MarvelThumbnail get thumbnail => throw _privateConstructorUsedError;
   MarvelComics get comics => throw _privateConstructorUsedError;
   MarvelSeries get series => throw _privateConstructorUsedError;
-  MarvelStories get stories => throw _privateConstructorUsedError;
   MarvelEvents get events => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -443,13 +442,11 @@ abstract class $MarvelCharacterCopyWith<$Res> {
       MarvelThumbnail thumbnail,
       MarvelComics comics,
       MarvelSeries series,
-      MarvelStories stories,
       MarvelEvents events});
 
   $MarvelThumbnailCopyWith<$Res> get thumbnail;
   $MarvelComicsCopyWith<$Res> get comics;
   $MarvelSeriesCopyWith<$Res> get series;
-  $MarvelStoriesCopyWith<$Res> get stories;
   $MarvelEventsCopyWith<$Res> get events;
 }
 
@@ -472,7 +469,6 @@ class _$MarvelCharacterCopyWithImpl<$Res, $Val extends MarvelCharacter>
     Object? thumbnail = null,
     Object? comics = null,
     Object? series = null,
-    Object? stories = null,
     Object? events = null,
   }) {
     return _then(_value.copyWith(
@@ -500,10 +496,6 @@ class _$MarvelCharacterCopyWithImpl<$Res, $Val extends MarvelCharacter>
           ? _value.series
           : series // ignore: cast_nullable_to_non_nullable
               as MarvelSeries,
-      stories: null == stories
-          ? _value.stories
-          : stories // ignore: cast_nullable_to_non_nullable
-              as MarvelStories,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -537,14 +529,6 @@ class _$MarvelCharacterCopyWithImpl<$Res, $Val extends MarvelCharacter>
 
   @override
   @pragma('vm:prefer-inline')
-  $MarvelStoriesCopyWith<$Res> get stories {
-    return $MarvelStoriesCopyWith<$Res>(_value.stories, (value) {
-      return _then(_value.copyWith(stories: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
   $MarvelEventsCopyWith<$Res> get events {
     return $MarvelEventsCopyWith<$Res>(_value.events, (value) {
       return _then(_value.copyWith(events: value) as $Val);
@@ -567,7 +551,6 @@ abstract class _$$MarvelCharacterImplCopyWith<$Res>
       MarvelThumbnail thumbnail,
       MarvelComics comics,
       MarvelSeries series,
-      MarvelStories stories,
       MarvelEvents events});
 
   @override
@@ -576,8 +559,6 @@ abstract class _$$MarvelCharacterImplCopyWith<$Res>
   $MarvelComicsCopyWith<$Res> get comics;
   @override
   $MarvelSeriesCopyWith<$Res> get series;
-  @override
-  $MarvelStoriesCopyWith<$Res> get stories;
   @override
   $MarvelEventsCopyWith<$Res> get events;
 }
@@ -599,7 +580,6 @@ class __$$MarvelCharacterImplCopyWithImpl<$Res>
     Object? thumbnail = null,
     Object? comics = null,
     Object? series = null,
-    Object? stories = null,
     Object? events = null,
   }) {
     return _then(_$MarvelCharacterImpl(
@@ -627,10 +607,6 @@ class __$$MarvelCharacterImplCopyWithImpl<$Res>
           ? _value.series
           : series // ignore: cast_nullable_to_non_nullable
               as MarvelSeries,
-      stories: null == stories
-          ? _value.stories
-          : stories // ignore: cast_nullable_to_non_nullable
-              as MarvelStories,
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
@@ -649,7 +625,6 @@ class _$MarvelCharacterImpl implements _MarvelCharacter {
       required this.thumbnail,
       required this.comics,
       required this.series,
-      required this.stories,
       required this.events});
 
   factory _$MarvelCharacterImpl.fromJson(Map<String, dynamic> json) =>
@@ -668,13 +643,11 @@ class _$MarvelCharacterImpl implements _MarvelCharacter {
   @override
   final MarvelSeries series;
   @override
-  final MarvelStories stories;
-  @override
   final MarvelEvents events;
 
   @override
   String toString() {
-    return 'MarvelCharacter(id: $id, name: $name, description: $description, thumbnail: $thumbnail, comics: $comics, series: $series, stories: $stories, events: $events)';
+    return 'MarvelCharacter(id: $id, name: $name, description: $description, thumbnail: $thumbnail, comics: $comics, series: $series, events: $events)';
   }
 
   @override
@@ -690,14 +663,13 @@ class _$MarvelCharacterImpl implements _MarvelCharacter {
                 other.thumbnail == thumbnail) &&
             (identical(other.comics, comics) || other.comics == comics) &&
             (identical(other.series, series) || other.series == series) &&
-            (identical(other.stories, stories) || other.stories == stories) &&
             (identical(other.events, events) || other.events == events));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, thumbnail,
-      comics, series, stories, events);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, description, thumbnail, comics, series, events);
 
   @JsonKey(ignore: true)
   @override
@@ -722,7 +694,6 @@ abstract class _MarvelCharacter implements MarvelCharacter {
       required final MarvelThumbnail thumbnail,
       required final MarvelComics comics,
       required final MarvelSeries series,
-      required final MarvelStories stories,
       required final MarvelEvents events}) = _$MarvelCharacterImpl;
 
   factory _MarvelCharacter.fromJson(Map<String, dynamic> json) =
@@ -740,8 +711,6 @@ abstract class _MarvelCharacter implements MarvelCharacter {
   MarvelComics get comics;
   @override
   MarvelSeries get series;
-  @override
-  MarvelStories get stories;
   @override
   MarvelEvents get events;
   @override
@@ -1480,391 +1449,6 @@ abstract class _MarvelSeries implements MarvelSeries {
   @override
   @JsonKey(ignore: true)
   _$$MarvelSeriesImplCopyWith<_$MarvelSeriesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-MarvelStories _$MarvelStoriesFromJson(Map<String, dynamic> json) {
-  return _MarvelStories.fromJson(json);
-}
-
-/// @nodoc
-mixin _$MarvelStories {
-  int get available => throw _privateConstructorUsedError;
-  String get collectionURI => throw _privateConstructorUsedError;
-  List<MarvelStoryItem> get items => throw _privateConstructorUsedError;
-  int get returned => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MarvelStoriesCopyWith<MarvelStories> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MarvelStoriesCopyWith<$Res> {
-  factory $MarvelStoriesCopyWith(
-          MarvelStories value, $Res Function(MarvelStories) then) =
-      _$MarvelStoriesCopyWithImpl<$Res, MarvelStories>;
-  @useResult
-  $Res call(
-      {int available,
-      String collectionURI,
-      List<MarvelStoryItem> items,
-      int returned});
-}
-
-/// @nodoc
-class _$MarvelStoriesCopyWithImpl<$Res, $Val extends MarvelStories>
-    implements $MarvelStoriesCopyWith<$Res> {
-  _$MarvelStoriesCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? available = null,
-    Object? collectionURI = null,
-    Object? items = null,
-    Object? returned = null,
-  }) {
-    return _then(_value.copyWith(
-      available: null == available
-          ? _value.available
-          : available // ignore: cast_nullable_to_non_nullable
-              as int,
-      collectionURI: null == collectionURI
-          ? _value.collectionURI
-          : collectionURI // ignore: cast_nullable_to_non_nullable
-              as String,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<MarvelStoryItem>,
-      returned: null == returned
-          ? _value.returned
-          : returned // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MarvelStoriesImplCopyWith<$Res>
-    implements $MarvelStoriesCopyWith<$Res> {
-  factory _$$MarvelStoriesImplCopyWith(
-          _$MarvelStoriesImpl value, $Res Function(_$MarvelStoriesImpl) then) =
-      __$$MarvelStoriesImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int available,
-      String collectionURI,
-      List<MarvelStoryItem> items,
-      int returned});
-}
-
-/// @nodoc
-class __$$MarvelStoriesImplCopyWithImpl<$Res>
-    extends _$MarvelStoriesCopyWithImpl<$Res, _$MarvelStoriesImpl>
-    implements _$$MarvelStoriesImplCopyWith<$Res> {
-  __$$MarvelStoriesImplCopyWithImpl(
-      _$MarvelStoriesImpl _value, $Res Function(_$MarvelStoriesImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? available = null,
-    Object? collectionURI = null,
-    Object? items = null,
-    Object? returned = null,
-  }) {
-    return _then(_$MarvelStoriesImpl(
-      available: null == available
-          ? _value.available
-          : available // ignore: cast_nullable_to_non_nullable
-              as int,
-      collectionURI: null == collectionURI
-          ? _value.collectionURI
-          : collectionURI // ignore: cast_nullable_to_non_nullable
-              as String,
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<MarvelStoryItem>,
-      returned: null == returned
-          ? _value.returned
-          : returned // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MarvelStoriesImpl implements _MarvelStories {
-  const _$MarvelStoriesImpl(
-      {required this.available,
-      required this.collectionURI,
-      required final List<MarvelStoryItem> items,
-      required this.returned})
-      : _items = items;
-
-  factory _$MarvelStoriesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MarvelStoriesImplFromJson(json);
-
-  @override
-  final int available;
-  @override
-  final String collectionURI;
-  final List<MarvelStoryItem> _items;
-  @override
-  List<MarvelStoryItem> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  @override
-  final int returned;
-
-  @override
-  String toString() {
-    return 'MarvelStories(available: $available, collectionURI: $collectionURI, items: $items, returned: $returned)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MarvelStoriesImpl &&
-            (identical(other.available, available) ||
-                other.available == available) &&
-            (identical(other.collectionURI, collectionURI) ||
-                other.collectionURI == collectionURI) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.returned, returned) ||
-                other.returned == returned));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, available, collectionURI,
-      const DeepCollectionEquality().hash(_items), returned);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MarvelStoriesImplCopyWith<_$MarvelStoriesImpl> get copyWith =>
-      __$$MarvelStoriesImplCopyWithImpl<_$MarvelStoriesImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MarvelStoriesImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _MarvelStories implements MarvelStories {
-  const factory _MarvelStories(
-      {required final int available,
-      required final String collectionURI,
-      required final List<MarvelStoryItem> items,
-      required final int returned}) = _$MarvelStoriesImpl;
-
-  factory _MarvelStories.fromJson(Map<String, dynamic> json) =
-      _$MarvelStoriesImpl.fromJson;
-
-  @override
-  int get available;
-  @override
-  String get collectionURI;
-  @override
-  List<MarvelStoryItem> get items;
-  @override
-  int get returned;
-  @override
-  @JsonKey(ignore: true)
-  _$$MarvelStoriesImplCopyWith<_$MarvelStoriesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-MarvelStoryItem _$MarvelStoryItemFromJson(Map<String, dynamic> json) {
-  return _MarvelStoryItem.fromJson(json);
-}
-
-/// @nodoc
-mixin _$MarvelStoryItem {
-  String get resourceURI => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MarvelStoryItemCopyWith<MarvelStoryItem> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MarvelStoryItemCopyWith<$Res> {
-  factory $MarvelStoryItemCopyWith(
-          MarvelStoryItem value, $Res Function(MarvelStoryItem) then) =
-      _$MarvelStoryItemCopyWithImpl<$Res, MarvelStoryItem>;
-  @useResult
-  $Res call({String resourceURI, String name, String type});
-}
-
-/// @nodoc
-class _$MarvelStoryItemCopyWithImpl<$Res, $Val extends MarvelStoryItem>
-    implements $MarvelStoryItemCopyWith<$Res> {
-  _$MarvelStoryItemCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? resourceURI = null,
-    Object? name = null,
-    Object? type = null,
-  }) {
-    return _then(_value.copyWith(
-      resourceURI: null == resourceURI
-          ? _value.resourceURI
-          : resourceURI // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MarvelStoryItemImplCopyWith<$Res>
-    implements $MarvelStoryItemCopyWith<$Res> {
-  factory _$$MarvelStoryItemImplCopyWith(_$MarvelStoryItemImpl value,
-          $Res Function(_$MarvelStoryItemImpl) then) =
-      __$$MarvelStoryItemImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String resourceURI, String name, String type});
-}
-
-/// @nodoc
-class __$$MarvelStoryItemImplCopyWithImpl<$Res>
-    extends _$MarvelStoryItemCopyWithImpl<$Res, _$MarvelStoryItemImpl>
-    implements _$$MarvelStoryItemImplCopyWith<$Res> {
-  __$$MarvelStoryItemImplCopyWithImpl(
-      _$MarvelStoryItemImpl _value, $Res Function(_$MarvelStoryItemImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? resourceURI = null,
-    Object? name = null,
-    Object? type = null,
-  }) {
-    return _then(_$MarvelStoryItemImpl(
-      resourceURI: null == resourceURI
-          ? _value.resourceURI
-          : resourceURI // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MarvelStoryItemImpl implements _MarvelStoryItem {
-  const _$MarvelStoryItemImpl(
-      {required this.resourceURI, required this.name, required this.type});
-
-  factory _$MarvelStoryItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MarvelStoryItemImplFromJson(json);
-
-  @override
-  final String resourceURI;
-  @override
-  final String name;
-  @override
-  final String type;
-
-  @override
-  String toString() {
-    return 'MarvelStoryItem(resourceURI: $resourceURI, name: $name, type: $type)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MarvelStoryItemImpl &&
-            (identical(other.resourceURI, resourceURI) ||
-                other.resourceURI == resourceURI) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, resourceURI, name, type);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MarvelStoryItemImplCopyWith<_$MarvelStoryItemImpl> get copyWith =>
-      __$$MarvelStoryItemImplCopyWithImpl<_$MarvelStoryItemImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MarvelStoryItemImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _MarvelStoryItem implements MarvelStoryItem {
-  const factory _MarvelStoryItem(
-      {required final String resourceURI,
-      required final String name,
-      required final String type}) = _$MarvelStoryItemImpl;
-
-  factory _MarvelStoryItem.fromJson(Map<String, dynamic> json) =
-      _$MarvelStoryItemImpl.fromJson;
-
-  @override
-  String get resourceURI;
-  @override
-  String get name;
-  @override
-  String get type;
-  @override
-  @JsonKey(ignore: true)
-  _$$MarvelStoryItemImplCopyWith<_$MarvelStoryItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

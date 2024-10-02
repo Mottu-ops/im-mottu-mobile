@@ -49,7 +49,6 @@ _$MarvelCharacterImpl _$$MarvelCharacterImplFromJson(
           MarvelThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>),
       comics: MarvelComics.fromJson(json['comics'] as Map<String, dynamic>),
       series: MarvelSeries.fromJson(json['series'] as Map<String, dynamic>),
-      stories: MarvelStories.fromJson(json['stories'] as Map<String, dynamic>),
       events: MarvelEvents.fromJson(json['events'] as Map<String, dynamic>),
     );
 
@@ -62,7 +61,6 @@ Map<String, dynamic> _$$MarvelCharacterImplToJson(
       'thumbnail': instance.thumbnail,
       'comics': instance.comics,
       'series': instance.series,
-      'stories': instance.stories,
       'events': instance.events,
     };
 
@@ -126,40 +124,6 @@ Map<String, dynamic> _$$MarvelSeriesImplToJson(_$MarvelSeriesImpl instance) =>
       'collectionURI': instance.collectionURI,
       'items': instance.items,
       'returned': instance.returned,
-    };
-
-_$MarvelStoriesImpl _$$MarvelStoriesImplFromJson(Map<String, dynamic> json) =>
-    _$MarvelStoriesImpl(
-      available: (json['available'] as num).toInt(),
-      collectionURI: json['collectionURI'] as String,
-      items: (json['items'] as List<dynamic>)
-          .map((e) => MarvelStoryItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      returned: (json['returned'] as num).toInt(),
-    );
-
-Map<String, dynamic> _$$MarvelStoriesImplToJson(_$MarvelStoriesImpl instance) =>
-    <String, dynamic>{
-      'available': instance.available,
-      'collectionURI': instance.collectionURI,
-      'items': instance.items,
-      'returned': instance.returned,
-    };
-
-_$MarvelStoryItemImpl _$$MarvelStoryItemImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MarvelStoryItemImpl(
-      resourceURI: json['resourceURI'] as String,
-      name: json['name'] as String,
-      type: json['type'] as String,
-    );
-
-Map<String, dynamic> _$$MarvelStoryItemImplToJson(
-        _$MarvelStoryItemImpl instance) =>
-    <String, dynamic>{
-      'resourceURI': instance.resourceURI,
-      'name': instance.name,
-      'type': instance.type,
     };
 
 _$MarvelEventsImpl _$$MarvelEventsImplFromJson(Map<String, dynamic> json) =>

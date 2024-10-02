@@ -8,8 +8,6 @@ import 'package:mottu_marvel/modules/characters/data/models/marvel_response_mode
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
 
 class CharactersRepositoryImpl extends GetxService implements CharactersRepository {
-  String? _etag;
-
   CharactersRepositoryImpl({required this.httpClient});
 
   final MottuHttpClient httpClient;
@@ -56,7 +54,9 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
   @override
   Future<MarvelResponse> fetchRelatedCharacters(
       {List<String>? comics, List<String>? series, List<String>? events, int limit = 10, required int offset}) async {
-    print('repository: fetch offset $offset, with limit $limit');
+    print('repository: fetchRelatedCharacters - fetch offset $offset, with limit $limit');
+    print('comics $comics, series: $series, events: $events');
+
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
 

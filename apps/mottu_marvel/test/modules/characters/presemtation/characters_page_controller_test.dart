@@ -2,11 +2,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:get/get.dart';
 
-import 'package:mottu_marvel/modules/characters/presentation/pagers/characters_page_controller.dart';
+import 'package:mottu_marvel/modules/characters/presentation/pages/characters_page_controller.dart';
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
 import 'package:mottu_marvel/modules/characters/data/models/marvel_response_model.dart';
 
 class MockCharactersRepository extends Mock implements CharactersRepository {}
+
+class MarvelComicsMock extends Mock implements MarvelComics {}
+
+class MarvelSeriesMock extends Mock implements MarvelSeries {}
+
+class MarvelEventsMock extends Mock implements MarvelEvents {}
 
 void main() {
   late CharactersPageController controller;
@@ -27,7 +33,7 @@ void main() {
     test(
         'Given the initial state as empty characters list, when the screen loads, then the controller fetches initial characters list',
         () async {
-      const mockMarvelResponse = MarvelResponse(
+      final mockMarvelResponse = MarvelResponse(
         etag: '123',
         data: MarvelData(
           offset: 0,
@@ -43,6 +49,9 @@ void main() {
                 path: 'path',
                 extension: 'extension',
               ),
+              comics: MarvelComicsMock(),
+              series: MarvelSeriesMock(),
+              events: MarvelEventsMock(),
             ),
             MarvelCharacter(
               id: 2,
@@ -52,6 +61,9 @@ void main() {
                 path: 'path',
                 extension: 'extension',
               ),
+              comics: MarvelComicsMock(),
+              series: MarvelSeriesMock(),
+              events: MarvelEventsMock(),
             ),
           ],
         ),
@@ -102,7 +114,7 @@ void main() {
     test(
         'When the initial characters is loaded, when the user scrolls to the end of the list, then the next pagination fetches a new list of characters',
         () async {
-      const initialResponse = MarvelResponse(
+      final initialResponse = MarvelResponse(
         etag: '123',
         data: MarvelData(
           offset: 0,
@@ -115,12 +127,15 @@ void main() {
               name: 'Iron Man',
               description: 'asdfasdf',
               thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'),
+              comics: MarvelComicsMock(),
+              series: MarvelSeriesMock(),
+              events: MarvelEventsMock(),
             ),
           ],
         ),
       );
 
-      const nextPageResponse = MarvelResponse(
+      final nextPageResponse = MarvelResponse(
         etag: '123',
         data: MarvelData(
           offset: 20,
@@ -133,6 +148,9 @@ void main() {
               name: 'Thor',
               description: 'asdfsfgfg',
               thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'),
+              comics: MarvelComicsMock(),
+              series: MarvelSeriesMock(),
+              events: MarvelEventsMock(),
             ),
           ],
         ),
