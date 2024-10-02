@@ -48,8 +48,19 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
   }
 
   @override
+  Future<MarvelResponse> filterCharactersByName({required String name, int limit = 10, required int offset}) {
+    // TODO: implement filterCharactersByName
+    throw UnimplementedError();
+  }
+
+  @override
   Future<MarvelResponse> fetchRelatedCharacters(
-      {int? comics, int? series, int? events, int? stories, int limit = 20, required int offset}) async {
+      {List<int>? comics,
+      List<int>? series,
+      List<int>? events,
+      List<int>? stories,
+      int limit = 10,
+      required int offset}) async {
     print('repository: fetch offset $offset, with limit $limit');
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
@@ -63,10 +74,10 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
           'hash': hash,
           'offset': offset,
           'limit': limit,
-          'comics': comics,
-          'series': series,
-          'events': events,
-          'stories': stories,
+          'comics': comics?.join(','),
+          'series': series?.join(','),
+          'events': events?.join(','),
+          'stories': stories?.join(','),
         },
       );
 
@@ -76,11 +87,5 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
     } on MottuHttpException catch (e) {
       rethrow; //TODO
     }
-  }
-
-  @override
-  Future<MarvelResponse> filterCharactersByName({required String name, int limit = 10, required int offset}) {
-    // TODO: implement filterCharactersByName
-    throw UnimplementedError();
   }
 }

@@ -4,5 +4,10 @@ abstract class CharactersRepository {
   Future<MarvelResponse> fetchCharacters({int limit = 10, required int offset});
   Future<MarvelResponse> filterCharactersByName({required String name, int limit = 10, required int offset});
   Future<MarvelResponse> fetchRelatedCharacters(
-      {int? comics, int? series, int? events, int? stories, int limit = 10, required int offset});
+      {List<int>? comics,
+      List<int>? series,
+      List<int>? events,
+      List<int>? stories,
+      int limit = 10,
+      required int offset});
 }
