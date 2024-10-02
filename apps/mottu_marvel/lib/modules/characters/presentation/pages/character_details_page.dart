@@ -5,6 +5,7 @@ import 'package:mottu_marvel/modules/characters/presentation/pages/characters_pa
 import 'package:mottu_design_system/mottu_design_system.dart';
 
 import '../../data/models/marvel_response_model.dart';
+import '../router/character_router.dart';
 
 class CharacterDetailsPage extends StatefulWidget {
   const CharacterDetailsPage({super.key});
@@ -114,7 +115,7 @@ class _MarvelCharacterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed('charactersDetails', arguments: {'character': marvelCharacter}),
+      onTap: () => CharacterRouter.goToCharacterDetails(marvelCharacter),
       child: Row(
         children: [
           MottuNetworkImage(

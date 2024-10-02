@@ -87,7 +87,7 @@ class DioCacheInterceptor extends Interceptor {
       }
 
       return entry.value;
-    }).join("");
+    }).join(",");
 
     print('KEY GENERATED $key');
     return key;

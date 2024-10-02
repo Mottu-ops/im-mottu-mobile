@@ -69,9 +69,9 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
           'hash': hash,
           'offset': offset,
           'limit': limit,
-          'comics': comics?.join(','),
-          'series': series?.join(','),
-          'events': events?.join(','),
+          if (comics?.isNotEmpty == true) 'comics': comics?.first,
+          if (series?.isNotEmpty == true) 'series': series?.first,
+          if (events?.isNotEmpty == true) 'events': events?.first,
         },
       );
 

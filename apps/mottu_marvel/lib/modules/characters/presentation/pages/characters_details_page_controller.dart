@@ -1,12 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
+import 'package:mottu_marvel/modules/characters/domain/usecases/get_related_characters_by_programs_usecase.dart';
 import 'package:mottu_marvel/modules/characters/domain/usecases/get_related_characters_usecase.dart';
 
 import '../../data/models/marvel_response_model.dart';
 
 class CharactersDetailsPageController extends GetxController {
-  late Rxn<MarvelCharacter> character;
+  final character = Rxn<MarvelCharacter>();
   final repository = Get.find<CharactersRepository>();
   late GetRelatedCharactersUsecase getRelatedCharactersUsecase;
   final marvelResponse = Rxn<MarvelResponse>();
@@ -19,7 +20,7 @@ class CharactersDetailsPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    character = Get.arguments['character'].obs;
+    character.value = Get.arguments['character'] as MarvelCharacter;
 
     _addScrollListener();
     fetchRelatedCharacters();
@@ -47,6 +48,7 @@ class CharactersDetailsPageController extends GetxController {
 
   Future<void> fetchRelatedCharacters({int offset = 0, limit = DEFAULT_LIMIT}) async {
     isFetching.value = true;
+    getRelatedCharactersUsecase = GetRelatedCharactersByProgramsUsecase(repository: repository);
 
     final fetchedResponse = await getRelatedCharactersUsecase(
       param: GetRelatedCharactersByProgramsUsecaseParam(
