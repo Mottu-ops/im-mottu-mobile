@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mottu_marvel/modules/characters/presentation/routes.dart';
+import 'package:mottu_marvel/modules/characters/presentation/router/routes.dart';
 import 'package:mottu_marvel/core/routes/app_routes.dart';
 
 import 'core/services/app_lifecycle_service.dart';

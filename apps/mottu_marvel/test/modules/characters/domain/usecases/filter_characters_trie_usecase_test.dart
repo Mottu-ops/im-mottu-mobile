@@ -1,22 +1,76 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:mottu_marvel/modules/characters/data/models/marvel_response_model.dart';
 
 import 'package:mottu_marvel/modules/characters/domain/usecases/filter_characters_trie_usecase.dart';
 
+class MarvelComicsMock extends Mock implements MarvelComics {}
+
+class MarvelSeriesMock extends Mock implements MarvelSeries {}
+
+class MarvelEventsMock extends Mock implements MarvelEvents {}
+
 void main() {
-  const character1 = MarvelCharacter(
-      id: 1, name: '3-D Man', description: '', thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'));
-  const character2 = MarvelCharacter(
-      id: 2, name: 'A-Bomb (HAS)', description: '', thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'));
-  const character3 = MarvelCharacter(
-      id: 3,
-      name: 'Abyss (Age of Apocalypse)',
-      description: '',
-      thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'));
-  const character4 = MarvelCharacter(
-      id: 3, name: 'Batman', description: '', thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'));
-  const character5 = MarvelCharacter(
-      id: 3, name: 'Casa', description: '', thumbnail: MarvelThumbnail(path: 'path', extension: 'extension'));
+  final character1 = MarvelCharacter(
+    id: 1,
+    name: '3-D Man',
+    description: '',
+    thumbnail: MarvelThumbnail(
+      path: 'path',
+      extension: 'extension',
+    ),
+    comics: MarvelComicsMock(),
+    series: MarvelSeriesMock(),
+    events: MarvelEventsMock(),
+  );
+  final character2 = MarvelCharacter(
+    id: 2,
+    name: 'A-Bomb (HAS)',
+    description: '',
+    thumbnail: MarvelThumbnail(
+      path: 'path',
+      extension: 'extension',
+    ),
+    comics: MarvelComicsMock(),
+    series: MarvelSeriesMock(),
+    events: MarvelEventsMock(),
+  );
+  final character3 = MarvelCharacter(
+    id: 3,
+    name: 'Abyss (Age of Apocalypse)',
+    description: '',
+    thumbnail: MarvelThumbnail(
+      path: 'path',
+      extension: 'extension',
+    ),
+    comics: MarvelComicsMock(),
+    series: MarvelSeriesMock(),
+    events: MarvelEventsMock(),
+  );
+  final character4 = MarvelCharacter(
+    id: 3,
+    name: 'Batman',
+    description: '',
+    thumbnail: MarvelThumbnail(
+      path: 'path',
+      extension: 'extension',
+    ),
+    comics: MarvelComicsMock(),
+    series: MarvelSeriesMock(),
+    events: MarvelEventsMock(),
+  );
+  final character5 = MarvelCharacter(
+    id: 3,
+    name: 'Casa',
+    description: '',
+    thumbnail: MarvelThumbnail(
+      path: 'path',
+      extension: 'extension',
+    ),
+    comics: MarvelComicsMock(),
+    series: MarvelSeriesMock(),
+    events: MarvelEventsMock(),
+  );
   final initialList = [character3, character1, character2, character4, character5];
   group('HealthCareSearchFilter', () {
     late FilterCharactersTrieUsecase filterCharactersUsecase;

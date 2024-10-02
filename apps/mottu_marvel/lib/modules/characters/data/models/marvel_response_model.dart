@@ -33,7 +33,14 @@ class MarvelCharacter with _$MarvelCharacter {
     required String name,
     required String description,
     required MarvelThumbnail thumbnail,
+    required MarvelComics comics,
+    required MarvelSeries series,
+    required MarvelEvents events,
   }) = _MarvelCharacter;
+
+  const MarvelCharacter._();
+
+  String get imageUrl => '${thumbnail.path}.${thumbnail.extension}';
 
   factory MarvelCharacter.fromJson(Map<String, dynamic> json) => _$MarvelCharacterFromJson(json);
 }
@@ -46,4 +53,50 @@ class MarvelThumbnail with _$MarvelThumbnail {
   }) = _MarvelThumbnail;
 
   factory MarvelThumbnail.fromJson(Map<String, dynamic> json) => _$MarvelThumbnailFromJson(json);
+}
+
+@freezed
+class MarvelComics with _$MarvelComics {
+  const factory MarvelComics({
+    required int available,
+    required String collectionURI,
+    required List<MarvelItem> items,
+    required int returned,
+  }) = _MarvelComics;
+
+  factory MarvelComics.fromJson(Map<String, dynamic> json) => _$MarvelComicsFromJson(json);
+}
+
+@freezed
+class MarvelItem with _$MarvelItem {
+  const factory MarvelItem({
+    required String resourceURI,
+    required String name,
+  }) = _MarvelItem;
+
+  factory MarvelItem.fromJson(Map<String, dynamic> json) => _$MarvelItemFromJson(json);
+}
+
+@freezed
+class MarvelSeries with _$MarvelSeries {
+  const factory MarvelSeries({
+    required int available,
+    required String collectionURI,
+    required List<MarvelItem> items,
+    required int returned,
+  }) = _MarvelSeries;
+
+  factory MarvelSeries.fromJson(Map<String, dynamic> json) => _$MarvelSeriesFromJson(json);
+}
+
+@freezed
+class MarvelEvents with _$MarvelEvents {
+  const factory MarvelEvents({
+    required int available,
+    required String collectionURI,
+    required List<MarvelItem> items,
+    required int returned,
+  }) = _MarvelEvents;
+
+  factory MarvelEvents.fromJson(Map<String, dynamic> json) => _$MarvelEventsFromJson(json);
 }

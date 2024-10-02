@@ -47,6 +47,9 @@ _$MarvelCharacterImpl _$$MarvelCharacterImplFromJson(
       description: json['description'] as String,
       thumbnail:
           MarvelThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>),
+      comics: MarvelComics.fromJson(json['comics'] as Map<String, dynamic>),
+      series: MarvelSeries.fromJson(json['series'] as Map<String, dynamic>),
+      events: MarvelEvents.fromJson(json['events'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MarvelCharacterImplToJson(
@@ -56,6 +59,9 @@ Map<String, dynamic> _$$MarvelCharacterImplToJson(
       'name': instance.name,
       'description': instance.description,
       'thumbnail': instance.thumbnail,
+      'comics': instance.comics,
+      'series': instance.series,
+      'events': instance.events,
     };
 
 _$MarvelThumbnailImpl _$$MarvelThumbnailImplFromJson(
@@ -70,4 +76,70 @@ Map<String, dynamic> _$$MarvelThumbnailImplToJson(
     <String, dynamic>{
       'path': instance.path,
       'extension': instance.extension,
+    };
+
+_$MarvelComicsImpl _$$MarvelComicsImplFromJson(Map<String, dynamic> json) =>
+    _$MarvelComicsImpl(
+      available: (json['available'] as num).toInt(),
+      collectionURI: json['collectionURI'] as String,
+      items: (json['items'] as List<dynamic>)
+          .map((e) => MarvelItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      returned: (json['returned'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$MarvelComicsImplToJson(_$MarvelComicsImpl instance) =>
+    <String, dynamic>{
+      'available': instance.available,
+      'collectionURI': instance.collectionURI,
+      'items': instance.items,
+      'returned': instance.returned,
+    };
+
+_$MarvelItemImpl _$$MarvelItemImplFromJson(Map<String, dynamic> json) =>
+    _$MarvelItemImpl(
+      resourceURI: json['resourceURI'] as String,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$MarvelItemImplToJson(_$MarvelItemImpl instance) =>
+    <String, dynamic>{
+      'resourceURI': instance.resourceURI,
+      'name': instance.name,
+    };
+
+_$MarvelSeriesImpl _$$MarvelSeriesImplFromJson(Map<String, dynamic> json) =>
+    _$MarvelSeriesImpl(
+      available: (json['available'] as num).toInt(),
+      collectionURI: json['collectionURI'] as String,
+      items: (json['items'] as List<dynamic>)
+          .map((e) => MarvelItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      returned: (json['returned'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$MarvelSeriesImplToJson(_$MarvelSeriesImpl instance) =>
+    <String, dynamic>{
+      'available': instance.available,
+      'collectionURI': instance.collectionURI,
+      'items': instance.items,
+      'returned': instance.returned,
+    };
+
+_$MarvelEventsImpl _$$MarvelEventsImplFromJson(Map<String, dynamic> json) =>
+    _$MarvelEventsImpl(
+      available: (json['available'] as num).toInt(),
+      collectionURI: json['collectionURI'] as String,
+      items: (json['items'] as List<dynamic>)
+          .map((e) => MarvelItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      returned: (json['returned'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$MarvelEventsImplToJson(_$MarvelEventsImpl instance) =>
+    <String, dynamic>{
+      'available': instance.available,
+      'collectionURI': instance.collectionURI,
+      'items': instance.items,
+      'returned': instance.returned,
     };

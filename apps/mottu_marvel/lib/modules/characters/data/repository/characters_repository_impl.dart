@@ -8,8 +8,6 @@ import 'package:mottu_marvel/modules/characters/data/models/marvel_response_mode
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
 
 class CharactersRepositoryImpl extends GetxService implements CharactersRepository {
-  String? _etag;
-
   CharactersRepositoryImpl({required this.httpClient});
 
   final MottuHttpClient httpClient;
@@ -21,14 +19,10 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
   @override
   Future<MarvelResponse> fetchCharacters({int limit = 20, required int offset}) async {
+    //TODO Test without timestamp
     print('repository: fetch offset $offset, with limit $limit');
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
-
-    Map<String, String> headers = {};
-    if (_etag != null) {
-      headers['If-None-Match'] = _etag!; //It should go to the DioInteceptor
-    }
 
     try {
       final response = await httpClient.get(
@@ -40,7 +34,6 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
           'offset': offset,
           'limit': limit,
         },
-        options: {'headers': headers},
       );
 
       print('Response data: ${response.data}');
@@ -48,26 +41,45 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
       return MarvelResponse.fromJson(response.data!);
     } on MottuHttpException catch (e) {
-      if (e.code == 304) {
-        //TODO Cache
-        print('http not modifiend');
-        // return MovieList(movies: [Movie(name: 'Cached movie')]);
-        print('get from caache');
-      }
-
       rethrow; //TODO
     }
-  }
-
-  @override
-  Future<MarvelResponse> fetchRelatedCharacters({required int id, int limit = 10, required int offset}) {
-    // TODO: implement fetchRelatedCharacters
-    throw UnimplementedError();
   }
 
   @override
   Future<MarvelResponse> filterCharactersByName({required String name, int limit = 10, required int offset}) {
     // TODO: implement filterCharactersByName
     throw UnimplementedError();
+  }
+
+  @override
+  Future<MarvelResponse> fetchRelatedCharacters(
+      {List<String>? comics, List<String>? series, List<String>? events, int limit = 10, required int offset}) async {
+    print('repository: fetchRelatedCharacters - fetch offset $offset, with limit $limit');
+    print('comics $comics, series: $series, events: $events');
+
+    final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+    final String hash = _generateHash(timestamp);
+
+    try {
+      final response = await httpClient.get(
+        'characters',
+        queryParameters: {
+          'ts': timestamp,
+          'apikey': Environment.marvelPublicKey,
+          'hash': hash,
+          'offset': offset,
+          'limit': limit,
+          if (comics?.isNotEmpty == true) 'comics': comics?.first,
+          if (series?.isNotEmpty == true) 'series': series?.first,
+          if (events?.isNotEmpty == true) 'events': events?.first,
+        },
+      );
+
+      print('Response data: ${response.data}');
+
+      return MarvelResponse.fromJson(response.data!);
+    } on MottuHttpException catch (e) {
+      rethrow; //TODO
+    }
   }
 }
