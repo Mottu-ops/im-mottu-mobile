@@ -118,7 +118,7 @@ class _MarvelCharacterItem extends StatelessWidget {
       child: Row(
         children: [
           MottuNetworkImage(
-            url: '${marvelCharacter.thumbnail.path}.${marvelCharacter.thumbnail.extension}',
+            url: marvelCharacter.imageUrl,
           ),
           SizedBox(
             width: 20,

@@ -38,6 +38,10 @@ class MarvelCharacter with _$MarvelCharacter {
     required MarvelEvents events,
   }) = _MarvelCharacter;
 
+  const MarvelCharacter._();
+
+  String get imageUrl => '${thumbnail.path}.${thumbnail.extension}';
+
   factory MarvelCharacter.fromJson(Map<String, dynamic> json) => _$MarvelCharacterFromJson(json);
 }
 

@@ -617,7 +617,7 @@ class __$$MarvelCharacterImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MarvelCharacterImpl implements _MarvelCharacter {
+class _$MarvelCharacterImpl extends _MarvelCharacter {
   const _$MarvelCharacterImpl(
       {required this.id,
       required this.name,
@@ -625,7 +625,8 @@ class _$MarvelCharacterImpl implements _MarvelCharacter {
       required this.thumbnail,
       required this.comics,
       required this.series,
-      required this.events});
+      required this.events})
+      : super._();
 
   factory _$MarvelCharacterImpl.fromJson(Map<String, dynamic> json) =>
       _$$MarvelCharacterImplFromJson(json);
@@ -686,7 +687,7 @@ class _$MarvelCharacterImpl implements _MarvelCharacter {
   }
 }
 
-abstract class _MarvelCharacter implements MarvelCharacter {
+abstract class _MarvelCharacter extends MarvelCharacter {
   const factory _MarvelCharacter(
       {required final int id,
       required final String name,
@@ -695,6 +696,7 @@ abstract class _MarvelCharacter implements MarvelCharacter {
       required final MarvelComics comics,
       required final MarvelSeries series,
       required final MarvelEvents events}) = _$MarvelCharacterImpl;
+  const _MarvelCharacter._() : super._();
 
   factory _MarvelCharacter.fromJson(Map<String, dynamic> json) =
       _$MarvelCharacterImpl.fromJson;

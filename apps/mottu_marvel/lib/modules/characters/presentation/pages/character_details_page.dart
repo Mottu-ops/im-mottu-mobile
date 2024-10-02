@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mottu_marvel/modules/characters/presentation/pages/characters_details_page_controller.dart';
 import 'package:mottu_marvel/modules/characters/presentation/pages/characters_page_controller.dart';
 import 'package:mottu_design_system/mottu_design_system.dart';
 
@@ -13,7 +14,7 @@ class CharacterDetailsPage extends StatefulWidget {
 }
 
 class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
-  final controller = Get.find<CharactersPageController>();
+  final controller = Get.find<CharactersDetailsPageController>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +26,21 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
           SliverPersistentHeader(
             pinned: true,
             delegate: MyHeaderDelegate(
-              backgroundImageUrl:
+              backgroundImageUrl: controller.character.value?.imageUrl ??
                   'https://www.epicstuff.com/cdn/shop/collections/MARVEL_1920x450_b691539a-a0cb-4a43-8d20-ca9d567ab290_1920x450.jpg?v=1581967770',
               bottomWidget: const _FilterCharactersTextField(),
             ),
           ),
           Obx(
             () {
-              if (controller.marvelResponse.value == null || controller.filteredCharactersList.isEmpty) {
+              if (controller.marvelResponse.value == null || controller.charactersList.isEmpty) {
                 return const _CharacterPageProgressIndicator();
               }
 
               //TODO handle connection error: controller.filteredCharactersList.value == null
-              print('list ${controller.filteredCharactersList.length}');
+              print('list ${controller.charactersList.length}');
 
-              final List<Widget> charactersList = controller.filteredCharactersList
+              final List<Widget> charactersList = controller.charactersList
                   .map((eachCharacter) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
                         child: _MarvelCharacterItem(
@@ -117,7 +118,7 @@ class _MarvelCharacterItem extends StatelessWidget {
       child: Row(
         children: [
           MottuNetworkImage(
-            url: '${marvelCharacter.thumbnail.path}.${marvelCharacter.thumbnail.extension}',
+            url: marvelCharacter.imageUrl,
           ),
           SizedBox(
             width: 20,
