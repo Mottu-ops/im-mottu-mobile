@@ -48,7 +48,14 @@ class CharactersDetailsPageController extends GetxController {
   Future<void> fetchRelatedCharacters({int offset = 0, limit = DEFAULT_LIMIT}) async {
     isFetching.value = true;
 
-    final fetchedResponse = await getRelatedCharactersUsecase(param: character.value);
+    final fetchedResponse = await getRelatedCharactersUsecase(
+      param: GetRelatedCharactersByProgramsUsecaseParam(
+        character: character.value!,
+        offset: offset,
+        limit: limit,
+      ),
+    );
+
     marvelResponse.value = fetchedResponse;
 
     if (offset == 0) {

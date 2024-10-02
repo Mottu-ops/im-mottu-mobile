@@ -8,12 +8,13 @@ class GetRelatedCharactersByProgramsUsecase implements GetRelatedCharactersUseca
   final CharactersRepository repository;
 
   @override
-  Future<MarvelResponse> call({MarvelCharacter? param}) async {
-    final comics = _buildIdList(param?.comics.items);
-    final events = _buildIdList(param?.events.items);
-    final series = _buildIdList(param?.series.items);
+  Future<MarvelResponse> call({GetRelatedCharactersByProgramsUsecaseParam? param}) async {
+    final comics = _buildIdList(param?.character.comics.items);
+    final events = _buildIdList(param?.character.events.items);
+    final series = _buildIdList(param?.character.series.items);
 
-    return await repository.fetchRelatedCharacters(comics: comics, events: events, series: series, offset: 20);
+    return await repository.fetchRelatedCharacters(
+        comics: comics, events: events, series: series, limit: 20, offset: param?.offset ?? 0);
   }
 
   List<String>? _buildIdList(List<MarvelItem>? items) {
