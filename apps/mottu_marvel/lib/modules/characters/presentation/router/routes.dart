@@ -5,14 +5,14 @@ import '../../di/characters_di.dart';
 import '../pages/characters_page.dart';
 
 class CharactersRouteNames {
-  static const HOME = '/characters';
+  static const CHARACTERS = '/characters';
   static const CHARACTER_DETAILS = '/character-details';
 }
 
 class CharactersPagesRoutes {
   static final routes = [
     GetPage(
-      name: CharactersRouteNames.HOME,
+      name: CharactersRouteNames.CHARACTERS,
       page: () => const CharactersPage(),
       binding: CharactersBinding(),
     ),

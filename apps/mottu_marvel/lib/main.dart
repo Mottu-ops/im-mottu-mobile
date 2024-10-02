@@ -1,31 +1,13 @@
-import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mottu_marvel/modules/characters/presentation/router/routes.dart';
 import 'package:mottu_marvel/core/routes/app_routes.dart';
 
-import 'core/services/app_lifecycle_service.dart';
+import 'modules/splash/presentation/routes/routes.dart';
 
 void main() async => startApplication();
 
 Future<void> startApplication() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  setFlavor();
-  await dotenv.load();
-
-  print('App flavor $appFlavor');
-  print('Environemnt URL ${Environment.baseApiUrl}');
-  Get.put(AppLifecycleService());
-
-  await Future.wait([
-    lockRotation(),
-    getApplicationDirectory(),
-
-    // initFirebase(),
-  ]);
-
   runApp(const MottuMarvelApp());
 }
 
@@ -40,7 +22,7 @@ class MottuMarvelApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: CharactersRouteNames.HOME,
+      initialRoute: SplashRouteNames.SPLASH,
       getPages: marvelPages,
     );
   }
