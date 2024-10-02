@@ -27,9 +27,4 @@ class AppLifecycleService extends GetxService with WidgetsBindingObserver {
       persistence.deleteAll();
     }
   }
-
-  void _handleAppClosing() {
-    // Handle app closing logic here (e.g., save data, cancel requests)
-    print('App is about to close. Saving data...');
-  }
 }

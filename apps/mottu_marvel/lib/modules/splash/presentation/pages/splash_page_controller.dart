@@ -27,14 +27,14 @@ class SplashPageController extends GetxController {
 
     for (int i = 0; i < totalTasks; i++) {
       await tasks[i]();
-      updateLoadingStatus(i + 1, totalTasks);
-      await Future.delayed(const Duration(milliseconds: 500)); //Just to make the screen keep live a little bit... :)
+      _updateLoadingStatus(i + 1, totalTasks);
+      await Future.delayed(const Duration(milliseconds: 500)); //Just to make the screen keep alive a little bit... :)
     }
 
     SplashRouter.goToCharacterList();
   }
 
-  void updateLoadingStatus(int completedTasks, int totalTasks) {
+  void _updateLoadingStatus(int completedTasks, int totalTasks) {
     final percentage = (completedTasks / totalTasks) * 100;
     loadingStatus.value = percentage.toInt();
   }
