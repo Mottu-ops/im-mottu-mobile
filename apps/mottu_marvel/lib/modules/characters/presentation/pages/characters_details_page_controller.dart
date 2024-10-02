@@ -1,12 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
-import 'package:mottu_marvel/modules/characters/domain/usecases/filter_characters_trie_usecase.dart';
+import 'package:mottu_marvel/modules/characters/domain/usecases/get_related_characters_usecase.dart';
 
 import '../../data/models/marvel_response_model.dart';
 
 class CharactersDetailsPageController extends GetxController {
+  late Rxn<MarvelCharacter> character;
   final repository = Get.find<CharactersRepository>();
+  late GetRelatedCharactersUsecase getRelatedCharactersUsecase;
   final marvelResponse = Rxn<MarvelResponse>();
   RxList<MarvelCharacter> charactersList = <MarvelCharacter>[].obs;
   int offset = 0;
@@ -17,6 +19,7 @@ class CharactersDetailsPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    character = Get.arguments['character'].obs;
 
     _addScrollListener();
     fetchRelatedCharacters();
@@ -45,7 +48,7 @@ class CharactersDetailsPageController extends GetxController {
   Future<void> fetchRelatedCharacters({int offset = 0, limit = DEFAULT_LIMIT}) async {
     isFetching.value = true;
 
-    final fetchedResponse = await repository.fetchRelatedCharacters(offset: offset, limit: limit);
+    final fetchedResponse = await getRelatedCharactersUsecase(param: character.value);
     marvelResponse.value = fetchedResponse;
 
     if (offset == 0) {

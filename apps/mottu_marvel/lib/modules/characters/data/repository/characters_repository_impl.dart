@@ -55,12 +55,7 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
   @override
   Future<MarvelResponse> fetchRelatedCharacters(
-      {List<int>? comics,
-      List<int>? series,
-      List<int>? events,
-      List<int>? stories,
-      int limit = 10,
-      required int offset}) async {
+      {List<String>? comics, List<String>? series, List<String>? events, int limit = 10, required int offset}) async {
     print('repository: fetch offset $offset, with limit $limit');
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
@@ -77,7 +72,6 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
           'comics': comics?.join(','),
           'series': series?.join(','),
           'events': events?.join(','),
-          'stories': stories?.join(','),
         },
       );
 
