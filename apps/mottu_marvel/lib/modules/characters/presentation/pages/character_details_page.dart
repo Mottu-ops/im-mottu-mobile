@@ -27,19 +27,42 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
           SliverPersistentHeader(
             pinned: true,
             delegate: MyHeaderDelegate(
-              backgroundImageUrl: controller.character.value?.imageUrl ??
-                  'https://www.epicstuff.com/cdn/shop/collections/MARVEL_1920x450_b691539a-a0cb-4a43-8d20-ca9d567ab290_1920x450.jpg?v=1581967770',
-              bottomWidget: const _FilterCharactersTextField(),
-            ),
+                backgroundImageUrl: controller.character.value?.imageUrl ??
+                    'https://www.epicstuff.com/cdn/shop/collections/MARVEL_1920x450_b691539a-a0cb-4a43-8d20-ca9d567ab290_1920x450.jpg?v=1581967770',
+                bottomWidget: Container(
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                  ),
+                  child: Text(
+                    controller.character.value?.name ?? 'Carregando nome...',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )),
           ),
           Obx(
             () {
-              if (controller.marvelResponse.value == null || controller.charactersList.isEmpty) {
+              if ((controller.marvelResponse.value == null || controller.charactersList.isEmpty) &&
+                  controller.marvelResponse.value == null) {
                 return const _CharacterPageProgressIndicator();
               }
 
               //TODO handle connection error: controller.filteredCharactersList.value == null
               print('list ${controller.charactersList.length}');
+
+              if (controller.charactersList.isEmpty) {
+                return const SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Center(
+                    child: Padding(
+                        padding: EdgeInsets.only(bottom: 40.0),
+                        child: Text(
+                          'Não há dados disponíveis',
+                          style: TextStyle(color: Colors.white),
+                        )),
+                  ),
+                );
+              }
 
               final List<Widget> charactersList = controller.charactersList
                   .map((eachCharacter) => Padding(

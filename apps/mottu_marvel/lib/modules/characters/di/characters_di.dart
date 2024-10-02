@@ -12,8 +12,8 @@ class CharactersBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<CharactersRepository>(() => CharactersRepositoryImpl(httpClient: DioHttpClient(dio)));
-    Get.put<CharactersPageController>(CharactersPageController());
-    Get.lazyPut<CharactersDetailsPageController>(() => CharactersDetailsPageController());
+    Get.lazyPut<CharactersPageController>(() => CharactersPageController());
+    Get.create<CharactersDetailsPageController>(() => CharactersDetailsPageController());
     Get.put<KeyValuePersistence>(HiveKeyValuePersistence(boxName: 'cache', directory: directory));
   }
 }

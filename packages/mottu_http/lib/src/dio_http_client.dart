@@ -27,7 +27,7 @@ class DioHttpClient implements MottuHttpClient<ApiResponse> {
     } on DioException catch (e) {
       print(e);
       throw MottuHttpException(
-        data: e.response?.data as Map<String, dynamic>,
+        data: e.response?.data != null ? e.response?.data as Map<String, dynamic> : {'error': 'no network connection'},
         httpErrorMessage: e.response?.statusMessage ?? unexpectedErrorMessage,
         code: e.response?.statusCode ?? unexpectedErrorCode,
       );
