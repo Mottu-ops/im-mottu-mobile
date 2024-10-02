@@ -40,6 +40,17 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
                   ),
                 )),
           ),
+          Obx(() {
+            return SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  controller.character.value?.description ?? 'Carregando descrição',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+            );
+          }),
           Obx(
             () {
               if ((controller.marvelResponse.value == null || controller.charactersList.isEmpty) &&
