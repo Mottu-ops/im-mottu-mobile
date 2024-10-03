@@ -18,54 +18,47 @@ class _CharactersPageState extends State<CharactersPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: CustomScrollView(
-        controller: controller.scrollController,
-        slivers: [
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: MyHeaderDelegate(
-              backgroundImageUrl:
-                  'https://www.epicstuff.com/cdn/shop/collections/MARVEL_1920x450_b691539a-a0cb-4a43-8d20-ca9d567ab290_1920x450.jpg?v=1581967770',
-              bottomWidget: const _FilterCharactersTextField(),
-            ),
-          ),
-          Obx(
-            () {
-              if (controller.marvelResponse.value == null || controller.filteredCharactersList.isEmpty) {
-                return const _CharacterPageProgressIndicator();
-              }
-
-              //TODO handle connection error: controller.filteredCharactersList.value == null
-              print('list ${controller.filteredCharactersList.length}');
-
-              final List<Widget> charactersList = controller.filteredCharactersList
-                  .map((eachCharacter) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
-                        child: _MarvelCharacterItem(
-                          marvelCharacter: eachCharacter,
-                        ),
-                      ))
-                  .toList();
-
-              return SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => charactersList[index],
-                  childCount: charactersList.length,
-                ),
-              );
-            },
-          ),
-          Obx(() {
-            return controller.isFetching.value && controller.charactersList.isNotEmpty
-                ? const _CharacterPageProgressIndicator()
-                : const SliverToBoxAdapter(
-                    child: SizedBox.shrink(),
-                  );
-          }),
-        ],
+    return Screen(
+      appBar: MyHeaderDelegate(
+        backgroundImageUrl:
+            'https://www.epicstuff.com/cdn/shop/collections/MARVEL_1920x450_b691539a-a0cb-4a43-8d20-ca9d567ab290_1920x450.jpg?v=1581967770',
+        bottomWidget: const _FilterCharactersTextField(),
       ),
+      body: [
+        Obx(
+          () {
+            if (controller.marvelResponse.value == null || controller.filteredCharactersList.isEmpty) {
+              return const _CharacterPageProgressIndicator();
+            }
+
+            //TODO handle connection error: controller.filteredCharactersList.value == null
+            print('list ${controller.filteredCharactersList.length}');
+
+            final List<Widget> charactersList = controller.filteredCharactersList
+                .map((eachCharacter) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
+                      child: _MarvelCharacterItem(
+                        marvelCharacter: eachCharacter,
+                      ),
+                    ))
+                .toList();
+
+            return SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => charactersList[index],
+                childCount: charactersList.length,
+              ),
+            );
+          },
+        ),
+        Obx(() {
+          return controller.isFetching.value && controller.charactersList.isNotEmpty
+              ? const _CharacterPageProgressIndicator()
+              : const SliverToBoxAdapter(
+                  child: SizedBox.shrink(),
+                );
+        }),
+      ],
     );
   }
 }

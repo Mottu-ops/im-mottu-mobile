@@ -16,8 +16,8 @@ class MottuColorsTheme extends ThemeExtension<MottuColorsTheme> {
 
   factory MottuColorsTheme.light() {
     return const MottuColorsTheme._(
-      backgroundDefault: _MC.black,
-      backgroundSecondary: _MC.white,
+      backgroundDefault: _MC.white,
+      backgroundSecondary: _MC.black,
       defaultText: _MC.black,
     );
   }
