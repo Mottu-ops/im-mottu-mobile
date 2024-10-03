@@ -17,6 +17,7 @@ Future<void> startApplication() async {
   await Future.wait([
     dotenv.load(),
     initFirebase(),
+    getApplicationDirectory(),
     RootBinding().dependencies(),
   ]);
 

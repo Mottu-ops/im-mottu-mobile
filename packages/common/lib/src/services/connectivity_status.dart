@@ -1,12 +1,19 @@
 import 'package:flutter/services.dart';
 
+import '../../common.dart';
+
 class ConnectivityStatus {
-  static const EventChannel _networkStatusChannel = EventChannel('br.com.marvel.mottu/connectivity_status');
+  late EventChannel _networkStatusChannel;
+
+  ConnectivityStatus() {
+    _networkStatusChannel = EventChannel('br.com.marvel.mottu/connectivity_status');
+  }
 
   Stream<dynamic> startConnectivityStatusService() {
-    _networkStatusChannel.receiveBroadcastStream().listen((data) {
-      print('STAUS CONNECT: $data');
-    });
+    if (!Environment.isAndroid) {
+      throw UnsupportedPlatformException('Connectivity status channel supports Android only');
+    }
+
     return _networkStatusChannel.receiveBroadcastStream();
   }
 }

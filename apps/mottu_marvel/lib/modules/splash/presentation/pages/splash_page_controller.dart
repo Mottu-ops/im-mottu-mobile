@@ -17,7 +17,6 @@ class SplashPageController extends GetxController {
     tasks = [
       () async => Get.put(AppLifecycleService(), permanent: true),
       () async => lockRotation(),
-      () async => getApplicationDirectory(),
     ];
 
     final totalTasks = tasks.length;
@@ -27,6 +26,11 @@ class SplashPageController extends GetxController {
       _updateLoadingStatus(i + 1, totalTasks);
       await Future.delayed(const Duration(milliseconds: 500)); //Just to make the screen keep alive a little bit... :)
     }
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
 
     SplashRouter.goToCharacterList();
   }
