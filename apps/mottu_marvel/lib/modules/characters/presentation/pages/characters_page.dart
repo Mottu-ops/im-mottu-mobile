@@ -5,6 +5,7 @@ import 'package:mottu_design_system/mottu_design_system.dart';
 import 'package:mottu_marvel/modules/characters/presentation/router/character_router.dart';
 
 import '../../data/models/marvel_response_model.dart';
+import '../widgets/characters_page_progress_indicator.dart';
 
 class CharactersPage extends StatefulWidget {
   const CharactersPage({super.key});
@@ -28,11 +29,8 @@ class _CharactersPageState extends State<CharactersPage> {
         Obx(
           () {
             if (controller.marvelResponse.value == null || controller.filteredCharactersList.isEmpty) {
-              return const _CharacterPageProgressIndicator();
+              return const CharacterPageProgressIndicator();
             }
-
-            //TODO handle connection error: controller.filteredCharactersList.value == null
-            print('list ${controller.filteredCharactersList.length}');
 
             final List<Widget> charactersList = controller.filteredCharactersList
                 .map((eachCharacter) => Padding(
@@ -53,32 +51,12 @@ class _CharactersPageState extends State<CharactersPage> {
         ),
         Obx(() {
           return controller.isFetching.value && controller.charactersList.isNotEmpty
-              ? const _CharacterPageProgressIndicator()
+              ? const CharacterPageProgressIndicator()
               : const SliverToBoxAdapter(
                   child: SizedBox.shrink(),
                 );
         }),
       ],
-    );
-  }
-}
-
-class _CharacterPageProgressIndicator extends StatelessWidget {
-  const _CharacterPageProgressIndicator({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SliverFillRemaining(
-      hasScrollBody: false,
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.only(bottom: 40.0),
-          child: MottuProgressIndicator(
-            color: Colors.white,
-            size: 30.0,
-          ),
-        ),
-      ),
     );
   }
 }

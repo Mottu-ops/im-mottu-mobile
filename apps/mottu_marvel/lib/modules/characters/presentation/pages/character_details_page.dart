@@ -6,6 +6,7 @@ import 'package:mottu_design_system/mottu_design_system.dart';
 
 import '../../data/models/marvel_response_model.dart';
 import '../router/character_router.dart';
+import '../widgets/characters_page_progress_indicator.dart';
 
 class CharacterDetailsPage extends StatefulWidget {
   const CharacterDetailsPage({super.key});
@@ -50,11 +51,8 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
           () {
             if ((controller.marvelResponse.value == null || controller.charactersList.isEmpty) &&
                 controller.marvelResponse.value == null) {
-              return const _CharacterPageProgressIndicator();
+              return const CharacterPageProgressIndicator();
             }
-
-            //TODO handle connection error: controller.filteredCharactersList.value == null
-            print('list ${controller.charactersList.length}');
 
             if (controller.charactersList.isEmpty) {
               return const SliverFillRemaining(
@@ -89,48 +87,12 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
         ),
         Obx(() {
           return controller.isFetching.value && controller.charactersList.isNotEmpty
-              ? const _CharacterPageProgressIndicator()
+              ? const CharacterPageProgressIndicator()
               : const SliverToBoxAdapter(
                   child: SizedBox.shrink(),
                 );
         }),
       ],
-    );
-  }
-}
-
-class _CharacterPageProgressIndicator extends StatelessWidget {
-  const _CharacterPageProgressIndicator({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SliverFillRemaining(
-      hasScrollBody: false,
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.only(bottom: 40.0),
-          child: MottuProgressIndicator(
-            color: Colors.white,
-            size: 30.0,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _FilterCharactersTextField extends StatelessWidget {
-  const _FilterCharactersTextField({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.find<CharactersPageController>();
-
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.8,
-      child: MottuTextField(
-        onChanged: controller.filterCharacters,
-      ),
     );
   }
 }
