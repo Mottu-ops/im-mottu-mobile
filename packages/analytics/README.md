@@ -1,0 +1,5 @@
+# <package_name>
+
+<package_description>
+
+DON'T FORGET TO EDIT THE MAIN README.MD FILE TO INCLUDE A LINK TO THIS README

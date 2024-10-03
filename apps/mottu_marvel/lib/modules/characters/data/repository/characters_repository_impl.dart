@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:analytics/analytics.dart';
 import 'package:get/get.dart';
 import 'package:crypto/crypto.dart';
 import 'package:mottu_http/mottu_http.dart';
@@ -8,9 +9,10 @@ import 'package:mottu_marvel/modules/characters/data/models/marvel_response_mode
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
 
 class CharactersRepositoryImpl extends GetxService implements CharactersRepository {
-  CharactersRepositoryImpl({required this.httpClient});
+  CharactersRepositoryImpl({required this.httpClient, required this.analytics});
 
   final MottuHttpClient httpClient;
+  final AnalyticsService analytics;
 
   String _generateHash(String timestamp) {
     final String toHash = timestamp + Environment.marvelPrivateKey + Environment.marvelPublicKey;
@@ -24,16 +26,18 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
 
+    final queryParameters = {
+      'ts': timestamp,
+      'apikey': Environment.marvelPublicKey,
+      'hash': hash,
+      'offset': offset,
+      'limit': limit,
+    };
+
     try {
       final response = await httpClient.get(
         'characters',
-        queryParameters: {
-          'ts': timestamp,
-          'apikey': Environment.marvelPublicKey,
-          'hash': hash,
-          'offset': offset,
-          'limit': limit,
-        },
+        queryParameters: queryParameters,
       );
 
       print('Response data: ${response.data}');
@@ -41,7 +45,8 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
       return MarvelResponse.fromJson(response.data!);
     } on MottuHttpException catch (e) {
-      rethrow; //TODO
+      analytics.logError(e, properties: {'url': 'characters', ...queryParameters});
+      rethrow;
     }
   }
 
@@ -59,26 +64,24 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
-
+    final queryParameters = {
+      'ts': timestamp,
+      'apikey': Environment.marvelPublicKey,
+      'hash': hash,
+      'offset': offset,
+      'limit': limit,
+      if (comics?.isNotEmpty == true) 'comics': comics?.first,
+      if (series?.isNotEmpty == true) 'series': series?.first,
+      if (events?.isNotEmpty == true) 'events': events?.first,
+    };
     try {
-      final response = await httpClient.get(
-        'characters',
-        queryParameters: {
-          'ts': timestamp,
-          'apikey': Environment.marvelPublicKey,
-          'hash': hash,
-          'offset': offset,
-          'limit': limit,
-          if (comics?.isNotEmpty == true) 'comics': comics?.first,
-          if (series?.isNotEmpty == true) 'series': series?.first,
-          if (events?.isNotEmpty == true) 'events': events?.first,
-        },
-      );
+      final response = await httpClient.get('characters', queryParameters: queryParameters);
 
       print('Response data: ${response.data}');
 
       return MarvelResponse.fromJson(response.data!);
     } on MottuHttpException catch (e) {
+      analytics.logError(e, properties: {'url': 'characters', 'filter': true, ...queryParameters});
       rethrow; //TODO
     }
   }
