@@ -1,4 +1,5 @@
 import 'package:analytics/analytics.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mottu_marvel/core/routes/app_routes.dart';
@@ -9,8 +10,10 @@ void main() async => startApplication();
 
 Future<void> startApplication() async {
   WidgetsFlutterBinding.ensureInitialized();
-  startCrashlytics();
-
+  setFlavor();
+  await dotenv.load();
+  await initFirebase();
+  ConnectivityStatus().startConnectivityStatusService();
   runApp(const MottuMarvelApp());
 }
 

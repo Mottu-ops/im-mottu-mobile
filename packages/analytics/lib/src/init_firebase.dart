@@ -13,16 +13,18 @@ Future<void> initFirebase() async {
     options: () {
       switch (flavor) {
         case Flavor.dev:
-        // return firebase_options_dev.DefaultFirebaseOptions.currentPlatform;
+          break; //TODO
         case Flavor.staging:
           return firebase_options_staging.DefaultFirebaseOptions.currentPlatform;
-        // case Flavor.prod:
-        //   return firebase_options_prod.DefaultFirebaseOptions.currentPlatform;
+        case Flavor.prod:
+          break; //TODO
         default:
           throw StateError('there is no firebase options for flavor $flavor');
       }
     }(),
   );
+
+  startCrashlytics();
 }
 
 const fatalError = true; //can be available in firebase remote config
