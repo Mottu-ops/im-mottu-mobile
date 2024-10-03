@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mottu_marvel/core/di/root_bindins.dart';
 import 'package:mottu_marvel/core/routes/app_routes.dart';
-import 'package:mottu_marvel/core/services/connectivity_status_service.dart';
 
 import 'modules/splash/presentation/routes/routes.dart';
 
