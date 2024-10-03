@@ -18,8 +18,7 @@ class Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<MottuColorsTheme>()!;
-    print('color $colors');
-    print('color ${colors.backgroundDefault}');
+
     return Scaffold(
       backgroundColor: backgroundColor ?? colors.backgroundDefault,
       body: CustomScrollView(
