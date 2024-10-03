@@ -22,8 +22,8 @@ class MottuTextStyleTheme extends ThemeExtension<MottuTextStyleTheme> {
       );
     }
 
-    final heading1 = createStyle(size: 37.0, height: 45.0);
-    final heading2 = createStyle(size: 32.0, height: 35.0);
+    final heading1 = createStyle(size: 20.0, height: 45.0, fontFamily: MottuFontFamily.bangers);
+    final heading2 = createStyle(size: 16.0, height: 35.0, fontFamily: MottuFontFamily.bangers);
     final body1 = createStyle(size: 14.0, height: 20.0);
 
     return MottuTextStyleTheme._(
