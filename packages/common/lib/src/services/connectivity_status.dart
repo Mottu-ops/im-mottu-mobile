@@ -1,7 +1,12 @@
 import 'package:flutter/services.dart';
 
 class ConnectivityStatus {
-  static const EventChannel _networkStatusChannel = EventChannel('br.com.marvel.mottu');
+  static const EventChannel _networkStatusChannel = EventChannel('br.com.marvel.mottu/connectivity_status');
 
-  Stream<String> startService() => _networkStatusChannel.receiveBroadcastStream() as Stream<String>;
+  Stream<dynamic> startConnectivityStatusService() {
+    _networkStatusChannel.receiveBroadcastStream().listen((data) {
+      print('STAUS CONNECT: $data');
+    });
+    return _networkStatusChannel.receiveBroadcastStream();
+  }
 }
