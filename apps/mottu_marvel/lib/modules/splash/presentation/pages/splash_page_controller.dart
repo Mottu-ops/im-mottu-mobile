@@ -15,12 +15,9 @@ class SplashPageController extends GetxController {
     super.onInit();
 
     tasks = [
-      () async => setFlavor(),
-      () async => await dotenv.load(),
-      () async => Get.put(AppLifecycleService()),
+      () async => Get.put(AppLifecycleService(), permanent: true),
       () async => lockRotation(),
       () async => getApplicationDirectory(),
-      () async => initFirebase()
     ];
 
     final totalTasks = tasks.length;

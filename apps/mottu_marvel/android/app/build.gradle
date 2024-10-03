@@ -54,6 +54,28 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+    flavorDimensions "default"
+    productFlavors { 
+        prod {
+            dimension "default"
+            applicationIdSuffix ""
+            versionNameSuffix ""
+            resValue "string", "app_name", "Marvel by Mottu"
+        }
+        staging {
+            dimension "default"
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+            resValue "string", "app_name", "[STG] Marvel by Mottu"
+        }   
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            resValue "string", "app_name", "[DEV] Marvel by Mottu"
+        }        
+    }
 }
 
 flutter {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "951993875370",
+    "project_id": "mottumarvel-stg",
+    "storage_bucket": "mottumarvel-stg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951993875370:android:910f6a525f2b60321609d3",
+        "android_client_info": {
+          "package_name": "com.mottu.marvel.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXw99I8N2SJM85XGmQmi8mI098dxsV_qI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

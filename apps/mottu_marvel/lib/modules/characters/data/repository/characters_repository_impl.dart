@@ -74,6 +74,7 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
       if (series?.isNotEmpty == true) 'series': series?.first,
       if (events?.isNotEmpty == true) 'events': events?.first,
     };
+
     try {
       final response = await httpClient.get('characters', queryParameters: queryParameters);
 
