@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mottu_marvel/modules/characters/presentation/pages/characters_page_controller.dart';
 import 'package:mottu_design_system/mottu_design_system.dart';
-import 'package:mottu_marvel/modules/characters/presentation/router/character_router.dart';
 
-import '../../data/models/marvel_response_model.dart';
+import '../widgets/character_item.dart';
 import '../widgets/characters_page_progress_indicator.dart';
 
 class CharactersPage extends StatefulWidget {
@@ -35,7 +34,7 @@ class _CharactersPageState extends State<CharactersPage> {
             final List<Widget> charactersList = controller.filteredCharactersList
                 .map((eachCharacter) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
-                      child: _MarvelCharacterItem(
+                      child: MarvelCharacterItem(
                         marvelCharacter: eachCharacter,
                       ),
                     ))
@@ -72,35 +71,6 @@ class _FilterCharactersTextField extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.8,
       child: MottuTextField(
         onChanged: controller.filterCharacters,
-      ),
-    );
-  }
-}
-
-class _MarvelCharacterItem extends StatelessWidget {
-  const _MarvelCharacterItem({super.key, required this.marvelCharacter});
-
-  final MarvelCharacter marvelCharacter;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => CharacterRouter.goToCharacterDetails(marvelCharacter),
-      child: Row(
-        children: [
-          MottuNetworkImage(
-            url: marvelCharacter.imageUrl,
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Text(
-            marvelCharacter.name,
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          )
-        ],
       ),
     );
   }
