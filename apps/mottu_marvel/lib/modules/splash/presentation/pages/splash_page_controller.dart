@@ -15,7 +15,7 @@ class SplashPageController extends GetxController {
     super.onInit();
 
     tasks = [
-      () async => Get.put(AppLifecycleService()),
+      () async => Get.put(AppLifecycleService(), permanent: true),
       () async => lockRotation(),
       () async => getApplicationDirectory(),
     ];
