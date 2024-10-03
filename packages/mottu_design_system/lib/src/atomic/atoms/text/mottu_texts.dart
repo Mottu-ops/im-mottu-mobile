@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:mottu_design_system/src/atomic/atoms/text/mottu_base_text.dart';
-import 'package:mottu_design_system/src/atomic/atoms/text/mottu_text_style_theme.dart';
+import 'package:mottu_design_system/src/themes/mottu_text_style_theme.dart';
 
 class MottuHeading1Text extends MottuBaseText {
   const MottuHeading1Text.regular(

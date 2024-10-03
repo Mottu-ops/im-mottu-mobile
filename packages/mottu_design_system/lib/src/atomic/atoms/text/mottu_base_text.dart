@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mottu_design_system/src/atomic/atoms/text/mottu_text_style_theme.dart';
+import 'package:mottu_design_system/src/themes/mottu_text_style_theme.dart';
 import 'package:mottu_design_system/src/themes/mottu_color_theme.dart';
 
 typedef InjectMottuTextStyleTheme = TextStyle Function(MottuTextStyleTheme);
