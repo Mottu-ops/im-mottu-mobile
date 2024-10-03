@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:analytics/analytics.dart';
 import 'package:common/common.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ class SplashPageController extends GetxController {
       () async => Get.put(AppLifecycleService()),
       () async => lockRotation(),
       () async => getApplicationDirectory(),
-      //initFirebase()
+      () async => initFirebase()
     ];
 
     final totalTasks = tasks.length;

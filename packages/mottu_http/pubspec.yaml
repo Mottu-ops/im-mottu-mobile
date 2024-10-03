@@ -8,6 +8,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  analytics:
+    path: ../analytics
   common:
     path: ../common
   persistence:

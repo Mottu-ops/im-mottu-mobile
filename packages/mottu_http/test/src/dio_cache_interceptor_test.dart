@@ -1,3 +1,4 @@
+import 'package:analytics/analytics.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -5,6 +6,8 @@ import 'package:mottu_http/src/dio_cache_interceptor.dart';
 import 'package:persistence/persistence.dart';
 
 class MockKeyValuePersistence extends Mock implements KeyValuePersistence {}
+
+class MockAnalyticsService extends Mock implements AnalyticsService {}
 
 class MockRequestInterceptorHandler extends Mock implements RequestInterceptorHandler {}
 
@@ -16,6 +19,7 @@ class FakeRequestOptions extends Fake implements RequestOptions {}
 
 void main() {
   late DioCacheInterceptor interceptor;
+  late MockAnalyticsService analytics;
   late MockKeyValuePersistence mockPersistence;
   late MockRequestInterceptorHandler mockRequestHandler;
   late MockResponseInterceptorHandler mockResponseHandler;
@@ -27,10 +31,11 @@ void main() {
   });
 
   setUp(() {
+    analytics = MockAnalyticsService();
     mockPersistence = MockKeyValuePersistence();
     mockRequestHandler = MockRequestInterceptorHandler();
     mockResponseHandler = MockResponseInterceptorHandler();
-    interceptor = DioCacheInterceptor(persistence: mockPersistence);
+    interceptor = DioCacheInterceptor(persistence: mockPersistence, analytics: analytics);
 
     options = RequestOptions(path: '/characters', method: 'GET', baseUrl: 'https://api.mottu.com.br/marvel');
   });

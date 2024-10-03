@@ -1,10 +1,12 @@
+import 'package:analytics/analytics.dart';
 import 'package:dio/dio.dart';
 import 'package:persistence/persistence.dart';
 
 class DioCacheInterceptor extends Interceptor {
-  DioCacheInterceptor({required this.persistence});
+  DioCacheInterceptor({required this.persistence, required this.analytics});
 
   final KeyValuePersistence persistence;
+  final AnalyticsService analytics;
 
   @override
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
@@ -18,7 +20,7 @@ class DioCacheInterceptor extends Interceptor {
     print('cache data? ${cacheData}');
     if (cacheData != null) {
       final cacheTTL = DateTime.now().difference(DateTime.parse(cacheData['timestamp'])).inMinutes;
-      print('CACHE TTL $cacheTTL');
+      analytics.logEvent('cache', properties: {'cacheTTL': cacheTTL});
       //TODO Cache TTL to Firebase remote config or ENV
       if (cacheTTL < 60) {
         final cachedResponse = Response(
@@ -32,6 +34,7 @@ class DioCacheInterceptor extends Interceptor {
       } else {
         if (cacheData['etag'] != null) {
           options.headers['If-None-Match'] = cacheData['etag'];
+          analytics.logEvent('cache', properties: {'etag': cacheData['etag']});
         }
       }
     }

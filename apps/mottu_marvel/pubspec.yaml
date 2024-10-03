@@ -31,6 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  analytics:
+    path: ../../packages/analytics
   common:
     path: ../../packages/common
   mottu_design_system:
