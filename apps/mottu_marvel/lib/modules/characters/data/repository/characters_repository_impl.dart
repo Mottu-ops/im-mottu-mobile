@@ -21,7 +21,6 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
 
   @override
   Future<MarvelResponse> fetchCharacters({int limit = 20, required int offset}) async {
-    //TODO Test without timestamp
     print('repository: fetch offset $offset, with limit $limit');
     final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final String hash = _generateHash(timestamp);
@@ -41,7 +40,6 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
       );
 
       print('Response data: ${response.data}');
-      // print('New ETag: $_etag');
 
       return MarvelResponse.fromJson(response.data!);
     } on MottuHttpException catch (e) {

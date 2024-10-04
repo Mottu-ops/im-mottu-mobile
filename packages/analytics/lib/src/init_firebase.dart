@@ -3,9 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-// import '../configs/firebase_options_dev.dart' as firebase_options_dev;
+
 import 'configs/firebase_options_staging.dart' as firebase_options_staging;
-// import '../configs/firebase_options_staging.dart' as firebase_options_staging;
 
 Future<void> initFirebase() async {
   print('starting firebase for flavor $flavor');
