@@ -6,3 +6,4 @@ export 'src/atomic/atoms/images/mottu_network_image.dart';
 export 'src/themes/app_themes.dart';
 export 'src/themes/mottu_color_theme.dart';
 export 'src/atomic/atoms/text/mottu_texts.dart';
+export 'src/themes/mottu_text_style_theme.dart';

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mottu_design_system/mottu_design_system.dart';
 
 class ThemeController extends GetxController {
-  RxBool isDarkTheme = false.obs;
+  RxBool isDarkTheme = true.obs;
 
   void toggleTheme() {
     print('toogling theme... ${isDarkTheme.value}');

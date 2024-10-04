@@ -13,6 +13,7 @@ class MottuTextStyleTheme extends ThemeExtension<MottuTextStyleTheme> {
       double? letterSpacing,
     }) {
       return TextStyle(
+        inherit: false, // Change this line
         fontSize: size,
         color: color ?? mottuColorsTheme.textPrimary,
         fontFamily: fontFamily.name,
@@ -44,17 +45,15 @@ class MottuTextStyleTheme extends ThemeExtension<MottuTextStyleTheme> {
   final TextStyle body1;
 
   @override
-  ThemeExtension<MottuTextStyleTheme> copyWith({MottuColorsTheme? colors}) {
-    return colors != null ? MottuTextStyleTheme(colors) : this;
-  }
+  ThemeExtension<MottuTextStyleTheme> copyWith({MottuColorsTheme? colors}) =>
+      colors != null ? MottuTextStyleTheme(colors) : this;
 
   @override
   ThemeExtension<MottuTextStyleTheme> lerp(
     ThemeExtension<MottuTextStyleTheme>? other,
     double t,
-  ) {
-    return this;
-  }
+  ) =>
+      this;
 }
 
 extension BoldExtension on TextStyle {

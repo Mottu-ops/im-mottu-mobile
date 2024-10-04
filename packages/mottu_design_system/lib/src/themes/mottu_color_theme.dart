@@ -47,5 +47,16 @@ class MottuColorsTheme extends ThemeExtension<MottuColorsTheme> {
   }
 
   @override
-  ThemeExtension<MottuColorsTheme> lerp(covariant ThemeExtension<MottuColorsTheme>? other, double t) => this;
+  ThemeExtension<MottuColorsTheme> lerp(covariant ThemeExtension<MottuColorsTheme>? other, double t) {
+    if (other is! MottuColorsTheme) {
+      return this;
+    }
+
+    return MottuColorsTheme._(
+      backgroundPrimary: Color.lerp(backgroundPrimary, other.backgroundPrimary, t)!,
+      backgroundSecondary: Color.lerp(backgroundSecondary, other.backgroundSecondary, t)!,
+      textPrimary: Color.lerp(textPrimary, other.textPrimary, t)!,
+      textSecondary: Color.lerp(textSecondary, other.textSecondary, t)!,
+    );
+  }
 }
