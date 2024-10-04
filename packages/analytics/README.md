@@ -1,5 +1,3 @@
-# <package_name>
+# analytics
 
-<package_description>
-
-DON'T FORGET TO EDIT THE MAIN README.MD FILE TO INCLUDE A LINK TO THIS README
+This package provides analytics and crashlytics services.

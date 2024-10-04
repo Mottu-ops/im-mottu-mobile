@@ -28,7 +28,7 @@ Para executar este aplicativo, ative o `melos` através do comando `dart pub glo
 
 **Executando o projeto**
 
-- Para executar este projeto, pode considerar o seguinte comando: `flutter run -d [DEVICE_ID] --flavor staging`. Para esta versão, apenas a versão `staging` foi configurada.
+- Para executar este projeto, na pasta `apps/mottu_marvel`, execute o seguinte comando: `flutter run -d [DEVICE_ID] --flavor staging`. Para esta versão, apenas a versão `staging` foi configurada.
 
 **Executando testes unitários**
 
