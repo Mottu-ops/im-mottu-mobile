@@ -1,6 +1,6 @@
 # 🛵 I'm Mottu Mobile 🛵
 
-## Sobre o Projeto
+## Sobre a solução deste projeto
 
 Este projeto foi construído como parte do processo de entrevistas para a Mottu. Nos dois vídeos seguintes são apresentados:
 
