@@ -8,8 +8,6 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.find<SplashPageController>();
-
     return Scaffold(
       body: Container(
         width: Get.size.width,

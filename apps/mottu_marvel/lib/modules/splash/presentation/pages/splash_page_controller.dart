@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:analytics/analytics.dart';
 import 'package:common/common.dart';
 import 'package:get/get.dart';
 
@@ -24,13 +23,8 @@ class SplashPageController extends GetxController {
     for (int i = 0; i < totalTasks; i++) {
       await tasks[i]();
       _updateLoadingStatus(i + 1, totalTasks);
-      await Future.delayed(const Duration(milliseconds: 500)); //Just to make the screen keep alive a little bit... :)
+      await Future.delayed(const Duration(seconds: 1)); //Just to make the screen keep alive a little bit... :)
     }
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
 
     SplashRouter.goToCharacterList();
   }

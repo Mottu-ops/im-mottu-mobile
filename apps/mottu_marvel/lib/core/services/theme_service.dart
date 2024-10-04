@@ -6,6 +6,7 @@ class ThemeController extends GetxController {
   RxBool isDarkTheme = false.obs;
 
   void toggleTheme() {
+    print('toogling theme... ${isDarkTheme.value}');
     if (isDarkTheme.value) {
       Get.changeTheme(ThemeData.light().copyWith(extensions: lightThemeExtensions));
       isDarkTheme.value = false;
@@ -13,5 +14,6 @@ class ThemeController extends GetxController {
       Get.changeTheme(ThemeData.dark().copyWith(extensions: darkThemeExtensions));
       isDarkTheme.value = true;
     }
+    print('toogling theme... ${isDarkTheme.value}');
   }
 }

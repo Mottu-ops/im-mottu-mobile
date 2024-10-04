@@ -8,12 +8,14 @@ class Screen extends StatelessWidget {
     required this.body,
     this.backgroundColor,
     this.scrollController,
+    this.floatingActionButton,
   });
 
   final SliverPersistentHeaderDelegate? appBar;
   final List<Widget> body;
   final Color? backgroundColor;
   final ScrollController? scrollController;
+  final FloatingActionButton? floatingActionButton;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class Screen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor ?? colors.backgroundPrimary,
+      floatingActionButton: floatingActionButton,
       body: CustomScrollView(
         controller: scrollController,
         slivers: [
