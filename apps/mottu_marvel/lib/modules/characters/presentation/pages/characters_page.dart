@@ -39,6 +39,10 @@ class _CharactersPageState extends State<CharactersPage> {
               return const CharacterPageProgressIndicator();
             }
 
+            if (controller.isError.value) {
+              return const SliverToBoxAdapter(child: MottuBody1Text.bold('Algo de errado aconteceu! :('));
+            }
+
             if (controller.filteredCharactersList.isEmpty) {
               if (controller.isFetching.value) {
                 return const CharacterPageProgressIndicator();

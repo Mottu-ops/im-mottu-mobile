@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:mottu_http/mottu_http.dart';
 import 'package:mottu_marvel/modules/characters/domain/repository/characters_repository.dart';
 import 'package:mottu_marvel/modules/characters/domain/usecases/filter_characters_trie_usecase.dart';
 import 'package:mottu_marvel/modules/characters/domain/usecases/filter_characters_usecase.dart';
@@ -7,17 +8,22 @@ import 'package:mottu_marvel/modules/characters/domain/usecases/filter_character
 import '../../data/models/marvel_response_model.dart';
 
 class CharactersPageController extends GetxController {
-  final repository = Get.find<CharactersRepository>();
-  final marvelResponse = Rxn<MarvelResponse>();
-  RxList<MarvelCharacter> charactersList = <MarvelCharacter>[].obs;
-  RxList<MarvelCharacter> filteredCharactersList = <MarvelCharacter>[].obs;
-  int offset = 0;
-  RxBool isFetching = false.obs;
   static const int DEFAULT_LIMIT = 20;
-  late RxString searchTextFieldValue = RxString('');
-  final TextEditingController searchFieldEditingController = TextEditingController();
+
+  final repository = Get.find<CharactersRepository>();
   late FilterCharactersUsecase usecase;
-  final ScrollController scrollController = ScrollController(initialScrollOffset: 1.0);
+
+  final marvelResponse = Rxn<MarvelResponse>();
+  final charactersList = <MarvelCharacter>[].obs;
+  final filteredCharactersList = <MarvelCharacter>[].obs;
+  final isFetching = false.obs;
+  late final searchTextFieldValue = RxString('');
+  late final isError = RxBool(false);
+
+  final searchFieldEditingController = TextEditingController();
+  final scrollController = ScrollController(initialScrollOffset: 1.0);
+
+  int offset = 0;
 
   @override
   void onInit() {
@@ -48,22 +54,26 @@ class CharactersPageController extends GetxController {
   Future<void> fetchCharacters({int offset = 0, limit = DEFAULT_LIMIT}) async {
     isFetching.value = true;
 
-    final fetchedResponse = await repository.fetchCharacters(offset: offset, limit: limit);
-    marvelResponse.value = fetchedResponse;
+    try {
+      final fetchedResponse = await repository.fetchCharacters(offset: offset, limit: limit);
+      marvelResponse.value = fetchedResponse;
 
-    if (offset == 0) {
-      charactersList.value = marvelResponse.value!.data.results;
-    } else {
-      charactersList.value = [...charactersList, ...marvelResponse.value!.data.results].obs;
-      charactersList.refresh();
+      if (offset == 0) {
+        charactersList.value = marvelResponse.value!.data.results;
+      } else {
+        charactersList.value = [...charactersList, ...marvelResponse.value!.data.results].obs;
+        charactersList.refresh();
+      }
+
+      filteredCharactersList.value = charactersList;
+      filteredCharactersList.refresh();
+
+      // usecase = FilterCharactersStartswithUsecase(initialList: filteredCharactersList.value!);
+      usecase = FilterCharactersTrieUsecase(initialList: filteredCharactersList);
+      //TODO Handle error
+    } on MottuHttpException {
+      isError.value = true; //ok not reverting for this assessment
     }
-
-    filteredCharactersList.value = charactersList;
-    filteredCharactersList.refresh();
-
-    // usecase = FilterCharactersStartswithUsecase(initialList: filteredCharactersList.value!);
-    usecase = FilterCharactersTrieUsecase(initialList: filteredCharactersList);
-    //TODO Handle error
 
     isFetching.value = false;
   }

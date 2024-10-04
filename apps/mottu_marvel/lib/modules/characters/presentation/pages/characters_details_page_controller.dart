@@ -7,15 +7,19 @@ import 'package:mottu_marvel/modules/characters/domain/usecases/get_related_char
 import '../../data/models/marvel_response_model.dart';
 
 class CharactersDetailsPageController extends GetxController {
-  final character = Rxn<MarvelCharacter>();
+  static const int DEFAULT_LIMIT = 20;
+
   final repository = Get.find<CharactersRepository>();
   late GetRelatedCharactersUsecase getRelatedCharactersUsecase;
+
+  final character = Rxn<MarvelCharacter>();
   final marvelResponse = Rxn<MarvelResponse>();
-  RxList<MarvelCharacter> charactersList = <MarvelCharacter>[].obs;
+  final charactersList = <MarvelCharacter>[].obs;
+  final isFetching = false.obs;
+
+  final scrollController = ScrollController(initialScrollOffset: 1.0);
+
   int offset = 0;
-  RxBool isFetching = false.obs;
-  static const int DEFAULT_LIMIT = 20;
-  final ScrollController scrollController = ScrollController(initialScrollOffset: 1.0);
 
   @override
   void onInit() {
