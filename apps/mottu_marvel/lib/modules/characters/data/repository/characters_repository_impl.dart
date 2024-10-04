@@ -51,9 +51,30 @@ class CharactersRepositoryImpl extends GetxService implements CharactersReposito
   }
 
   @override
-  Future<MarvelResponse> filterCharactersByName({required String name, int limit = 10, required int offset}) {
-    // TODO: implement filterCharactersByName
-    throw UnimplementedError();
+  Future<MarvelResponse> filterCharactersByName({required String name, int limit = 10, required int offset}) async {
+    print('repository: filterCharactersByName - fetch name $name');
+
+    final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+    final String hash = _generateHash(timestamp);
+    final queryParameters = {
+      'ts': timestamp,
+      'apikey': Environment.marvelPublicKey,
+      'hash': hash,
+      'offset': offset,
+      'limit': limit,
+      'name': name,
+    };
+
+    try {
+      final response = await httpClient.get('characters', queryParameters: queryParameters);
+
+      print('Response data: ${response.data}');
+
+      return MarvelResponse.fromJson(response.data!);
+    } on MottuHttpException catch (e) {
+      analytics.logError(e, properties: {'url': 'characters', 'filter': true, ...queryParameters});
+      rethrow; //TODO
+    }
   }
 
   @override

@@ -14,6 +14,8 @@ class CharactersPageController extends GetxController {
   int offset = 0;
   RxBool isFetching = false.obs;
   static const int DEFAULT_LIMIT = 20;
+  late RxString searchTextFieldValue = RxString('');
+  final TextEditingController searchFieldEditingController = TextEditingController();
   late FilterCharactersUsecase usecase;
   final ScrollController scrollController = ScrollController(initialScrollOffset: 1.0);
 
@@ -67,11 +69,28 @@ class CharactersPageController extends GetxController {
   }
 
   void filterCharacters(String prefix) {
+    searchTextFieldValue.value = prefix;
+
     if (prefix.isEmpty) {
       filteredCharactersList.value = charactersList;
       return;
     }
 
     filteredCharactersList.value = usecase(param: prefix);
+  }
+
+  Future<void> filterCharactersRemotely() async {
+    isFetching.value = true;
+    final fetchedResponse = await repository.filterCharactersByName(name: searchTextFieldValue.value, offset: offset);
+    marvelResponse.value = fetchedResponse;
+    filteredCharactersList.value = marvelResponse.value!.data.results;
+    filteredCharactersList.refresh();
+    isFetching.value = false;
+  }
+
+  void clearSearchField() {
+    searchTextFieldValue.value = '';
+    filteredCharactersList.value = charactersList;
+    searchFieldEditingController.clear();
   }
 }
