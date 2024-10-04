@@ -20,7 +20,7 @@ class CharactersPageController extends GetxController {
   late final searchTextFieldValue = RxString('');
   late final isError = RxBool(false);
 
-  final searchFieldEditingController = TextEditingController();
+  late final TextEditingController searchFieldEditingController;
   final scrollController = ScrollController(initialScrollOffset: 1.0);
 
   int offset = 0;
@@ -28,6 +28,7 @@ class CharactersPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    searchFieldEditingController = TextEditingController();
 
     _addScrollListener();
     fetchCharacters();
@@ -36,7 +37,7 @@ class CharactersPageController extends GetxController {
   @override
   void onClose() {
     scrollController.dispose();
-
+    searchFieldEditingController.dispose();
     super.onClose();
   }
 
@@ -91,10 +92,16 @@ class CharactersPageController extends GetxController {
 
   Future<void> filterCharactersRemotely() async {
     isFetching.value = true;
-    final fetchedResponse = await repository.filterCharactersByName(name: searchTextFieldValue.value, offset: offset);
-    marvelResponse.value = fetchedResponse;
-    filteredCharactersList.value = marvelResponse.value!.data.results;
-    filteredCharactersList.refresh();
+
+    try {
+      final fetchedResponse = await repository.filterCharactersByName(name: searchTextFieldValue.value, offset: offset);
+      marvelResponse.value = fetchedResponse;
+      filteredCharactersList.value = marvelResponse.value!.data.results;
+      filteredCharactersList.refresh();
+    } on MottuHttpException {
+      isError.value = true;
+    }
+
     isFetching.value = false;
   }
 
