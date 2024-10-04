@@ -41,7 +41,7 @@ class MyHeaderDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => 304;
 
   @override
-  double get minExtent => 100;
+  double get minExtent => 120;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => true;

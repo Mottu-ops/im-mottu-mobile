@@ -2,10 +2,11 @@ import 'package:analytics/analytics.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mottu_design_system/mottu_design_system.dart';
 import 'package:mottu_marvel/core/di/root_bindins.dart';
 import 'package:mottu_marvel/core/routes/app_routes.dart';
-import 'package:mottu_marvel/core/services/connectivity_status_service.dart';
 
+import 'core/services/theme_service.dart';
 import 'modules/splash/presentation/routes/routes.dart';
 
 void main() async => startApplication();
@@ -29,14 +30,17 @@ class MottuMarvelApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Mottu - Marvel',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    final ThemeController themeController = Get.put(ThemeController());
+
+    return Obx(
+      () => GetMaterialApp(
+        title: 'Mottu - Marvel',
+        themeMode: themeController.isDarkTheme.value ? ThemeMode.dark : ThemeMode.light,
+        theme: mottuThemeLight,
+        darkTheme: mottuThemeDark,
+        initialRoute: SplashRouteNames.SPLASH,
+        getPages: marvelPages,
       ),
-      initialRoute: SplashRouteNames.SPLASH,
-      getPages: marvelPages,
     );
   }
 }

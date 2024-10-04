@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mottu_design_system/src/themes/mottu_color_theme.dart';
 
 class Screen extends StatelessWidget {
   const Screen({
@@ -6,23 +7,29 @@ class Screen extends StatelessWidget {
     this.appBar,
     required this.body,
     this.backgroundColor,
+    this.scrollController,
+    this.floatingActionButton,
   });
 
-  final Widget? appBar;
-  final Widget body;
+  final SliverPersistentHeaderDelegate? appBar;
+  final List<Widget> body;
   final Color? backgroundColor;
+  final ScrollController? scrollController;
+  final FloatingActionButton? floatingActionButton;
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).extension<MottuColorsTheme>()!;
+
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            if (appBar != null) appBar!,
-            Expanded(child: body),
-          ],
-        ),
+      backgroundColor: backgroundColor ?? colors.backgroundPrimary,
+      floatingActionButton: floatingActionButton,
+      body: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          if (appBar != null) SliverPersistentHeader(pinned: true, delegate: appBar!),
+          ...body,
+        ],
       ),
     );
   }
