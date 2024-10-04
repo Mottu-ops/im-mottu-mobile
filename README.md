@@ -6,7 +6,7 @@ Este projeto foi construído como parte do processo de entrevistas para a Mottu.
 
 1. [A versão iOS](https://www.loom.com/share/4f31b0757dc64b19b39eb32920f05231), com os seguintes requisitos funcionais: splash screen, listagem de personagens, busca por personagens, detalhes dos personagens, e cache, além da feature adicional de dar suporte a Light e Dark modes;
 
-2. [A versão Android](https://www.loom.com/share/f4f5e74aa20c414586ed9b13241da64c), com o requisito de obter informações sobre a conectividade usando Kotlin e Method Channel.
+2. [A versão Android](https://www.loom.com/share/f4f5e74aa20c414586ed9b13241da64c), com o requisito de obter informações sobre a conectividade usando Kotlin e Event Channel.
 
 3. Todas as atividades realizadas podem ser verificadas nesta [issue](https://github.com/thiagobrunoms/im-mottu-mobile/issues/20). Para mais detalhes, verifique as demais issues e milestone para analisar a forma que as atividades foram organizadas.
 
