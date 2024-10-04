@@ -19,7 +19,6 @@ class ConnectivityStatusService extends GetxService {
     if (Environment.isAndroid) {
       connectivityStatus = ConnectivityStatus();
       connectivityStatus.startConnectivityStatusService().listen((data) {
-        print('status $data');
         router.showSnackbar('Conexão', 'Sua conexão é $data');
       });
     }

@@ -10,14 +10,11 @@ class DioCacheInterceptor extends Interceptor {
 
   @override
   Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    print('on request: ${options.method.toUpperCase()}');
-
     if (options.method.toUpperCase() != 'GET') {
       return super.onRequest(options, handler);
     }
 
     final cacheData = await _getCacheData(options.uri, options.uri.queryParameters);
-    print('cache data? ${cacheData}');
     if (cacheData != null) {
       final cacheTTL = DateTime.now().difference(DateTime.parse(cacheData['timestamp'])).inMinutes;
       analytics.logEvent('cache', properties: {'cacheTTL': cacheTTL});
@@ -28,8 +25,7 @@ class DioCacheInterceptor extends Interceptor {
             data: cacheData['data'].cast<String, dynamic>(),
             statusCode: 200,
             statusMessage: 'OK');
-        print('returning cached cdata');
-        print(cachedResponse);
+
         return handler.resolve(cachedResponse);
       } else {
         if (cacheData['etag'] != null) {
@@ -44,9 +40,7 @@ class DioCacheInterceptor extends Interceptor {
 
   @override
   Future<void> onResponse(Response response, ResponseInterceptorHandler handler) async {
-    print('on response ${response.statusCode}');
     if (response.statusCode == 304) {
-      print('returning cacheData after 304: ${response.realUri}');
       final cacheData = await _getCacheData(response.realUri, response.realUri.queryParameters);
       if (cacheData != null) {
         final cachedResponse = Response(
@@ -54,15 +48,11 @@ class DioCacheInterceptor extends Interceptor {
             data: cacheData['data'] as Map<String, dynamic>,
             statusCode: 200,
             statusMessage: 'OK');
-        print('returning cached cdata');
-        print(cachedResponse);
         return handler.resolve(cachedResponse);
       }
     }
 
     if (response.statusCode == 200 && response.data['etag'] != null) {
-      print('SAVING new data');
-      print(response.data);
       final cacheKey = _generateCacheKey(response.realUri, response.realUri.queryParameters);
       final cacheData = {
         'timestamp': DateTime.now().toIso8601String(),
@@ -83,7 +73,6 @@ class DioCacheInterceptor extends Interceptor {
   }
 
   String _generateCacheKey(Uri uri, Map<String, dynamic> queryParameters) {
-    // final key = '${uri.path}${queryParameters['offset']}${queryParameters['limit']}';
     final key = queryParameters.entries.map((entry) {
       if (entry.key == 'ts' || entry.key == 'apiKey' || entry.key == 'hash') {
         return "";
@@ -92,7 +81,6 @@ class DioCacheInterceptor extends Interceptor {
       return entry.value;
     }).join(",");
 
-    print('KEY GENERATED $key');
     return key;
   }
 }

@@ -17,13 +17,11 @@ class DioHttpClient implements MottuHttpClient<ApiResponse> {
   @override
   Future<ApiResponse> get(String url, {Map<String, dynamic>? queryParameters, Map<String, dynamic>? options}) async {
     try {
-      print('GETTING $url ');
       final response = await client.get<Map<String, dynamic>>(url,
           queryParameters: queryParameters ?? {}, options: Options(headers: options?['headers']));
-      print(response.data);
+
       return ApiResponse(statusCode: response.statusCode, data: response.data);
     } on DioException catch (e) {
-      print(e);
       throw MottuHttpException(
         data: e.response?.data != null ? e.response?.data as Map<String, dynamic> : {'error': 'no network connection'},
         httpErrorMessage: e.response?.statusMessage ?? unexpectedErrorMessage,
@@ -39,7 +37,6 @@ class DioHttpClient implements MottuHttpClient<ApiResponse> {
       final response = await client.post<Map<String, dynamic>>(url, data: data, queryParameters: queryParameters);
       return ApiResponse(statusCode: response.statusCode, data: response.data);
     } on DioException catch (e) {
-      print(e.response?.data);
       late Map<String, dynamic> data;
       if (e.response?.data is String) {
         data = json.decode(e.response?.data as String) as Map<String, dynamic>;

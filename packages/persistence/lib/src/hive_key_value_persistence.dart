@@ -24,14 +24,10 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
   Future<bool> save<T>(String key, T value) async {
     try {
       final box = await completer.future as Box;
-      print('DATA TO BE SAVED ON HIVE');
-      print(value);
       box.put(key, value);
       return true;
     } catch (e) {
-      print('ERROR WHILE SAVING');
       //TODO add crashlytics
-      print(e);
       return false;
     }
   }
