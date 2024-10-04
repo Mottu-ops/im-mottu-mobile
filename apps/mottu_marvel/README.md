@@ -8,9 +8,11 @@ Este projeto foi construído como parte do processo de entrevistas para a Mottu.
 
 2. [A versão Android](https://www.loom.com/share/f4f5e74aa20c414586ed9b13241da64c), com o requisito de obter informações sobre a conectividade usando Kotlin e Method Channel.
 
-3. Todas as atividades realizadas podem ser verificadas nesta [issue](https://github.com/thiagobrunoms/im-mottu-mobile/issues/20). Para mais detalhes, verifique as demais issues e milestone para analisar a forma que as atividades foram organizadas.
+3. Suporte ao crashlytics: não foi gravado um video, mas o projeto dá suporte a crashlytics para capturar alguns erros;
 
-4. A última versão deste projeto está nas branches `main`e `level_3`.
+4. Todas as atividades realizadas podem ser verificadas nesta [issue](https://github.com/thiagobrunoms/im-mottu-mobile/issues/20). Para mais detalhes, verifique as demais issues e milestone para analisar a forma que as atividades foram organizadas.
+
+5. A última versão deste projeto está nas branches `main`e `level_3`.
 
 ## Solução baseada em package
 
