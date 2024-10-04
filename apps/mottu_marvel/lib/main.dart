@@ -19,7 +19,6 @@ Future<void> startApplication() async {
     dotenv.load(),
     initFirebase(),
     getApplicationDirectory(),
-    RootBinding().dependencies(),
   ]);
 
   runApp(const MottuMarvelApp());

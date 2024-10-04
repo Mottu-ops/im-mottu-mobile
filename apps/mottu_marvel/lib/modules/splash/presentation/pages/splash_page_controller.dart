@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:common/common.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/di/root_bindins.dart';
 import '../../../../core/services/app_lifecycle_service.dart';
 import '../routes/splash_router.dart';
 
@@ -14,6 +15,7 @@ class SplashPageController extends GetxController {
     super.onInit();
 
     tasks = [
+      () async => RootBinding().dependencies(),
       () async => Get.put(AppLifecycleService(), permanent: true),
       () async => lockRotation(),
     ];
