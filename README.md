@@ -4,7 +4,8 @@
 
 Este projeto foi construído como parte do processo de entrevistas para a Mottu. Nos dois vídeos seguintes são apresentados:
 
-1. [A versão iOS](https://www.loom.com/share/4f31b0757dc64b19b39eb32920f05231), com os seguintes requisitos funcionais: splash screen, listagem de personagens, busca por personagens, detalhes dos personagens;
+1. [A versão iOS](https://www.loom.com/share/4f31b0757dc64b19b39eb32920f05231), com os seguintes requisitos funcionais: splash screen, listagem de personagens, busca por personagens, detalhes dos personagens, e cache, além da feature adicional de dar suporte a Light e Dark modes;
+
 2. [A versão Android](https://www.loom.com/share/f4f5e74aa20c414586ed9b13241da64c), com o requisito de obter informações sobre a conectividade usando Kotlin e Method Channel.
 
 ## Solução baseada em package
