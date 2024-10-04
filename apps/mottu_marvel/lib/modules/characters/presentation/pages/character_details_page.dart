@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mottu_marvel/modules/characters/presentation/pages/characters_details_page_controller.dart';
-import 'package:mottu_marvel/modules/characters/presentation/pages/characters_page_controller.dart';
 import 'package:mottu_design_system/mottu_design_system.dart';
 
-import '../../data/models/marvel_response_model.dart';
-import '../router/character_router.dart';
 import '../widgets/character_item.dart';
 import '../widgets/characters_page_progress_indicator.dart';
 
@@ -22,18 +19,12 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Screen(
+      scrollController: controller.scrollController,
       appBar: MyHeaderDelegate(
         backgroundImageUrl: controller.character.value?.imageUrl ??
             'https://www.epicstuff.com/cdn/shop/collections/MARVEL_1920x450_b691539a-a0cb-4a43-8d20-ca9d567ab290_1920x450.jpg?v=1581967770',
-        bottomWidget: Container(
-          padding: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            color: Colors.black54,
-          ),
-          child: Text(
-            controller.character.value?.name ?? 'Carregando nome...',
-            style: TextStyle(color: Colors.white),
-          ),
+        bottomWidget: _CharacterName(
+          name: controller.character.value?.name,
         ),
       ),
       body: [
@@ -41,9 +32,8 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
           return SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
+              child: MottuBody1Text.regular(
                 controller.character.value?.description ?? 'Carregando descrição',
-                style: const TextStyle(color: Colors.white),
               ),
             ),
           );
@@ -60,11 +50,11 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
                 hasScrollBody: false,
                 child: Center(
                   child: Padding(
-                      padding: EdgeInsets.only(bottom: 40.0),
-                      child: Text(
-                        'Não há dados disponíveis',
-                        style: TextStyle(color: Colors.white),
-                      )),
+                    padding: EdgeInsets.only(bottom: 40.0),
+                    child: MottuBody1Text.bold(
+                      'Não há dados disponíveis',
+                    ),
+                  ),
                 ),
               );
             }
@@ -94,6 +84,26 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage> {
                 );
         }),
       ],
+    );
+  }
+}
+
+class _CharacterName extends StatelessWidget {
+  const _CharacterName({super.key, this.name});
+
+  final String? name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      decoration: const BoxDecoration(
+        color: MottuColors.blackMedium,
+      ),
+      child: MottuHeading1Text.regular(
+        name ?? 'Carregando nome...',
+        color: MottuColors.white,
+      ),
     );
   }
 }

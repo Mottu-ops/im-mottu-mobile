@@ -21,12 +21,7 @@ class MarvelCharacterItem extends StatelessWidget {
           SizedBox(
             width: 20,
           ),
-          Text(
-            marvelCharacter.name,
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          )
+          MottuHeading1Text.regular(marvelCharacter.name)
         ],
       ),
     );

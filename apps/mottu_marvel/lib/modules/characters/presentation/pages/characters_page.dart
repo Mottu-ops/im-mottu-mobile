@@ -19,6 +19,7 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   Widget build(BuildContext context) {
     return Screen(
+      scrollController: controller.scrollController,
       appBar: MyHeaderDelegate(
         backgroundImageUrl:
             'https://www.epicstuff.com/cdn/shop/collections/MARVEL_1920x450_b691539a-a0cb-4a43-8d20-ca9d567ab290_1920x450.jpg?v=1581967770',
@@ -70,6 +71,11 @@ class _FilterCharactersTextField extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: MottuTextField(
+        hintText: "Buscar por personagens",
+        prefixIcon: const Icon(
+          Icons.search,
+          color: MottuColors.white,
+        ),
         onChanged: controller.filterCharacters,
       ),
     );

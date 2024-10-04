@@ -14,9 +14,9 @@ class MottuTextStyleTheme extends ThemeExtension<MottuTextStyleTheme> {
     }) {
       return TextStyle(
         fontSize: size,
-        color: color ?? mottuColorsTheme.defaultText,
+        color: color ?? mottuColorsTheme.textPrimary,
         fontFamily: fontFamily.name,
-        package: 'design_system',
+        package: 'mottu_design_system',
         fontWeight: fontWeight,
         letterSpacing: letterSpacing,
       );

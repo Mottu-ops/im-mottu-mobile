@@ -28,7 +28,7 @@ abstract class MottuBaseText extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = Theme.of(context).extension<MottuTextStyleTheme>()!;
     final colors = Theme.of(context).extension<MottuColorsTheme>()!;
-    final textStyle = injectMottuTextStyleTheme(style).copyWith(color: color ?? colors.defaultText);
+    final textStyle = injectMottuTextStyleTheme(style).copyWith(color: color ?? colors.textPrimary);
 
     return Text(
       text,

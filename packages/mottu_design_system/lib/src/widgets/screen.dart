@@ -20,7 +20,7 @@ class Screen extends StatelessWidget {
     final colors = Theme.of(context).extension<MottuColorsTheme>()!;
 
     return Scaffold(
-      backgroundColor: backgroundColor ?? colors.backgroundDefault,
+      backgroundColor: backgroundColor ?? colors.backgroundPrimary,
       body: CustomScrollView(
         controller: scrollController,
         slivers: [

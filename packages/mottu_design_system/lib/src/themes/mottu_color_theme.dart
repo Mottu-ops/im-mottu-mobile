@@ -3,36 +3,41 @@ import 'package:flutter/material.dart';
 abstract class MottuColors {
   static const white = Colors.white;
   static const black = Colors.black;
+  static const blackMedium = Colors.black54;
 }
 
 typedef _MC = MottuColors;
 
 class MottuColorsTheme extends ThemeExtension<MottuColorsTheme> {
   const MottuColorsTheme._({
-    required this.backgroundDefault,
+    required this.backgroundPrimary,
     required this.backgroundSecondary,
-    required this.defaultText,
+    required this.textPrimary,
+    required this.textSecondary,
   });
 
   factory MottuColorsTheme.light() {
     return const MottuColorsTheme._(
-      backgroundDefault: _MC.white,
+      backgroundPrimary: _MC.white,
       backgroundSecondary: _MC.black,
-      defaultText: _MC.black,
+      textPrimary: _MC.black,
+      textSecondary: _MC.white,
     );
   }
 
   factory MottuColorsTheme.dark() {
     return const MottuColorsTheme._(
-      backgroundDefault: _MC.black,
+      backgroundPrimary: _MC.black,
       backgroundSecondary: _MC.white,
-      defaultText: _MC.white,
+      textPrimary: _MC.white,
+      textSecondary: _MC.black,
     );
   }
 
-  final Color backgroundDefault;
+  final Color backgroundPrimary;
   final Color backgroundSecondary;
-  final Color defaultText;
+  final Color textPrimary;
+  final Color textSecondary;
 
   @override
   ThemeExtension<MottuColorsTheme> copyWith([bool isLightMode = true]) {
