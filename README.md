@@ -26,6 +26,12 @@ Para executar este aplicativo, ative o `melos` através do comando `dart pub glo
 
 - Para executar este projeto, pode considerar o seguinte comando: `flutter run -d [DEVICE_ID] --flavor staging`. Para esta versão, apenas a versão `staging` foi configurada.
 
+**Executando testes unitários**
+
+- No melos.yaml, há um script chamada fast_test. Execute `melos fast_test`.
+
+- A segunda opção é realizar os testes individuais nas respecticas pastas `/test` de cada package e do app. Há testes no `/test` do projeto `/apps/mottu_marvel` e alguns testes em `packages` individuais. Execute `flutter test nome_test.dart` para executar um teste individual.
+
 ### Teste prático para desenvolvedores Mobile Mottu
 
 > _Este teste está separado em 3 níveis de dificuldade. Você pode desenvolver seu teste APP atendendo apenas a um nível, ou a todos._

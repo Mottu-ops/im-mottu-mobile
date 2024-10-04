@@ -26,7 +26,7 @@ void main() {
   });
 
   group('HiveKeyValuePersistence Tests', () {
-    test('save() should store the data in the box', () async {
+    test('Given a key and a value, then a new data is stored in the box', () async {
       const String cacheKey = 'cacheKey';
       const Map<String, dynamic> data = {'key': 'value'};
 
@@ -38,7 +38,7 @@ void main() {
       verify(() => mockBox.put(cacheKey, data)).called(1);
     });
 
-    test('read() should retrieve data from the box', () async {
+    test('Given a read operation, then it should retrieve data from the box', () async {
       const String cacheKey = 'cacheKey';
       const Map<String, dynamic> storedData = {'key': 'value'};
 
