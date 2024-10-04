@@ -12,8 +12,12 @@ import '../presentation/pages/characters_page_controller.dart';
 class CharactersBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<CharactersRepository>(
-        () => CharactersRepositoryImpl(httpClient: DioHttpClient(dio), analytics: AnalyticsFirebaseService()));
+    Get.lazyPut<CharactersRepository>(() => CharactersRepositoryImpl(
+        httpClient: DioHttpClient(dio,
+            dioCacheInterceptor: DioCacheInterceptor(
+                persistence: HiveKeyValuePersistence(boxName: 'cache', directory: directory),
+                analytics: AnalyticsFirebaseService())),
+        analytics: AnalyticsFirebaseService()));
     Get.lazyPut<CharactersPageController>(() => CharactersPageController());
     Get.create<CharactersDetailsPageController>(() => CharactersDetailsPageController());
     Get.put<KeyValuePersistence>(HiveKeyValuePersistence(boxName: 'cache', directory: directory));

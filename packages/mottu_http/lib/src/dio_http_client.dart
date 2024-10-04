@@ -1,22 +1,18 @@
 import 'dart:convert';
-
-import 'package:analytics/analytics.dart';
 import 'package:common/common.dart';
 import 'package:dio/dio.dart';
 import 'package:mottu_http/src/dio_cache_interceptor.dart';
-import 'package:persistence/persistence.dart';
 
 import 'exceptions.dart';
 import 'mottu_http_client.dart';
 
 class DioHttpClient implements MottuHttpClient<ApiResponse> {
-  DioHttpClient(this.client) {
-    client.interceptors.add(DioCacheInterceptor(
-        persistence: HiveKeyValuePersistence(boxName: 'cache', directory: directory),
-        analytics: AnalyticsFirebaseService()));
+  DioHttpClient(this.client, {required this.dioCacheInterceptor}) {
+    client.interceptors.add(dioCacheInterceptor);
   }
 
   final Dio client;
+  final DioCacheInterceptor dioCacheInterceptor;
 
   @override
   Future<ApiResponse> get(String url, {Map<String, dynamic>? queryParameters, Map<String, dynamic>? options}) async {
