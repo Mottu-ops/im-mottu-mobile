@@ -94,7 +94,8 @@ class CharactersPageController extends GetxController {
     isFetching.value = true;
 
     try {
-      final fetchedResponse = await repository.filterCharactersByName(name: searchTextFieldValue.value, offset: offset);
+      final fetchedResponse =
+          await repository.filterCharactersByName(name: searchTextFieldValue.value.trim(), offset: offset);
       marvelResponse.value = fetchedResponse;
       filteredCharactersList.value = marvelResponse.value!.data.results;
       filteredCharactersList.refresh();

@@ -39,10 +39,8 @@ class CharactersDetailsPageController extends GetxController {
 
   void _addScrollListener() {
     scrollController.addListener(() {
-      print(scrollController.offset);
       if (scrollController.position.pixels >= scrollController.position.maxScrollExtent - 100) {
         if (charactersList.isNotEmpty && !isFetching.value) {
-          print('FETCHING PAGINAGION: $offset');
           offset = offset + DEFAULT_LIMIT;
           fetchRelatedCharacters(offset: offset);
         }
