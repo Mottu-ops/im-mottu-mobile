@@ -35,8 +35,27 @@ class _CharactersPageState extends State<CharactersPage> {
       body: [
         Obx(
           () {
-            if (controller.marvelResponse.value == null || controller.filteredCharactersList.isEmpty) {
+            if (controller.marvelResponse.value == null) {
               return const CharacterPageProgressIndicator();
+            }
+
+            if (controller.filteredCharactersList.isEmpty) {
+              if (controller.isFetching.value) {
+                return const CharacterPageProgressIndicator();
+              }
+
+              return SliverFillRemaining(
+                hasScrollBody: false,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const MottuBody1Text.medium('Não há resultados locais. Deseja fazer uma busca remota?'),
+                    const SizedBox(height: 10.0),
+                    ElevatedButton(
+                        onPressed: controller.filterCharactersRemotely, child: const MottuBody1Text.bold('SIM'))
+                  ],
+                ),
+              );
             }
 
             final List<Widget> charactersList = controller.filteredCharactersList
@@ -56,13 +75,31 @@ class _CharactersPageState extends State<CharactersPage> {
             );
           },
         ),
-        Obx(() {
-          return controller.isFetching.value && controller.charactersList.isNotEmpty
-              ? const CharacterPageProgressIndicator()
-              : const SliverToBoxAdapter(
-                  child: SizedBox.shrink(),
-                );
-        }),
+        Obx(
+          () {
+            if (controller.isFetching.value && controller.charactersList.isNotEmpty) {
+              return const CharacterPageProgressIndicator();
+            }
+
+            return const SliverToBoxAdapter(child: SizedBox.shrink());
+          },
+        ),
+        Obx(
+          () {
+            if (!controller.isFetching.value && controller.searchTextFieldValue.isNotEmpty) {
+              return SliverToBoxAdapter(
+                child: ElevatedButton(
+                  onPressed: controller.clearSearchField,
+                  child: const MottuBody1Text.bold('Limpar busca'),
+                ),
+              );
+            }
+
+            return const SliverToBoxAdapter(
+              child: SizedBox.shrink(),
+            );
+          },
+        ),
       ],
     );
   }
@@ -79,6 +116,7 @@ class _FilterCharactersTextField extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10.0),
       width: MediaQuery.of(context).size.width * 0.8,
       child: MottuTextField(
+        controller: controller.searchFieldEditingController,
         hintText: "Buscar por personagens",
         prefixIcon: const Icon(
           Icons.search,

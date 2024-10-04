@@ -8,16 +8,19 @@ class MottuTextField extends StatelessWidget {
     required this.prefixIcon,
     this.onChanged,
     this.onSubmitted,
+    this.controller,
   }) : super(key: key);
 
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onSubmitted;
   final String hintText;
   final Widget? prefixIcon;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
