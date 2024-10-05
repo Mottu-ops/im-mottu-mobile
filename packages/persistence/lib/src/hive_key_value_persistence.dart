@@ -1,13 +1,18 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:analytics/analytics.dart';
 import 'package:hive/hive.dart';
 import 'package:persistence/src/key_value_persistence.dart';
 
 const String CACHE_STORE_NAME = 'cache';
 
 class HiveKeyValuePersistence<T> implements KeyValuePersistence {
-  HiveKeyValuePersistence({required this.boxName, required this.directory}) {
+  HiveKeyValuePersistence({
+    required this.boxName,
+    required this.directory,
+    required this.analytics,
+  }) {
     Hive.init(directory.path);
 
     Hive.openBox<T>(boxName).then((box) {
@@ -19,8 +24,9 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
 
   final String boxName;
   final Directory directory;
-  Completer completer = Completer<Box<T>>();
   late Box<Map<String, dynamic>> box;
+  final completer = Completer<Box<T>>();
+  final AnalyticsService analytics;
 
   @override
   Future<bool> save<T>(String key, T value) async {
@@ -29,7 +35,7 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
       box.put(key, value);
       return true;
     } catch (e) {
-      //TODO add crashlytics
+      analytics.logError(e, properties: {'operation': 'save using hive'});
       return false;
     }
   }
@@ -47,8 +53,7 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
       }
       return data as T?;
     } catch (e) {
-      print(e);
-      //TODO add crashlytics
+      analytics.logError(e, properties: {'operation': 'save using hive'});
       return null;
     }
   }
@@ -60,8 +65,7 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
       await box.delete(key);
       return true;
     } catch (e) {
-      print(e);
-      //TODO add crashlytics
+      analytics.logError(e, properties: {'operation': 'save using hive'});
       return false;
     }
   }
@@ -73,7 +77,7 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
       box.clear();
       box.close();
     } catch (e) {
-      print(e);
+      analytics.logError(e, properties: {'operation': 'save using hive'});
     }
   }
 

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:analytics/analytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:mocktail/mocktail.dart';
@@ -12,16 +13,21 @@ class MockCompleter<T> extends Mock implements Completer<T> {}
 
 class MockDirectory extends Mock implements Directory {}
 
+class MockAnalyticsService extends Mock implements AnalyticsService {}
+
 void main() {
   late MockBox<Map<String, dynamic>> mockBox;
   late HiveKeyValuePersistence persistence;
   late MockDirectory mockDirectory;
+  late MockAnalyticsService analytics;
 
   setUp(() {
     mockDirectory = MockDirectory();
+    analytics = MockAnalyticsService();
     mockBox = MockBox<Map<String, dynamic>>();
     when(() => mockDirectory.path).thenReturn('/mottur/marvel/app/path');
-    persistence = HiveKeyValuePersistence<Map<String, dynamic>>(boxName: 'testBox', directory: mockDirectory);
+    persistence = HiveKeyValuePersistence<Map<String, dynamic>>(
+        boxName: 'testBox', directory: mockDirectory, analytics: analytics);
     persistence.completer.complete(mockBox);
   });
 
