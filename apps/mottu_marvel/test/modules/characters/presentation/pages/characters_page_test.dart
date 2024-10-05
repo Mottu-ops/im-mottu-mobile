@@ -3,12 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
-import 'package:mottu_marvel/modules/characters/presentation/pages/characters_details_page_controller.dart';
 import 'package:mottu_marvel/modules/characters/presentation/pages/characters_page_controller.dart';
 import 'package:mottu_marvel/core/services/theme_service.dart';
 import 'package:mottu_marvel/modules/characters/data/models/marvel_response_model.dart';
-import 'package:mottu_marvel/modules/characters/presentation/router/character_router.dart';
-import 'package:mottu_marvel/modules/characters/presentation/router/routes.dart';
 import 'package:mottu_marvel/modules/characters/presentation/widgets/character_item.dart';
 import 'package:mottu_marvel/modules/characters/presentation/widgets/characters_page_progress_indicator.dart';
 
@@ -123,7 +120,6 @@ void main() {
     testWidgets(
         'Given theres no filtered characters in list, when the user tries for look up for a specific characters, then it shows no results message and a button',
         (WidgetTester tester) async {
-      // Arrange: Simulate no characters and not fetching state
       when(() => mockController.marvelResponse).thenReturn(Rxn<MarvelResponse>(mockMarvelResponse));
       when(() => mockController.isError).thenReturn(false.obs);
       when(() => mockController.isFetching).thenReturn(false.obs);
