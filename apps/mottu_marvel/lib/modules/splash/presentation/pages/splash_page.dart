@@ -31,10 +31,7 @@ class SplashPage extends StatelessWidget {
                   size: 150,
                   asset: 'assets/images/mottuLogo.png',
                 ),
-                Text(
-                  '${controller.loadingStatus}%',
-                  style: TextStyle(color: Colors.white),
-                )
+                MottuHeading1Text.regular('${controller.loadingStatus.value}%')
               ],
             );
           },
