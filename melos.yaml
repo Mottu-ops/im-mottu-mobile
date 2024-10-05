@@ -19,6 +19,6 @@ scripts:
   fast_test:selective_unit_test:
     run: melos exec -c 10 --dir-exists="test" --fail-fast -- flutter test --no-pub
     description: Run Flutter tests for a specific package in this project. With 10 concurrent processes.
-  fast_test:
-    run: melos run fast_test --no-parallel
+  unit_test:
+    run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub
     description: Run all Flutter tests in this project.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:mottu_design_system/mottu_design_system.dart';
 import 'package:mottu_marvel/modules/splash/presentation/pages/splash_page_controller.dart';
 
 class SplashPage extends StatelessWidget {
@@ -8,12 +8,14 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).extension<MottuColorsTheme>()!;
+
     return Scaffold(
       body: Container(
         width: Get.size.width,
         height: Get.size.height,
-        decoration: const BoxDecoration(
-          color: Colors.black,
+        decoration: BoxDecoration(
+          color: colors.backgroundPrimary,
         ),
         child: GetX<SplashPageController>(
           init: SplashPageController(),
@@ -29,10 +31,7 @@ class SplashPage extends StatelessWidget {
                   size: 150,
                   asset: 'assets/images/mottuLogo.png',
                 ),
-                Text(
-                  '${controller.loadingStatus}%',
-                  style: TextStyle(color: Colors.white),
-                )
+                MottuHeading1Text.regular('${controller.loadingStatus.value}%')
               ],
             );
           },

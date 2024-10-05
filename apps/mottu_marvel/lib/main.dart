@@ -35,8 +35,8 @@ class MottuMarvelApp extends StatelessWidget {
       () => GetMaterialApp(
         title: 'Mottu - Marvel',
         themeMode: themeController.isDarkTheme.value ? ThemeMode.dark : ThemeMode.light,
-        theme: mottuThemeLight,
-        darkTheme: mottuThemeDark,
+        theme: mottuThemeDataLight,
+        darkTheme: mottuThemeDataDark,
         initialRoute: SplashRouteNames.SPLASH,
         getPages: marvelPages,
       ),

@@ -23,7 +23,7 @@ class FilterCharactersTrieUsecase extends FilterCharactersUsecase {
       return <MarvelCharacter>[];
     }
 
-    return _searchCharactersByPrefixNames(param);
+    return _searchCharactersByPrefixNames(param.toLowerCase());
   }
 
   void _insertMarvelCharacters(List<MarvelCharacter> characters) {
@@ -37,7 +37,7 @@ class FilterCharactersTrieUsecase extends FilterCharactersUsecase {
     final name = character.name;
 
     for (int i = 0; i < name.length; i++) {
-      final currentWordLetter = name[i];
+      final currentWordLetter = name[i].toLowerCase();
       if (!currentNodeLetter.children.containsKey(currentWordLetter)) {
         currentNodeLetter.children[currentWordLetter] = _TrieLetter();
       }
