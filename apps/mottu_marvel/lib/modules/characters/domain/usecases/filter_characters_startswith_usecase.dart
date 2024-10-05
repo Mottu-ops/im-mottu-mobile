@@ -12,6 +12,8 @@ class FilterCharactersStartswithUsecase extends FilterCharactersUsecase {
       return <MarvelCharacter>[];
     }
 
-    return initialList.where((eachCharacter) => eachCharacter.name.startsWith(param)).toList();
+    return initialList
+        .where((eachCharacter) => eachCharacter.name.toLowerCase().startsWith(param.toLowerCase()))
+        .toList();
   }
 }

@@ -18,9 +18,7 @@ class MarvelCharacterItem extends StatelessWidget {
           MottuNetworkImage(
             url: marvelCharacter.imageUrl,
           ),
-          SizedBox(
-            width: 20,
-          ),
+          const SizedBox(width: 20),
           MottuHeading1Text.regular(marvelCharacter.name)
         ],
       ),
