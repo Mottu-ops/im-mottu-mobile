@@ -25,10 +25,15 @@ void main() {
     mockDirectory = MockDirectory();
     analytics = MockAnalyticsService();
     mockBox = MockBox<Map<String, dynamic>>();
-    when(() => mockDirectory.path).thenReturn('/mottur/marvel/app/path');
+
+    when(() => mockDirectory.path).thenReturn('mottur/marvel/app/path');
+
     persistence = HiveKeyValuePersistence<Map<String, dynamic>>(
         boxName: 'testBox', directory: mockDirectory, analytics: analytics);
-    persistence.completer.complete(mockBox);
+
+    if (!persistence.completer.isCompleted) {
+      persistence.completer.complete(mockBox);
+    }
   });
 
   group('HiveKeyValuePersistence Tests', () {
@@ -55,6 +60,17 @@ void main() {
       expect(result, isNotNull);
       expect(result, equals(storedData));
       verify(() => mockBox.get(cacheKey)).called(1);
+    });
+
+    test('Given a key and a value, when an exception occurs, it should be written in an analytics service', () async {
+      const String cacheKey = 'cacheKey';
+      const Map<String, dynamic> data = {'key': 'value'};
+
+      when(() => mockBox.put(cacheKey, data)).thenThrow(Exception('error'));
+
+      await persistence.save<Map<String, dynamic>>(cacheKey, data);
+
+      verify(() => analytics.logError(any(), properties: any(named: 'properties'))).called(1);
     });
   });
 }

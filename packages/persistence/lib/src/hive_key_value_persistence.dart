@@ -13,13 +13,7 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
     required this.directory,
     required this.analytics,
   }) {
-    Hive.init(directory.path);
-
-    Hive.openBox<T>(boxName).then((box) {
-      completer.complete(box);
-    }).catchError((error) {
-      completer.completeError(error);
-    });
+    _initHive(boxName, directory);
   }
 
   final String boxName;
@@ -27,6 +21,14 @@ class HiveKeyValuePersistence<T> implements KeyValuePersistence {
   late Box<Map<String, dynamic>> box;
   final completer = Completer<Box<T>>();
   final AnalyticsService analytics;
+
+  Future<void> _initHive(String boxName, Directory directory) async {
+    final box = await Hive.openBox<T>(boxName, path: directory.path);
+
+    if (!completer.isCompleted) {
+      completer.complete(box);
+    }
+  }
 
   @override
   Future<bool> save<T>(String key, T value) async {

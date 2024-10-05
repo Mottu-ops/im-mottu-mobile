@@ -12,11 +12,11 @@ import '../presentation/pages/characters_page_controller.dart';
 class CharactersBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<KeyValuePersistence>(
-      HiveKeyValuePersistence(boxName: CACHE_STORE_NAME, directory: directory),
-    );
-
     Get.put<AnalyticsService>(AnalyticsFirebaseService());
+
+    Get.put<KeyValuePersistence>(
+      HiveKeyValuePersistence(boxName: CACHE_STORE_NAME, directory: directory, analytics: Get.find<AnalyticsService>()),
+    );
 
     Get.lazyPut<CharactersRepository>(() => CharactersRepositoryImpl(
           httpClient: DioHttpClient(
