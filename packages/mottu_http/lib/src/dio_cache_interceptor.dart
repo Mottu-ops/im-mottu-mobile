@@ -2,6 +2,8 @@ import 'package:analytics/analytics.dart';
 import 'package:dio/dio.dart';
 import 'package:persistence/persistence.dart';
 
+const CACHE_TTL_IN_MINUTES = 60;
+
 class DioCacheInterceptor extends Interceptor {
   DioCacheInterceptor({required this.persistence, required this.analytics});
 
@@ -18,8 +20,8 @@ class DioCacheInterceptor extends Interceptor {
     if (cacheData != null) {
       final cacheTTL = DateTime.now().difference(DateTime.parse(cacheData['timestamp'])).inMinutes;
       analytics.logEvent('cache', properties: {'cacheTTL': cacheTTL});
-      //TODO Cache TTL to Firebase remote config or ENV
-      if (cacheTTL < 60) {
+
+      if (cacheTTL < CACHE_TTL_IN_MINUTES) {
         final cachedResponse = Response(
             requestOptions: options,
             data: cacheData['data'].cast<String, dynamic>(),
@@ -28,9 +30,11 @@ class DioCacheInterceptor extends Interceptor {
 
         return handler.resolve(cachedResponse);
       } else {
-        if (cacheData['etag'] != null) {
-          options.headers['If-None-Match'] = cacheData['etag'];
-          analytics.logEvent('cache', properties: {'etag': cacheData['etag']});
+        final etag = cacheData['etag'] as String?;
+
+        if (etag != null) {
+          options.headers['If-None-Match'] = etag;
+          analytics.logEvent('cache', properties: {'etag': etag});
         }
       }
     }
@@ -52,11 +56,12 @@ class DioCacheInterceptor extends Interceptor {
       }
     }
 
-    if (response.statusCode == 200 && response.data['etag'] != null) {
+    final etag = response.data['etag'] as String?;
+    if (response.statusCode == 200 && etag != null) {
       final cacheKey = _generateCacheKey(response.realUri, response.realUri.queryParameters);
       final cacheData = {
         'timestamp': DateTime.now().toIso8601String(),
-        'etag': response.data['etag'],
+        'etag': etag,
         'data': response.data,
       };
 
