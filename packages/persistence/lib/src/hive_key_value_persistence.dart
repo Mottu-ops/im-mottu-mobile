@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:hive/hive.dart';
 import 'package:persistence/src/key_value_persistence.dart';
 
+const String CACHE_STORE_NAME = 'cache';
+
 class HiveKeyValuePersistence<T> implements KeyValuePersistence {
   HiveKeyValuePersistence({required this.boxName, required this.directory}) {
     Hive.init(directory.path);

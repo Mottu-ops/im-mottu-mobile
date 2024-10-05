@@ -13,7 +13,7 @@ class CharactersBinding extends Bindings {
   @override
   void dependencies() {
     Get.put<KeyValuePersistence>(
-      HiveKeyValuePersistence(boxName: 'cache', directory: directory),
+      HiveKeyValuePersistence(boxName: CACHE_STORE_NAME, directory: directory),
     );
 
     Get.put<AnalyticsService>(AnalyticsFirebaseService());
