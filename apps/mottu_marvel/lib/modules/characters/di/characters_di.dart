@@ -12,14 +12,24 @@ import '../presentation/pages/characters_page_controller.dart';
 class CharactersBinding extends Bindings {
   @override
   void dependencies() {
+    Get.put<KeyValuePersistence>(
+      HiveKeyValuePersistence(boxName: 'cache', directory: directory),
+    );
+
+    Get.put<AnalyticsService>(AnalyticsFirebaseService());
+
     Get.lazyPut<CharactersRepository>(() => CharactersRepositoryImpl(
-        httpClient: DioHttpClient(dio,
+          httpClient: DioHttpClient(
+            dio,
             dioCacheInterceptor: DioCacheInterceptor(
-                persistence: HiveKeyValuePersistence(boxName: 'cache', directory: directory),
-                analytics: AnalyticsFirebaseService())),
-        analytics: AnalyticsFirebaseService()));
+              persistence: Get.find<KeyValuePersistence>(),
+              analytics: Get.find<AnalyticsService>(),
+            ),
+          ),
+          analytics: Get.find<AnalyticsService>(),
+        ));
+
     Get.lazyPut<CharactersPageController>(() => CharactersPageController());
     Get.create<CharactersDetailsPageController>(() => CharactersDetailsPageController());
-    Get.put<KeyValuePersistence>(HiveKeyValuePersistence(boxName: 'cache', directory: directory));
   }
 }
