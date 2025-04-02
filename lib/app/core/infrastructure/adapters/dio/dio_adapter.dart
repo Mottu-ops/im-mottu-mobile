@@ -3,17 +3,15 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:pokedex/app/core/domain/http_adapters/http_response.dart';
 import 'package:pokedex/app/core/domain/http_adapters/i_http_client_adapter.dart';
+import 'package:pokedex/app/core/infrastructure/adapters/dio/interceptor/common_interceptor.dart';
 
 import 'dio_errors.dart';
 
 class DioAdapter implements IHttpClientAdapter {
-  final Dio dio;
-  final List<InterceptorsWrapper> interceptors;
+  final Dio dio = Dio();
+  final List<InterceptorsWrapper> interceptors = [CommonInterceptor()];
 
-  DioAdapter({
-    required this.dio,
-    this.interceptors = const [],
-  }) {
+  DioAdapter() {
     dio.options.validateStatus = (status) => status! < 600;
     dio.options.receiveTimeout = const Duration(seconds: 10);
     dio.options.connectTimeout = const Duration(seconds: 10);
