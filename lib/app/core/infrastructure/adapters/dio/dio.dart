@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:pokedex/core/domain/http_adapters/http_response.dart';
-import 'package:pokedex/core/domain/http_adapters/i_http_client_adapter.dart';
+import 'package:pokedex/app/core/domain/http_adapters/http_response.dart';
+import 'package:pokedex/app/core/domain/http_adapters/i_http_client_adapter.dart';
 
 import 'dio_errors.dart';
 

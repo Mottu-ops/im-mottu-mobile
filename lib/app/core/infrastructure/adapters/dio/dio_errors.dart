@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/core/domain/http_adapters/http_errors.dart';
+import 'package:pokedex/app/core/domain/http_adapters/http_errors.dart';
 
 class DioClientError extends HttpClientError implements DioException {
   DioClientError({

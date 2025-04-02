@@ -52,30 +52,17 @@ class CommonInterceptor extends InterceptorsWrapper {
     ErrorInterceptorHandler handler,
   ) {
     DioClientError failure;
-    if (err.response?.statusCode == 401) {
-      failure = DioClientError(
-        message: 'Falha ao realizar login.',
-        requestOptions: err.requestOptions,
-        statusCode: err.response?.statusCode,
-        stackTrace: err.stackTrace,
-        type: err.type,
-        data: err.requestOptions.data,
-        error: err,
-        response: err.response,
-      );
-    } else {
-      failure = DioClientError(
-        requestOptions: err.requestOptions,
-        statusCode: err.response?.statusCode,
-        stackTrace: err.stackTrace,
-        type: err.type,
-        data: err.requestOptions.data,
-        error: err,
-        response: err.response,
-        message: 'Ocorreu um erro na requisição com o servidor',
-      );
-    }
 
+    failure = DioClientError(
+      requestOptions: err.requestOptions,
+      statusCode: err.response?.statusCode,
+      stackTrace: err.stackTrace,
+      type: err.type,
+      data: err.requestOptions.data,
+      error: err,
+      response: err.response,
+      message: 'Ocorreu um erro na requisição com o servidor',
+    );
     handler.next(failure);
   }
 }
