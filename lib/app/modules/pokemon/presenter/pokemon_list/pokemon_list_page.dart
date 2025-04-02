@@ -8,8 +8,19 @@ class PokemonListPage extends GetView<PokemonListPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(controller.pokemonList.toString()),
+      body: Obx(
+        () => ListView.builder(
+          itemCount: controller.pokemonPreviewModelList.length,
+          itemBuilder: (context, index) {
+            final pokemon = controller.pokemonPreviewModelList[index];
+            return Column(
+              children: [
+                Text(pokemon.name),
+                Image.network(pokemon.imageUrl),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
