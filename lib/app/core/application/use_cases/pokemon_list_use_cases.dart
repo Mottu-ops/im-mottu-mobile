@@ -2,10 +2,10 @@ import 'package:get/get.dart';
 import 'package:pokedex/app/core/domain/http_adapters/http_response.dart';
 import 'package:pokedex/app/core/domain/http_adapters/i_http_client_adapter.dart';
 import 'package:pokedex/app/core/domain/models/pokemon_preview_model.dart';
-import 'package:pokedex/app/core/domain/services/i_pokemon_list.dart';
+import 'package:pokedex/app/core/domain/use_cases/i_pokemon_list_use_cases.dart';
 import 'package:pokedex/app/core/infrastructure/endpoints/endpoints.dart';
 
-class PokemonList implements IPokemonList {
+class PokemonListUseCases implements IPokemonListUseCases {
   final IHttpClientAdapter _httpClientAdapter = Get.find<IHttpClientAdapter>();
   @override
   Future<List<PokemonPreviewModel>> getPokemonList() async {

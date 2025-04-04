@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:pokedex/app/core/domain/models/pokemon_preview_model.dart';
-import 'package:pokedex/app/core/domain/services/i_pokemon_list.dart';
+import 'package:pokedex/app/core/domain/use_cases/i_pokemon_list_use_cases.dart';
 
 class PokemonListPageController extends GetxController {
-  IPokemonList pokemonList = Get.find<IPokemonList>();
+  IPokemonListUseCases pokemonList = Get.find<IPokemonListUseCases>();
   RxList<PokemonPreviewModel> pokemonPreviewModelList =
       <PokemonPreviewModel>[].obs;
   PokemonListPageController() {
