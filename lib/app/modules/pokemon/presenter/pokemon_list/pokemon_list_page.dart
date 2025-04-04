@@ -22,13 +22,17 @@ class PokemonListPage extends GetView<PokemonListPageController> {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 itemBuilder: (context, index) {
                   final pokemon = controller.pokemonPreviewModelList[index];
-                  return PokemonCard.tag(
-                    pokemonPreviewModel: pokemon,
+                  return SizedBox(
+                    height: 100,
+                    child: PokemonCard.v3(
+                      pokemonPreviewModel: pokemon,
+                    ),
                   );
                 },
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
+                    mainAxisExtent: 170.0,
                     mainAxisSpacing: 10),
               ),
             ),
