@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/app/modules/pokemon/presenter/pokemon_list/pokemon_list_page.dart';
 
 import 'app/modules/pokemon/presenter/pokemon_list/pokemon_list_page_binding.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(GetMaterialApp(
       title: 'Pokedéx',
       theme: ThemeData(),
       initialRoute: '/',
+      debugShowCheckedModeBanner: false,
       initialBinding: PokemonListPageBinding(),
       getPages: [
         GetPage(
