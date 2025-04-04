@@ -21,6 +21,7 @@ class PokemonListPage extends GetView<PokemonListPageController> {
                   final pokemon = controller.pokemonPreviewModelList[index];
                   return PokemonCard(
                     pokemonPreviewModel: pokemon,
+                    onTap: () => controller.onTapPokemonCard(pokemon),
                   );
                 },
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

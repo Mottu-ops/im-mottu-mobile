@@ -7,6 +7,26 @@ class PokemonDetailsPage extends GetView<PokemonDetailsPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(
+        children: [
+          AppBar(
+            title: Text(controller.pokemonPreviewModel.name),
+            backgroundColor: Colors.red,
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.grey[100],
+              child: Center(
+                child: Text(
+                  'Details of ${controller.pokemonPreviewModel.name}',
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
