@@ -22,7 +22,7 @@ class PokemonListPage extends GetView<PokemonListPageController> {
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 itemBuilder: (context, index) {
                   final pokemon = controller.pokemonPreviewModelList[index];
-                  return PokemonCard(
+                  return PokemonCard.tag(
                     pokemonPreviewModel: pokemon,
                   );
                 },
