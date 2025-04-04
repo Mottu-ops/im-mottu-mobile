@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/app/modules/pokemon/presenter/pokemon_list/pokemon_list_page_controller.dart';
-import 'package:pokedex/app/modules/pokemon/presenter/widgets/pokemon_card.dart';
+import 'package:pokedex/app/modules/pokemon/pokemon_list/pokemon_list_page_controller.dart';
+import 'package:pokedex/app/modules/pokemon/widgets/pokemon_card.dart';
 
 class PokemonListPage extends GetView<PokemonListPageController> {
   const PokemonListPage({super.key});
@@ -12,21 +12,15 @@ class PokemonListPage extends GetView<PokemonListPageController> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          SizedBox(
-            height: 50,
-          ),
           Expanded(
             child: Obx(
               () => GridView.builder(
                 itemCount: controller.pokemonPreviewModelList.length,
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 50),
                 itemBuilder: (context, index) {
                   final pokemon = controller.pokemonPreviewModelList[index];
-                  return SizedBox(
-                    height: 100,
-                    child: PokemonCard.v3(
-                      pokemonPreviewModel: pokemon,
-                    ),
+                  return PokemonCard(
+                    pokemonPreviewModel: pokemon,
                   );
                 },
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
