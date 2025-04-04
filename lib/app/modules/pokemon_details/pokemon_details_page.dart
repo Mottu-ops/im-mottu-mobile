@@ -8,24 +8,26 @@ class PokemonDetailsPage extends GetView<PokemonDetailsPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          AppBar(
-            title: Text(controller.pokemonPreviewModel.name),
-            backgroundColor: Colors.red,
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.grey[100],
-              child: Center(
-                child: Text(
-                  'Details of ${controller.pokemonPreviewModel.name}',
-                  style: TextStyle(fontSize: 24),
-                ),
-              ),
-            ),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Obx(() {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (controller.pokemonModel.value?.gifUrl != null)
+                SizedBox(
+                    height: 350,
+                    width: Get.width,
+                    child: Image.network(
+                      controller.pokemonModel.value!.gifUrl!,
+                      alignment: Alignment.center,
+                      fit: BoxFit.fitHeight,
+                    )),
+              Text(controller.pokemonModel.value?.name ?? ''),
+              Text('Height: ${controller.pokemonModel.value?.height}'),
+              Text('Weight: ${controller.pokemonModel.value?.weight}'),
+            ],
+          );
+        }),
       ),
     );
   }
