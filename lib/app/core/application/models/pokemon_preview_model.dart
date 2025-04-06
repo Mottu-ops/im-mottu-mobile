@@ -12,7 +12,7 @@ class PokemonPreviewModel {
 
   String get formattedId {
     String idString = id.toString();
-    return '#${'0' * (3 - idString.length)}$idString';
+    return '${'0' * (3 - idString.length)}$idString';
   }
 
   factory PokemonPreviewModel.fromJson(Map<String, dynamic> map) {

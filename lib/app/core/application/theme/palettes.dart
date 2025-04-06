@@ -22,4 +22,6 @@ abstract class Palettes {
   static const fairyColor = Color(0xFFEC8FE6);
   static const stellarColor = Color(0xFFFF9D55);
   static const unknownColor = Colors.black;
+  static const backButtonColor = Colors.white;
+  static const grayTextColor = Color(0xAF000000);
 }
