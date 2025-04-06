@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 abstract class Palettes {
   // Colors from types
@@ -21,5 +21,5 @@ abstract class Palettes {
   static const darkColor = Color(0xFF5A5465);
   static const fairyColor = Color(0xFFEC8FE6);
   static const stellarColor = Color(0xFFFF9D55);
-  static const unknownColor = Color(0xFFFF9D55);
+  static const unknownColor = Colors.black;
 }

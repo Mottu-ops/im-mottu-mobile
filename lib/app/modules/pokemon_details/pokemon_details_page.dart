@@ -14,8 +14,9 @@ class PokemonDetailsPage extends GetView<PokemonDetailsPageController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (controller.pokemonModel.value?.gifUrl != null)
-                SizedBox(
+                Container(
                     height: 350,
+                    color: controller.pokemonModel.value?.types.first.color,
                     width: Get.width,
                     child: Image.network(
                       controller.pokemonModel.value!.gifUrl!,
