@@ -6,10 +6,14 @@ class PokemonModel {
   final int height;
   final String? gifUrl;
   final String? criesUrl;
+  final int baseExperience;
   final List<PokemonTypeEnum> types;
   final PokemonPreviewModel pokemonPreviewModel;
+  final List<String> abilities;
 
   PokemonModel({
+    required this.baseExperience,
+    required this.abilities,
     required this.weight,
     required this.height,
     required this.gifUrl,
@@ -33,6 +37,7 @@ class PokemonModel {
         id: json['id'],
         imageUrl: json['sprites']?['front_default'],
       ),
+      baseExperience: json['base_experience'],
       weight: json['weight'],
       height: json['height'],
       criesUrl: json['cries']?['latest'],
@@ -40,6 +45,11 @@ class PokemonModel {
       types: json['types'] != null
           ? (json['types'] as List)
               .map((type) => PokemonTypeEnum.fromJson(type))
+              .toList()
+          : [],
+      abilities: json['abilities'] != null
+          ? (json['abilities'] as List)
+              .map((ability) => ability['ability']['name'] as String)
               .toList()
           : [],
     );

@@ -119,6 +119,35 @@ class PokemonDetailsPage extends GetView<PokemonDetailsPageController> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: CharacteristicBox(
+                      boxTitle: 'XP Base',
+                      boxValue: controller.pokemonModel.value?.baseExperience
+                              .toString() ??
+                          '',
+                      boxIcon: Icons.abc,
+                      boxWidth: Get.width / 2 - 15 - 7.5,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: CharacteristicBox(
+                      boxTitle: 'Habilidade',
+                      boxValue: controller
+                              .pokemonModel.value?.abilities.firstOrNull ??
+                          '',
+                      boxIcon: Icons.height_rounded,
+                      boxWidth: Get.width / 2 - 15 - 7.5,
+                    ),
+                  ),
+                ],
+              ),
             ],
           );
         }),
