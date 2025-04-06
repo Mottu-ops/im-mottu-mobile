@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pokedex/app/core/application/models/pokemon_preview_model.dart';
+import 'package:pokedex/app/modules/widgets/text_pokemon.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({super.key, required this.pokemonPreviewModel, this.onTap});
@@ -62,11 +62,10 @@ class PokemonCard extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   bottom: 1, top: 1, left: 3, right: 8),
-                              child: Text(
-                                pokemonPreviewModel.formattedId,
-                                style: GoogleFonts.poppins(
-                                    fontSize: 13, color: Colors.white),
-                              ),
+                              child: TextPokemon(
+                                  text: '#${pokemonPreviewModel.formattedId}',
+                                  fontSize: 13,
+                                  color: Colors.white),
                             ),
                           ),
                         ],
@@ -94,14 +93,11 @@ class PokemonCard extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10, top: 3.5, bottom: 3.5),
               child: SizedBox(
                 width: 140,
-                child: Text(
-                  pokemonPreviewModel.formattedName,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
+                child: TextPokemon(
+                  text: pokemonPreviewModel.formattedName,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
                 ),
               ),
             ),

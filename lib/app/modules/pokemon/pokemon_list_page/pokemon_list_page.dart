@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/app/modules/pokemon/pokemon_list/pokemon_list_page_controller.dart';
+import 'package:pokedex/app/modules/pokemon/pokemon_list_page/pokemon_list_page_controller.dart';
 import 'package:pokedex/app/modules/pokemon/widgets/pokemon_card.dart';
 
 class PokemonListPage extends GetView<PokemonListPageController> {

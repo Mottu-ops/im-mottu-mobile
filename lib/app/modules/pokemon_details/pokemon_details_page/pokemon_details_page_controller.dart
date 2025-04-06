@@ -31,4 +31,8 @@ class PokemonDetailsPageController extends GetxController {
       pokemonModel.refresh();
     }
   }
+
+  void goBack() {
+    Get.back();
+  }
 }
