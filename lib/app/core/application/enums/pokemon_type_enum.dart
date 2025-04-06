@@ -26,9 +26,9 @@ enum PokemonTypeEnum {
   unknown(Palettes.unknownColor, null, 'Desconhecido');
 
   final Color color;
-  final String name;
+  final String typeName;
   final String? iconPath;
-  const PokemonTypeEnum(this.color, this.iconPath, this.name);
+  const PokemonTypeEnum(this.color, this.iconPath, this.typeName);
 
   static PokemonTypeEnum fromJson(Map<String, dynamic> json) {
     return PokemonTypeEnum.values.firstWhere(

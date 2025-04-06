@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/app/core/application/theme/palettes.dart';
 import 'package:pokedex/app/modules/pokemon_details/pokemon_details_page/pokemon_details_page_controller.dart';
@@ -44,6 +45,34 @@ class PokemonDetailsPage extends GetView<PokemonDetailsPageController> {
                             bottom: Radius.circular(100000),
                           ),
                         ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: ShaderMask(
+                            shaderCallback: (bounds) {
+                              return LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    Colors.white,
+                                    controller.pokemonModel.value?.types.first
+                                            .color
+                                            .withValues(alpha: 0.0) ??
+                                        Colors.transparent,
+                                    //                                    Colors.white.withValues(alpha: 0.05),
+                                  ]).createShader(bounds);
+                            },
+                            blendMode: BlendMode.srcIn,
+                            child: SvgPicture.asset(
+                              controller.pokemonModel.value?.types.first
+                                      .iconPath ??
+                                  '',
+                              width: Get.width * 0.6,
+                              height: Get.width * 0.6,
+                              colorFilter: ColorFilter.mode(
+                                  Colors.transparent, BlendMode.color),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Padding(
@@ -51,7 +80,7 @@ class PokemonDetailsPage extends GetView<PokemonDetailsPageController> {
                       child: Image.network(
                         controller.pokemonModel.value!.gifUrl!,
                         width: Get.width,
-                        height: 310,
+                        height: 290,
                         alignment: Alignment.bottomCenter,
                         fit: BoxFit.contain,
                       ),
