@@ -10,8 +10,6 @@ Este teste está dividido em três níveis de dificuldade. Você pode desenvolve
 2. Adicione os usuários abaixo como colaboradores:
    - `@brunosmm`
    - `@BetoMottu`
-   - `@moreirawebmaster`
-   - `@jeanchrocha`
 3. Crie um novo projeto Flutter com o package:
 4. Utilize a [PokeAPI](https://pokeapi.co/) como fonte de dados.
 5. Crie um arquivo `README.md` com:
